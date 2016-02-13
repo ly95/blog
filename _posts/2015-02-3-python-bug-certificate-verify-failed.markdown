@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Python Bug CERTIFICATE_VERIFY_FAILED
+description: https://bugs.python.org/issue22417
 date: 2015-02-03 23:04:23
 modified: 2015-02-17 01:20:03
 tags: python ssl bug
@@ -23,4 +24,5 @@ import ssl
 {% endhighlight %}
 
 相关链接
-https://bugs.python.org/issue22417
+
+[https://bugs.python.org/issue22417](https://bugs.python.org/issue22417)

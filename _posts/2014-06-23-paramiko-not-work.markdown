@@ -1,6 +1,7 @@
 ---
 layout: post
 title: paramiko命令执行失败
+description: Not a git repository
 date: 2014-06-23 14:59:56
 modified: 2015-02-17 11:33:29
 tags: python ssh

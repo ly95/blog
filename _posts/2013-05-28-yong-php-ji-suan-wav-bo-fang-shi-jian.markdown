@@ -1,6 +1,7 @@
 ---
 layout: post
 title: 用php计算wav文件播放时间
+description: PHP代码
 date: 2013-05-28 16:21:14
 modified: 2014-06-17 11:31:25
 tags: php
@@ -32,6 +33,5 @@ print ceil($second);
 
 参考
 
-https://ccrma.stanford.edu/courses/422/projects/WaveFormat
-
-http://blog.csdn.net/qingdaoxuelei/article/details/2815516
+[https://ccrma.stanford.edu/courses/422/projects/WaveFormat](https://ccrma.stanford.edu/courses/422/projects/WaveFormat)
+[http://blog.csdn.net/qingdaoxuelei/article/details/2815516](http://blog.csdn.net/qingdaoxuelei/article/details/2815516)

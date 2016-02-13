@@ -1,6 +1,7 @@
 ---
 layout: post
 title: 跨域代理
+description: Python Cross Domain Proxy
 date: 2015-07-18 16:07:52
 modified: 2015-07-18 16:09:06
 tags: ionic python javascript ios
@@ -13,4 +14,4 @@ Javascript 跨域
 
 代码：
 
-https://github.com/ly95/py-crossdomain-proxy
+[https://github.com/ly95/py-crossdomain-proxy](https://github.com/ly95/py-crossdomain-proxy)

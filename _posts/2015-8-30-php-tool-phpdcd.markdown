@@ -1,6 +1,7 @@
 ---
 layout: post
 title: PHP开发工具PHPDCD
+description: PHP Dead Code Detector
 date: 2015-8-30 20:23:44
 modified: 2015-8-30 20:23:44
 tags: php

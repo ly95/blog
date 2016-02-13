@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Mysql连接数过多
+description: php超时有关
 date: 2015-12-12 00:31:26
 modified: 2015-12-12 00:31:26
 tags: mysql php

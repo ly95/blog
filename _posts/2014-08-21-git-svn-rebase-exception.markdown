@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Git svn rebase异常
+description: Delta source ended unexpectedly...
 date: 2014-08-21 18:06:16
 modified: 2015-02-17 11:32:16
 tags: git svn
