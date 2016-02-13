@@ -1,6 +1,6 @@
 ---
 layout: post
-title: [Xcode4.5]MuPDF编译问题stdio.h not found
+title: "[Xcode4.5]MuPDF编译问题stdio.h not found"
 date: 2012-09-29 10:58:44
 modified: 2014-06-17 14:27:28
 tags: ios xcode

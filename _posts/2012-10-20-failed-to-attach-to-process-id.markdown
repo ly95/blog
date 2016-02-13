@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 再遇error: failed to attach to process ID 0
+title: "再遇error: failed to attach to process ID 0"
 date: 2012-10-20 21:45:19
 modified: 2014-06-17 14:25:22
 tags: ios

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: [Xcode4.5 DP3] Error: failed to attach to process ID 0
+title: "[Xcode4.5 DP3] Error: failed to attach to process ID 0"
 date: 2012-07-23 23:41:51
 modified: 2014-06-17 14:33:41
 tags: xcode

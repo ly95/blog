@@ -1,6 +1,6 @@
 ---
 layout: post
-title: [MACOS] MYSQL Error : Thread stack overrun
+title: "[MACOS] MYSQL Error : Thread stack overrun"
 date: 2013-08-22 11:20:41
 modified: 2014-06-17 11:50:52
 tags: mysql
