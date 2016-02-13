@@ -14,7 +14,7 @@ windows7上体验过Sublime Text 2后，欲罢不能。
 
 Ubuntu 安装方法
 
-{% highlight sh %}
+{% highlight sh linenos %}
 sudo add-apt-repository ppa:webupd8team/sublime-text-2
 sudo apt-get update
 sudo apt-get install sublime-text-2-beta

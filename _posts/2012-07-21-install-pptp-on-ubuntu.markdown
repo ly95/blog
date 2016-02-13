@@ -13,19 +13,19 @@ tags: ubuntu
 
 记得把iptables rules保存
 
-{% highlight sh %}
+{% highlight sh linenos %}
 iptables-save > /etc/iptables.pptp
 {% endhighlight %}
 
 在/etc/network/if-up.d/目录下创建iptables文件，内容如下：
 
-{% highlight sh %}
+{% highlight sh linenos %}
 #!/bin/sh
 iptables-restore < /etc/iptables.pptp
 {% endhighlight %}
 
 增加执行权限
 
-{% highlight sh %}
+{% highlight sh linenos %}
 chmod +x /etc/network/if-up.d/iptables
 {% endhighlight %}

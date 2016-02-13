@@ -8,7 +8,7 @@ tags: python ssh
 
 一个测试站，使用git管理代码。每次同步需要ssh连接更新代码。用python写小程序来完成重复的工作。
 
-{% highlight python %}
+{% highlight python linenos %}
 import paramiko
 
 client = paramiko.SSHClient()
@@ -22,12 +22,12 @@ client.close()
 
 结果输出
 
-{% highlight sh %}
+{% highlight sh linenos %}
 fatal: Not a git repository (or any of the parent directories): .git
 {% endhighlight %}
 
 最后修改后，执行成功。
 
-{% highlight python %}
+{% highlight python linenos %}
 stdin, stdout, stderr = client.exec_command("cd /var/www/sites;git pull")
 {% endhighlight %}

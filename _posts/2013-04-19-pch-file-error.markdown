@@ -7,7 +7,7 @@ tags: xcode
 ---
 更新xcode到4.6.2后，运行项目得到错误
 
-{% highlight sh %}
+{% highlight sh linenos %}
 error: PCH file built from a different branch ((clang-425.0.27)) than the compiler ((clang-425.0.28))
 {% endhighlight %}
 

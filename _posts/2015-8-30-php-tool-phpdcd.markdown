@@ -16,7 +16,7 @@ phpdcd 可以扫描php项目中的没有在使用的函数或方法（死代码�
 
 以Mac OS为例
 
-{% highlight sh %}
+{% highlight sh linenos %}
 wget https://phar.phpunit.de/phpdcd.phar
 chmod +x phpdcd.phar
 mv phpdcd.phar /usr/local/bin/phpdcd
@@ -24,7 +24,7 @@ mv phpdcd.phar /usr/local/bin/phpdcd
 
 进入项目目录
 
-{% highlight sh %}
+{% highlight sh linenos %}
 cd /var/www/site
 phpdcd .
 {% endhighlight %}
@@ -34,7 +34,7 @@ phpdcd .
 
 **可选参数**
 
-{% highlight sh %}
+{% highlight sh linenos %}
 Usage:
  phpdcd [--names="..."] [--names-exclude="..."] [--exclude="..."] [--recursive] [values1] ... [valuesN]
 Arguments:

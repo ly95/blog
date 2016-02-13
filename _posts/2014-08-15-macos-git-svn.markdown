@@ -12,13 +12,13 @@ tags: git svn macos
 
 Xcode 安装命令行工具
 
-{% highlight sh %}
+{% highlight sh linenos %}
 xcode-select —install
 {% endhighlight %}
 
 克隆远程资源
 
-{% highlight sh %}
+{% highlight sh linenos %}
 git svn clone svn://res-url/something
 {% endhighlight %}
 
@@ -26,13 +26,13 @@ git svn clone svn://res-url/something
 
 增加参数节约时间，-r1 是开始版本号
 
-{% highlight sh %}
+{% highlight sh linenos %}
 git svn clone svn://res-url/something -r1:2
 {% endhighlight %}
 
 建好以后再使用rebase同步版本信息
 
-{% highlight sh %}
+{% highlight sh linenos %}
 git svn rebase
 {% endhighlight %}
 

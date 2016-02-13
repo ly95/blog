@@ -8,7 +8,7 @@ tags: python ssl bug
 
 urllib2请求ssh网址的时候抛出异常
 
-{% highlight sh %}
+{% highlight sh linenos %}
 File "/opt/local/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 1197, in do_open
 raise URLError(err)
 urllib2.URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed (_ssl.c:581)>

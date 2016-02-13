@@ -8,7 +8,7 @@ tags: ios xcode
 
 app因为ios data storage拒绝后，使用更新后的Xcode编译App失败
 
-{% highlight sh %}
+{% highlight sh linenos %}
 stdio.h not found
 {% endhighlight %}
 

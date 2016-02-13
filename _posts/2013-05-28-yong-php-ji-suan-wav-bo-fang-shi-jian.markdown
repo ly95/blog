@@ -10,7 +10,7 @@ tags: php
 
 代码如下：
 
-{% highlight php %}
+{% highlight php linenos %}
 /**
  * get length of wav audio in minutes/seconds
  *

@@ -7,14 +7,14 @@ tags: php memcache
 ---
 配置php.ini
 
-{% highlight sh %}
+{% highlight sh linenos %}
 session.save_handler = memcache
 session.save_path ="localhost:11211"
 {% endhighlight %}
 
 日志提示
 
-{% highlight sh %}
+{% highlight sh linenos %}
 Warning: session_start() [function.session-start]: Keycannot be empty
 {% endhighlight %}
 

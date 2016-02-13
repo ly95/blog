@@ -8,7 +8,7 @@ tags: git svn
 
 环境MacOS，git版本1.9.3(Apple Git-50)，同步版本信息时遭遇此错误提示
 
-{% highlight sh %}
+{% highlight sh linenos %}
 $ git svn rebase
 
 Incomplete data: Delta source ended unexpectedly at /Applications/Xcode.app/Contents/Developer/usr/share/git-core/perl/Git/SVN/Ra.pm line 290.
@@ -16,13 +16,13 @@ Incomplete data: Delta source ended unexpectedly at /Applications/Xcode.app/Cont
 
 处理办法指定同步版本
 
-{% highlight sh %}
+{% highlight sh linenos %}
 git svn reset —r 版本号
 {% endhighlight %}
 
 然后再试
 
-{% highlight sh %}
+{% highlight sh linenos %}
 git svn rebase
 {% endhighlight %}
 

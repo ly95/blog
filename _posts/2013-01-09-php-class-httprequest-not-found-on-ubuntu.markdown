@@ -8,7 +8,7 @@ tags: php
 
 安装 pecl_http
 
-{% highlight sh %}
+{% highlight sh linenos %}
 sudo apt-get install php-pear
 sudo apt-get install libcurl3-openssl-dev
 sudo apt-get install re2c
@@ -18,6 +18,6 @@ sudo vi /etc/php5/cli/php.ini
 
 添加一行
 
-{% highlight sh %}
+{% highlight sh linenos %}
 "extension=http.so"
 {% endhighlight %}

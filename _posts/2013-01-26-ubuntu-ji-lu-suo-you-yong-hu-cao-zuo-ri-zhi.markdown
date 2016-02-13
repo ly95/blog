@@ -8,13 +8,13 @@ tags: ubuntu
 
 在/etc/profile.d/目录创建userlog.sh文件
 
-{% highlight sh %}
+{% highlight sh linenos %}
 sudo vi /etc/profile.d/userlog.sh
 {% endhighlight %}
 
 内容如下
 
-{% highlight sh %}
+{% highlight sh linenos %}
 PS1="`whoami`@`hostname`:"'[$PWD]'
 history
 USER_IP=`who -u am i 2>/dev/null| awk '{print $NF}'|sed -e 's/[()]//g'`

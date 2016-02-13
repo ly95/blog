@@ -10,7 +10,7 @@ tags: ios
 
 控制台提示
 
-{% highlight sh %}
+{% highlight sh linenos %}
 Couldn't find default.styleproto in framework
 {% endhighlight %}
 
@@ -18,7 +18,7 @@ Couldn't find default.styleproto in framework
 
 打开 Terminal输入并Enter
 
-{% highlight sh %}
+{% highlight sh linenos %}
 rm -r ~/Library/Application Support/iPhone Simulator/版本/Library/Caches/GeoServices
 {% endhighlight %}
 

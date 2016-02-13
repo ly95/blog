@@ -6,7 +6,7 @@ modified: 2014-06-17 14:28:38
 tags: ios
 ---
 
-{% highlight sh %}
+{% highlight sh linenos %}
 -fno-objc-arc
 {% endhighlight %}
 

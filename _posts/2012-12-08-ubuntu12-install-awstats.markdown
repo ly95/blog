@@ -7,19 +7,19 @@ tags: ubuntu
 ---
 安装
 
-{% highlight sh %}
+{% highlight sh linenos %}
 apt-get install awstats
 {% endhighlight %}
 
 配置
 
-{% highlight sh %}
+{% highlight sh linenos %}
 vi /etc/awstats/awstats.conf
 {% endhighlight %}
 
 查询并修改下列参数
 
-{% highlight sh %}
+{% highlight sh linenos %}
 LogFile="/var/log/apache2/access.log"
 LogFormat=1
 SiteDomain="ly95.me"
@@ -28,11 +28,11 @@ HostAliases="localhost 127.0.0.1 ly95.me"
 
 增加一条定时任务
 
-{% highlight sh %}
+{% highlight sh linenos %}
 vi /etc/crontab
 {% endhighlight %}
 
-{% highlight sh %}
+{% highlight sh linenos %}
 0 */3 * * * root /usr/lib/cgi-bin/awstats.pl -config=ly95.me -update > /var/log/awstats.log
 {% endhighlight %}
 

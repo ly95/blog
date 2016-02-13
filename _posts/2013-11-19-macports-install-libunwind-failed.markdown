@@ -8,7 +8,7 @@ tags: macport golang
 
 通过macport重新安装golang的时候得到下面提示
 
-{% highlight sh %}
+{% highlight sh linenos %}
 Extracting libunwind-headers
 Error: org.macports.extract for port libunwind-headers returned: command execution failed
 Please see the log file for port libunwind-headers for details:
@@ -19,13 +19,13 @@ Error: Unable to execute port: upgrade llvm-gcc42 failed
 
 通过搜索得到是xcode5升级造成的，先接受新许可。
 
-{% highlight sh %}
+{% highlight sh linenos %}
 sudo xcodebuild -license agree
 {% endhighlight %}
 
 打开错误日志 main.log 看到
 
-{% highlight sh %}
+{% highlight sh linenos %}
 -xf - 
 :info:extract sh: /usr/bin/gnutar: No such file or directory
 :info:extract gzip: error writing to output: Broken pipe

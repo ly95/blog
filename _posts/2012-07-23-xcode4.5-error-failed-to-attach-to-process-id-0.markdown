@@ -8,7 +8,7 @@ tags: xcode
 
 编译app时输出
 
-{% highlight sh %}
+{% highlight sh linenos %}
 error: failed to attach to process ID 0
 {% endhighlight %}
 

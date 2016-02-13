@@ -8,13 +8,13 @@ tags: mysql python
 
 系统：osx 10.8.3
 
-{% highlight sh %}
+{% highlight sh linenos %}
 pip install mysql-python
 {% endhighlight %}
 
 抛出异常
 
-{% highlight sh %}
+{% highlight sh linenos %}
 EnvironmentError: mysql_config not found
 {% endhighlight %}
 
@@ -22,6 +22,6 @@ EnvironmentError: mysql_config not found
 
 只需运行命令
 
-{% highlight sh %}
+{% highlight sh linenos %}
 sudo ln -s /opt/local/bin/mysql_config5 /opt/local/bin/mysql_config
 {% endhighlight %}

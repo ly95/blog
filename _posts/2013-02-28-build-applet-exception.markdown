@@ -16,7 +16,7 @@ macports更新倒2.1.3自动安装了python launcher跟BuildApplet
 
 在运行BuildApplet时抛出异常，暂无找到解决办法。
 
-{% highlight sh %}
+{% highlight sh linenos %}
 Traceback (most recent call last):
 File "./Resources/__argvemulator_BuildApplet.py", line 3, in <module>
 argvemulator.ArgvCollector().mainloop()

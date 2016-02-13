@@ -6,6 +6,6 @@ modified: 2014-06-17 11:54:19
 tags: macport
 ---
 
-{% highlight sh %}
+{% highlight sh linenos %}
 sudo port uninstall inactive
 {% endhighlight %}

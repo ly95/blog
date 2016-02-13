@@ -6,19 +6,19 @@ modified: 2014-06-17 14:30:05
 tags: ubuntu apache
 ---
 
-{% highlight sh %}
+{% highlight sh linenos %}
 vi /etc/php5/apache2/php.ini
 {% endhighlight %}
 
-{% highlight sh %}
+{% highlight sh linenos %}
 expose_php Off
 {% endhighlight %}
 
-{% highlight sh %}
+{% highlight sh linenos %}
 vi /etc/apache2/conf.d/security
 {% endhighlight %}
 
-{% highlight sh %}
+{% highlight sh linenos %}
 ServerTokens Prod
 ServerSignature Off
 {% endhighlight %}
