@@ -1,0 +1,15 @@
+---
+layout: post
+title: [Xcode4.5 DP3] Error: failed to attach to process ID 0
+date: 2012-07-23 23:41:51
+modified: 2014-06-17 14:33:41
+tags: xcode
+---
+
+编译app时输出
+
+{% highlight sh %}
+error: failed to attach to process ID 0
+{% endhighlight %}
+
+然后把项目使用Xcode4.3编译，问题一样。
