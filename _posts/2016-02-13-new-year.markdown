@@ -1,0 +1,9 @@
+---
+layout: post
+title: "2016年，新年快乐"
+description: 体验jeykll
+date: 2016-02-13 22:46:00 +0800
+categories: life
+tags: life
+---
+博客从pelican切换到jeykll上了，每次改变中总能找到新亮点，我喜欢这种感觉。
