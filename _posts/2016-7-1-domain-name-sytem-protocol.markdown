@@ -12,4 +12,4 @@ tags: python dns
 参考 RFC1024, RFC1035
 
 代码库：
-https://github.com/ly95/dns
+[github.com/ly95/dns](https://github.com/ly95/dns)
