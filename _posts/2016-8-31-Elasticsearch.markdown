@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Elasticsearch 浅谈"
-description: "学习elasticsearch"
+description: "elasticsearch 笔记"
 date: 2016-08-31 22:56:00 +0800
 categories: elasticsearch
 tags: db
@@ -11,7 +11,7 @@ tags: db
 ## Elasticsearch是什么？
 
 
-简单说明，Elasticsearch是一个基于Lucene的开源搜索引擎。拥有一下特点:
+简单说明，__Elasticsearch是一个基于Lucene的开源搜索引擎__。拥有一下特点:
 
 - 分布式的实时文件存储，每个字段都被索引并可被v搜索。
 - 分布式的实时分析搜索引擎。
@@ -21,8 +21,10 @@ tags: db
 
 在ES中存储数据的行为就叫做索引，数据存储在文档，文档归属于一种类型(type)，而这些类型存在于索引(index)中，我们可以画一些简单的对比图来类比传统关系型数据库：
 
+```
 Relational DB -> Databases -> Tables -> Rows -> Columns
 Elasticsearch -> Indices   -> Types  -> Documents -> Fields
+```
 
 更多内容可查阅官网。
 
@@ -70,7 +72,7 @@ curl -XPOST 'http://127.0.0.1:9200/ly95/person' -d '{
 
 
 
-Mapping是定义文档字段类型的过程，好比关系型数据库建表，这里称为创建索引，索引创建后字段类型是不允许修改的，只能重建索引。ES是允许自动创建索引的，可在配置中开启于关闭此功能
+Mapping是定义文档字段类型的过程，好比关系型数据库建表，这里称为创建索引，__索引创建后字段类型是不允许修改的__，只能重建索引。ES是允许自动创建索引的，可在配置中开启于关闭此功能
 
 ```yaml
 action.auto_create_index: true
@@ -114,9 +116,9 @@ curl -XPOST 'http://127.0.0.1:9200/ly95/person' -d '{
 
 正确返回结果：
 
-
+```json
 {"index":"ly95","type":"person","id":"AVbf7x4lkuRtCTeIkBAN","version":1,"_shards":{"total":2,"successful":1,"failed":0},"created":true}
-
+```
 
 更多字段类型查看 [字段类型表](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-types.html)
 
@@ -159,9 +161,9 @@ http://127.0.0.1:9200/test/_analyze?text=凡人牧白
 
 得到分词结果：
 
-
+```json
 {"tokens":[{"token":"凡人","start_offset":0,"end_offset":2,"type":"word","position":0},{"token":"牧","start_offset":2,"end_offset":3,"type":"word","position":1},{"token":"白","start_offset":3,"end_offset":4,"type":"word","position":2}]}
-
+```
 
 
 ## 搜索DSL语法
