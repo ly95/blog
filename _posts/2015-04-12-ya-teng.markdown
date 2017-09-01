@@ -1,9 +1,0 @@
----
-layout: post
-title: 牙疼记
-date: 2015-04-12 00:28:34
-modified: 2015-04-12 00:28:40
-tags: life
-categories: life
----
-拔掉智齿后痛了2周，身体很重要。在医院输液的两天里才能真的静下来，思考。

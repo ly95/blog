@@ -1,9 +1,0 @@
----
-layout: post
-title: 13年2月14日
-date: 2013-02-18 15:04:56
-modified: 2014-06-17 11:55:33
-categories: life photo
-tags: life photo
----
-<img class="alignnone" alt="" src="http://farm9.staticflickr.com/8507/8485172525_57e83d6291.jpg" width="600" height="397" />
