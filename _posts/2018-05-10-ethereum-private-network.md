@@ -20,7 +20,7 @@ tags: blockchain 区块链
 ```json
 {
   "config": {
-        "chainId": 0,
+        "chainId": 15,
         "homesteadBlock": 0,
         "eip155Block": 0,
         "eip158Block": 0
@@ -63,7 +63,7 @@ geth --datadir path/to/custom/data/folder init genesis.json
 **启动需要指定networkid，与chainId值保持一致**
 
 ```bash
-geth --datadir path/to/custom/data/folder --networkid 0
+geth --datadir path/to/custom/data/folder --networkid 15
 ```
 
 ## 1.2 网络引导节点
@@ -86,7 +86,7 @@ INFO [05-09|13:08:44] UDP listener up self=enode://a81d4bba596f9674f9eaae11f4fbd
 ## 1.3 启动成员节点
 
 ```
-geth --datadir path/to/custom/data/folder --ethash.dagdir path/to/custom/data/folder/ethash --identity "node00" --networkid 0 --bootnodes enode://a81d4bba596f9674f9eaae11f4fbd3c33eacf00763e66b0e7435cac14764548ab511261c1c175e346a57a8bfc42b4f674251e4beeabfb20a507d80a01f567f9a@127.0.0.1:30301
+geth --datadir path/to/custom/data/folder --ethash.dagdir path/to/custom/data/folder/ethash --identity "node00" --networkid 15 --bootnodes enode://a81d4bba596f9674f9eaae11f4fbd3c33eacf00763e66b0e7435cac14764548ab511261c1c175e346a57a8bfc42b4f674251e4beeabfb20a507d80a01f567f9a@127.0.0.1:30301
 ```
 
 ## 1.4 接口
@@ -165,7 +165,7 @@ geth --datadir path/to/custom/data/folder --ethash.dagdir path/to/custom/data/fo
 
 ```bash
 geth --datadir {folder2} init genesis.json
-geth --datadir {folder2} --ethash.dagdir {folder2}/ethash --networkid 0 --identity "node01" --port 30302 --bootnodes enode://a81d4bba596f9674f9eaae11f4fbd3c33eacf00763e66b0e7435cac14764548ab511261c1c175e346a57a8bfc42b4f674251e4beeabfb20a507d80a01f567f9a@127.0.0.1:30301
+geth --datadir {folder2} --ethash.dagdir {folder2}/ethash --networkid 15 --identity "node01" --port 30302 --bootnodes enode://a81d4bba596f9674f9eaae11f4fbd3c33eacf00763e66b0e7435cac14764548ab511261c1c175e346a57a8bfc42b4f674251e4beeabfb20a507d80a01f567f9a@127.0.0.1:30301
 ```
 
 进入console，查看是否自动发现了其他节点，正确如下：
@@ -217,7 +217,7 @@ geth <usual-flags> --mine --minerthreads=1 --etherbase=0x78a3a94dd67480bc8b5a688
 
 完整命令
 ```bash
-geth --datadir {folder2} --ethash.dagdir {folder2}/ethash --networkid 0 --identity "node01" --port 30302 --bootnodes enode://a81d4bba596f9674f9eaae11f4fbd3c33eacf00763e66b0e7435cac14764548ab511261c1c175e346a57a8bfc42b4f674251e4beeabfb20a507d80a01f567f9a@127.0.0.1:30301 --mine --minerthreads=1 --etherbase=0x78a3a94dd67480bc8b5a6883842077afe495199d
+geth --datadir {folder2} --ethash.dagdir {folder2}/ethash --networkid 15 --identity "node01" --port 30302 --bootnodes enode://a81d4bba596f9674f9eaae11f4fbd3c33eacf00763e66b0e7435cac14764548ab511261c1c175e346a57a8bfc42b4f674251e4beeabfb20a507d80a01f567f9a@127.0.0.1:30301 --mine --minerthreads=1 --etherbase=0x78a3a94dd67480bc8b5a6883842077afe495199d
 
 ......
 INFO [05-10|11:36:02] Generating DAG in progress               epoch=0 percentage=98 elapsed=2m34.316s
@@ -244,7 +244,12 @@ INFO [05-10|11:36:11] Commit new mining work                   number=2 txs=0 un
 ```bash
 > personal.newAccount('ly')
 "0xf8e938812d246692d825d51b8e57da96a5eb8b6d"
-> var tx = {from: "0x3f81d9bbbe36113ff6f78f9567e277aa604ed7a9", to: "0xf8e938812d246692d825d51b8e57da96a5eb8b6d", value: web3.toWei(1.5, "ether")}
+> personal.unlockAccount(eth.coinbase, "ly", 100)
+> eth.sendTransaction({
+    from: eth.coinbase,
+    to: web3.eth.accounts[1],
+    value: web3.toWei(1,"ether")
+})
 ```
 
 未完待续……
