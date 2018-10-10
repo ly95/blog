@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>凡人牧白's Blog - 用php计算wav文件播放时间</title>
+  <link rel="shortcut icon" href="/assets/images/favicon.ico">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="alternate" type="application/rss+xml" title="凡人牧白's Blog" href="/rss.xml">
+  <link rel="stylesheet" href="/assets/css/highlight.css">
+</head>
+<body>
+
+  <nav class="main-nav">
+    
+        <a href="/"> <span class="arrow">←</span> 返回 </a>
+    
+    
+        <a href="/about.html">关于我</a>
+    
+    <a class="cta" href="/feed.xml">RSS</a>
+</nav>
+
+  
+
+  <section id="wrapper" class="">
+    <article class="post">
+    <header>
+        <h1>用php计算wav文件播放时间</h1>
+        <h2 class="headline">2013年5月29日 00:12:14</h2>
+        <div class="tags">
+            
+            <a href="/tag/php">PHP</a>
+            
+        </div>
+    </header>
+    <section id="post-body">
+        <p>开发需要，试写了一个php版的</p>
+
+<p>代码如下：</p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+</pre></td><td class="rouge-code"><pre><span class="sd">/**
+ * get length of wav audio in minutes/seconds
+ *
+ * @package default
+ * @author linyang95#aol.com
+ **/</span>
+<span class="nv">$filename</span> <span class="o">=</span> <span class="s1">'voice_0.wav'</span><span class="p">;</span>
+<span class="nv">$fp</span> <span class="o">=</span> <span class="nb">fopen</span><span class="p">(</span><span class="nv">$filename</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">);</span>
+<span class="nb">fseek</span><span class="p">(</span><span class="nv">$fp</span><span class="p">,</span> <span class="mi">20</span><span class="p">);</span>
+<span class="nv">$rawheader</span> <span class="o">=</span> <span class="nb">fread</span><span class="p">(</span><span class="nv">$fp</span><span class="p">,</span> <span class="mi">16</span><span class="p">);</span>
+<span class="c1">// v short string</span>
+<span class="c1">// V long string</span>
+<span class="nv">$header</span> <span class="o">=</span> <span class="nb">unpack</span><span class="p">(</span><span class="s1">'vwFormatTag/vnChannels/VnSamplesPerSec/VnAvgBytesPerSec/vnBlockAlign/vwBitsPerSample'</span><span class="p">,</span> <span class="nv">$rawheader</span><span class="p">);</span>
+<span class="nb">extract</span><span class="p">(</span><span class="nv">$header</span><span class="p">);</span>
+<span class="nv">$rawbody</span> <span class="o">=</span> <span class="nb">fread</span><span class="p">(</span><span class="nv">$fp</span><span class="p">,</span> <span class="nb">filesize</span><span class="p">(</span><span class="nv">$filename</span><span class="p">)</span><span class="o">-</span><span class="mi">36</span><span class="p">);</span>
+<span class="nv">$second</span> <span class="o">=</span> <span class="nb">strlen</span><span class="p">(</span><span class="nv">$rawbody</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span> <span class="p">(</span><span class="nv">$nChannels</span> <span class="o">*</span> <span class="nv">$nSamplesPerSec</span> <span class="o">*</span> <span class="nv">$wBitsPerSample</span><span class="p">)</span> <span class="o">/</span> <span class="mi">8</span> <span class="p">);</span>
+<span class="k">print</span> <span class="nb">ceil</span><span class="p">(</span><span class="nv">$second</span><span class="p">);</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>参考</p>
+
+<p><a href="https://ccrma.stanford.edu/courses/422/projects/WaveFormat">https://ccrma.stanford.edu/courses/422/projects/WaveFormat</a>
+<a href="http://blog.csdn.net/qingdaoxuelei/article/details/2815516">http://blog.csdn.net/qingdaoxuelei/article/details/2815516</a></p>
+
+    </section>
+</article>
+
+<footer id="post-meta" class="clearfix">
+    <a href="http://twitter.com/ly95me">
+        <img class="avatar" src="/assets/images/avatar.png">
+        <div>
+            <span class="dark">Yang Lin</span>
+            <span>Personal Blog.</span>
+        </div>
+    </a>
+
+    <section id="sharing">
+        <a class="twitter" href="https://twitter.com/intent/tweet?text=http://ly95.me/2013-05-29/yong-php-ji-suan-wav-bo-fang-shi-jian.html - 用php计算wav文件播放时间 by @ly95me"><span class="icon-twitter"> Tweet</span></a>
+
+<a class="facebook" href="#" onclick="
+    window.open(
+      'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href),
+      'facebook-share-dialog',
+      'width=626,height=436');
+    return false;"><span class="icon-facebook-rect"> Share</span>
+</a>
+    </section>
+</footer>
+
+<!-- Disqus comments -->
+
+    <div class="archive readmore">
+        <h3>Comments</h3>
+        <section class="disqus">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'ly95';
+        var disqus_developer = 0; // developer mode is on
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+    </div>
+
+
+  </section>
+
+  <script src="/assets/js/jquery.min.js"></script>
+  <script src="/assets/js/main.js"></script>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-33570712-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+</body>
+</html>
+
+
+

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>凡人牧白's Blog - Install PPTP server on Ubuntu 12.04</title>
+  <link rel="shortcut icon" href="/assets/images/favicon.ico">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="alternate" type="application/rss+xml" title="凡人牧白's Blog" href="/rss.xml">
+  <link rel="stylesheet" href="/assets/css/highlight.css">
+</head>
+<body>
+
+  <nav class="main-nav">
+    
+        <a href="/"> <span class="arrow">←</span> 返回 </a>
+    
+    
+        <a href="/about.html">关于我</a>
+    
+    <a class="cta" href="/feed.xml">RSS</a>
+</nav>
+
+  
+
+  <section id="wrapper" class="">
+    <article class="post">
+    <header>
+        <h1>Install PPTP server on Ubuntu 12.04</h1>
+        <h2 class="headline">2012年7月22日 06:06:57</h2>
+        <div class="tags">
+            
+            <a href="/tag/ubuntu">Ubuntu</a>
+            
+            <a href="/tag/vpn">VPN</a>
+            
+        </div>
+    </header>
+    <section id="post-body">
+        <p>参考</p>
+
+<p><a href="http://www.larmeir.com/2010/03/setting-up-a-pptp-vpn-server-on-debian-and-ubuntu/">http://www.larmeir.com/2010/03/setting-up-a-pptp-vpn-server-on-debian-and-ubuntu/</a></p>
+
+<p>补充：</p>
+
+<p>记得把iptables rules保存</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>iptables-save <span class="o">&gt;</span> /etc/iptables.pptp
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>在/etc/network/if-up.d/目录下创建iptables文件，内容如下：</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre><span class="c">#!/bin/sh</span>
+iptables-restore &lt; /etc/iptables.pptp
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>增加执行权限</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="nb">chmod</span> +x /etc/network/if-up.d/iptables
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+    </section>
+</article>
+
+<footer id="post-meta" class="clearfix">
+    <a href="http://twitter.com/ly95me">
+        <img class="avatar" src="/assets/images/avatar.png">
+        <div>
+            <span class="dark">Yang Lin</span>
+            <span>Personal Blog.</span>
+        </div>
+    </a>
+
+    <section id="sharing">
+        <a class="twitter" href="https://twitter.com/intent/tweet?text=http://ly95.me/2012-07-22/install-pptp-on-ubuntu.html - Install PPTP server on Ubuntu 12.04 by @ly95me"><span class="icon-twitter"> Tweet</span></a>
+
+<a class="facebook" href="#" onclick="
+    window.open(
+      'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href),
+      'facebook-share-dialog',
+      'width=626,height=436');
+    return false;"><span class="icon-facebook-rect"> Share</span>
+</a>
+    </section>
+</footer>
+
+<!-- Disqus comments -->
+
+    <div class="archive readmore">
+        <h3>Comments</h3>
+        <section class="disqus">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'ly95';
+        var disqus_developer = 0; // developer mode is on
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+    </div>
+
+
+  </section>
+
+  <script src="/assets/js/jquery.min.js"></script>
+  <script src="/assets/js/main.js"></script>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-33570712-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+</body>
+</html>
+
+
+

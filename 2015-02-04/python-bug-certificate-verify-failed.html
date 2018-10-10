@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>凡人牧白's Blog - Python Bug CERTIFICATE_VERIFY_FAILED</title>
+  <link rel="shortcut icon" href="/assets/images/favicon.ico">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="alternate" type="application/rss+xml" title="凡人牧白's Blog" href="/rss.xml">
+  <link rel="stylesheet" href="/assets/css/highlight.css">
+</head>
+<body>
+
+  <nav class="main-nav">
+    
+        <a href="/"> <span class="arrow">←</span> 返回 </a>
+    
+    
+        <a href="/about.html">关于我</a>
+    
+    <a class="cta" href="/feed.xml">RSS</a>
+</nav>
+
+  
+
+  <section id="wrapper" class="">
+    <article class="post">
+    <header>
+        <h1>Python Bug CERTIFICATE_VERIFY_FAILED</h1>
+        <h2 class="headline">2015年2月4日 07:07:23</h2>
+        <div class="tags">
+            
+            <a href="/tag/python">Python</a>
+            
+            <a href="/tag/ssl">SSL</a>
+            
+            <a href="/tag/bug">Bug</a>
+            
+        </div>
+    </header>
+    <section id="post-body">
+        <p>urllib2请求ssh网址的时候抛出异常</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre>File <span class="s2">"/opt/local/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py"</span>, line 1197, <span class="k">in </span>do_open
+raise URLError<span class="o">(</span>err<span class="o">)</span>
+urllib2.URLError: &lt;urlopen error <span class="o">[</span>SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed <span class="o">(</span>_ssl.c:581<span class="o">)&gt;</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>该问题是python一个bug，影响版本：3.5, 3.4, 2.7。临时解决办法程序中加入下面代码</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre><span class="kn">import</span> <span class="nn">ssl</span>
+    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">ssl</span><span class="p">,</span> <span class="s">'_create_unverified_context'</span><span class="p">):</span>
+        <span class="n">ssl</span><span class="o">.</span><span class="n">_create_default_https_context</span> <span class="o">=</span> <span class="n">ssl</span><span class="o">.</span><span class="n">_create_unverified_context</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>相关链接</p>
+
+<p><a href="https://bugs.python.org/issue22417">https://bugs.python.org/issue22417</a></p>
+
+    </section>
+</article>
+
+<footer id="post-meta" class="clearfix">
+    <a href="http://twitter.com/ly95me">
+        <img class="avatar" src="/assets/images/avatar.png">
+        <div>
+            <span class="dark">Yang Lin</span>
+            <span>Personal Blog.</span>
+        </div>
+    </a>
+
+    <section id="sharing">
+        <a class="twitter" href="https://twitter.com/intent/tweet?text=http://ly95.me/2015-02-04/python-bug-certificate-verify-failed.html - Python Bug CERTIFICATE_VERIFY_FAILED by @ly95me"><span class="icon-twitter"> Tweet</span></a>
+
+<a class="facebook" href="#" onclick="
+    window.open(
+      'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href),
+      'facebook-share-dialog',
+      'width=626,height=436');
+    return false;"><span class="icon-facebook-rect"> Share</span>
+</a>
+    </section>
+</footer>
+
+<!-- Disqus comments -->
+
+    <div class="archive readmore">
+        <h3>Comments</h3>
+        <section class="disqus">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'ly95';
+        var disqus_developer = 0; // developer mode is on
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+    </div>
+
+
+  </section>
+
+  <script src="/assets/js/jquery.min.js"></script>
+  <script src="/assets/js/main.js"></script>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-33570712-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+</body>
+</html>
+
+
+
