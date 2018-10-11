@@ -246,6 +246,7 @@ INFO [05-10|11:36:11] Commit new mining work                   number=2 txs=0 un
 > personal.newAccount('ly')
 "0xf8e938812d246692d825d51b8e57da96a5eb8b6d"
 > var tx = {from: "0x3f81d9bbbe36113ff6f78f9567e277aa604ed7a9", to: "0xf8e938812d246692d825d51b8e57da96a5eb8b6d", value: web3.toWei(1.5, "ether")}
+> eth.sendTransaction(tx)
 ```
 
 未完待续……
