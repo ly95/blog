@@ -1,0 +1,12 @@
+branches: theme
+
+pipeline:
+  build:
+    image: ruby
+    commands:
+      - bundle install
+      - bundle exec jekyll build
+  publish:
+    image: plugins/gh-pages
+    secrets: [ github_username, github_password ]
+    pages_directory: ./
