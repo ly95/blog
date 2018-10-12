@@ -9,4 +9,4 @@ pipeline:
   publish:
     image: plugins/gh-pages
     secrets: [ github_username, github_password ]
-    pages_directory: ./
+    pages_directory: _site/
