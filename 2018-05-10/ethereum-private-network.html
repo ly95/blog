@@ -396,9 +396,11 @@ INFO <span class="o">[</span>05-10|11:36:11] Commit new mining work             
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
 3
+4
 </pre></td><td class="rouge-code"><pre><span class="o">&gt;</span> personal.newAccount<span class="o">(</span><span class="s1">'ly'</span><span class="o">)</span>
 <span class="s2">"0xf8e938812d246692d825d51b8e57da96a5eb8b6d"</span>
 <span class="o">&gt;</span> var tx <span class="o">=</span> <span class="o">{</span>from: <span class="s2">"0x3f81d9bbbe36113ff6f78f9567e277aa604ed7a9"</span>, to: <span class="s2">"0xf8e938812d246692d825d51b8e57da96a5eb8b6d"</span>, value: web3.toWei<span class="o">(</span>1.5, <span class="s2">"ether"</span><span class="o">)}</span>
+<span class="o">&gt;</span> eth.sendTransaction<span class="o">(</span>tx<span class="o">)</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>未完待续……</p>
