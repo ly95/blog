@@ -22,8 +22,12 @@ foreach (glob("_my_tags/*.md") as $filename) {
     unlink($filename);
 }
 
+if (!is_dir('_my_tags')) {
+    mkdir('_my_tags', 0700);
+}
+
 foreach ($tags as $tag) {
     $tagLow = strtolower($tag);
-    $line = sprintf("---\nslug: %s\nname: %s\n---", $tag, $tag);
+    $line = sprintf("---\nslug: %s\nname: %s\n---", $tagLow, $tag);
     file_put_contents("_my_tags/" . $tagLow . ".md", $line);
 }

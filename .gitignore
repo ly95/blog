@@ -2,3 +2,14 @@ _site/
 .sass-cache/
 .DS_Store
 .vscode
+.*.html
+Gemfile*
+_config.yml
+_includes
+_layouts
+about.md
+tags.md
+404.html
+atom.xml
+index.html
+public

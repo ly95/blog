@@ -1,0 +1,4 @@
+---
+slug: gc
+name: GC
+---
