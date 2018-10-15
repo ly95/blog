@@ -8,7 +8,7 @@ pipeline:
       - rm -rf lanyon-1.0.0/_posts
       - cp -r _posts lanyon-1.0.0
       - cp -r _my_tags lanyon-1.0.0
-      - bundle install
+      - bundle install --path lanyon-1.0.0
       - bundle exec jekyll build -s lanyon-1.0.0
   publish:
     image: plugins/gh-pages
