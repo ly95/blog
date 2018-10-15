@@ -8,9 +8,10 @@ pipeline:
       - rm -rf lanyon-1.0.0/_posts
       - cp -r _posts lanyon-1.0.0
       - cp -r _my_tags lanyon-1.0.0
-      - bundle install --path lanyon-1.0.0
-      - bundle exec jekyll build -s lanyon-1.0.0
+      - cd lanyon-1.0.0
+      - bundle install
+      - bundle exec jekyll build
   publish:
     image: plugins/gh-pages
     secrets: [ github_username, github_password ]
-    pages_directory: _site/
+    pages_directory: lanyon-1.0.0/_site/
