@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+    
+      凡人牧白's Blog &middot; Personal Blog
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/public/css/poole.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link rel="stylesheet" href="/public/css/lanyon.css">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
+  <link rel="shortcut icon" href="/public/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+</head>
+
+
+  <body class="theme-base-08 layout-reverse">
+
+    <!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+     styles, `#sidebar-checkbox` for behavior. -->
+<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
+
+<!-- Toggleable sidebar -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-item">
+    <p>凡人牧白's Blog</p>
+  </div>
+
+  <nav class="sidebar-nav">
+    <a class="sidebar-nav-item" href="/">首页</a>
+
+    
+
+    
+    
+      
+        
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/about/">关于我</a>
+        
+      
+    
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+    
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/tags/">标签</a>
+        
+      
+    
+  </nav>
+
+  <div class="sidebar-item">
+    <p>
+      &copy; 2018. All rights reserved.
+    </p>
+  </div>
+</div>
+
+
+    <div class="wrap">
+      <div class="masthead">
+        <div class="container">
+          <h3 class="masthead-title">
+            <a href="/" title="Home">凡人牧白's Blog</a>
+            <small>Personal Blog</small>
+          </h3>
+        </div>
+      </div>
+
+      <div class="container content">
+        <div class="posts">
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2012-10-27/php-tts.html">
+        文字转语音并保存文件(PHP)
+      </a>
+    </h1>
+    <span class="post-date">2012年10月27日</span>
+    <p>利用win32api实现</p>
+
+<p>代码：</p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+<span class="sd">/**
+ * TTS Sample
+ *
+ * @author linyang95#aol.com
+ */</span>
+<span class="nb">define</span><span class="p">(</span><span class="s2">"SSFMCreateForWrite"</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
+
+<span class="nv">$filename</span> <span class="o">=</span> <span class="s2">"tts.mp3"</span><span class="p">;</span>
+
+<span class="nv">$SpVoice</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">COM</span><span class="p">(</span><span class="s2">"SAPI.SpVoice"</span><span class="p">);</span>
+<span class="nv">$SpFileStream</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">COM</span><span class="p">(</span><span class="s2">"SAPI.SpFileStream"</span><span class="p">);</span>
+<span class="nv">$SpFileStream</span><span class="o">-&gt;</span><span class="na">Open</span><span class="p">(</span><span class="nv">$filename</span><span class="p">,</span> <span class="nx">SSFMCreateForWrite</span><span class="p">,</span> <span class="kc">false</span><span class="p">);</span>
+<span class="c1">// 可用声音</span>
+<span class="nv">$_voices</span> <span class="o">=</span> <span class="nv">$SpVoice</span><span class="o">-&gt;</span><span class="na">GetVoices</span><span class="p">();</span>
+<span class="k">foreach</span><span class="p">(</span><span class="nv">$_voices</span> <span class="k">as</span> <span class="nv">$_voice</span><span class="p">)</span> <span class="p">{</span>
+<span class="k">echo</span> <span class="nv">$_voice</span><span class="o">-&gt;</span><span class="na">GetDescription</span><span class="p">()</span><span class="o">.</span><span class="s2">"n"</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="c1">// 语速</span>
+<span class="nv">$SpVoice</span><span class="o">-&gt;</span><span class="na">Rate</span> <span class="o">=</span> <span class="o">-</span><span class="mi">3</span><span class="p">;</span>
+<span class="nv">$SpVoice</span><span class="o">-&gt;</span><span class="na">Voice</span> <span class="o">=</span> <span class="nv">$_voices</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+<span class="nv">$SpVoice</span><span class="o">-&gt;</span><span class="na">AudioOutputStream</span> <span class="o">=</span> <span class="nv">$SpFileStream</span><span class="p">;</span>
+<span class="nv">$SpVoice</span><span class="o">-&gt;</span><span class="na">Speak</span><span class="p">(</span><span class="s2">"你好，http://ly95.me"</span><span class="p">);</span>
+<span class="nv">$SpFileStream</span><span class="o">-&gt;</span><span class="na">Close</span><span class="p">();</span>
+<span class="cp">?&gt;</span>
+</code></pre></div></div>
+
+<p>参考资料：</p>
+
+<p><a href="http://msdn.microsoft.com/en-us/library/ms723602(v=vs.85).aspx">msdn.microsoft.com</a></p>
+
+
+  </div>
+  
+</div>
+
+
+<div class="pagination">
+  
+    <a class="pagination-item older" href="/page/35">下一页</a>
+  
+  
+    
+      <a class="pagination-item newer" href="/page/33">上一页</a>
+    
+  
+</div>
+
+
+      </div>
+    </div>
+
+    <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+
+    <script>
+      (function(document) {
+        var toggle = document.querySelector('.sidebar-toggle');
+        var sidebar = document.querySelector('#sidebar');
+        var checkbox = document.querySelector('#sidebar-checkbox');
+
+        document.addEventListener('click', function(e) {
+          var target = e.target;
+
+          if(!checkbox.checked ||
+             sidebar.contains(target) ||
+             (target === checkbox || target === toggle)) return;
+
+          checkbox.checked = false;
+        }, false);
+      })(document);
+    </script>
+  </body>
+</html>

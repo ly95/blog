@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+    
+      凡人牧白's Blog &middot; Personal Blog
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/public/css/poole.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link rel="stylesheet" href="/public/css/lanyon.css">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
+  <link rel="shortcut icon" href="/public/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+</head>
+
+
+  <body class="theme-base-08 layout-reverse">
+
+    <!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+     styles, `#sidebar-checkbox` for behavior. -->
+<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
+
+<!-- Toggleable sidebar -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-item">
+    <p>凡人牧白's Blog</p>
+  </div>
+
+  <nav class="sidebar-nav">
+    <a class="sidebar-nav-item" href="/">首页</a>
+
+    
+
+    
+    
+      
+        
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/about/">关于我</a>
+        
+      
+    
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+    
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/tags/">标签</a>
+        
+      
+    
+  </nav>
+
+  <div class="sidebar-item">
+    <p>
+      &copy; 2018. All rights reserved.
+    </p>
+  </div>
+</div>
+
+
+    <div class="wrap">
+      <div class="masthead">
+        <div class="container">
+          <h3 class="masthead-title">
+            <a href="/" title="Home">凡人牧白's Blog</a>
+            <small>Personal Blog</small>
+          </h3>
+        </div>
+      </div>
+
+      <div class="container content">
+        <div class="posts">
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2016-08-31/elasticsearch.html">
+        Elasticsearch 浅谈
+      </a>
+    </h1>
+    <span class="post-date">2016年08月31日</span>
+    <h2 id="elasticsearch是什么">Elasticsearch是什么？</h2>
+
+<p>简单说明，<strong>Elasticsearch是一个基于Lucene的开源搜索引擎</strong>。拥有一下特点:</p>
+
+<ul>
+  <li>分布式的实时文件存储，每个字段都被索引并可被v搜索。</li>
+  <li>分布式的实时分析搜索引擎。</li>
+  <li>可以扩展到上百台服务器，处理PB级结构化或非结构化数据。</li>
+</ul>
+
+<p>在ES中存储数据的行为就叫做索引，数据存储在文档，文档归属于一种类型(type)，而这些类型存在于索引(index)中，我们可以画一些简单的对比图来类比传统关系型数据库：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Relational DB -&gt; Databases -&gt; Tables -&gt; Rows -&gt; Columns
+Elasticsearch -&gt; Indices   -&gt; Types  -&gt; Documents -&gt; Fields
+</code></pre></div></div>
+
+<p>更多内容可查阅官网。</p>
+
+<h2 id="排名">排名</h2>
+
+<p>截止2016年8月，Search engine 类型数据库排名第一、309种数据库中排名11。</p>
+
+<p><a href="http://db-engines.com/en/ranking">Ranking链接</a></p>
+
+<h2 id="安装配置">安装配置</h2>
+
+<p>比较简单不再叙述。</p>
+
+<h2 id="api">Api</h2>
+
+<p>基于HTTP协议，以JSON为数据交互格式的RESTful API，通过9200端口的与ES进行通信。</p>
+
+<p>例子：</p>
+
+<p>索引数据</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">-XPOST</span> <span class="s1">'http://127.0.0.1:9200/ly95/person'</span> <span class="nt">-d</span> <span class="s1">'{
+    "user" : "ly95",
+    "created_date" : "2016-08-22T17:25:12",
+    "note" : "trying out Elasticsearch",
+    "age": 24
+}'</span>
+</code></pre></div></div>
+
+<h2 id="mapping">Mapping</h2>
+
+<p>Mapping是定义文档字段类型的过程，好比关系型数据库建表，这里称为创建索引，<strong>索引创建后字段类型是不允许修改的</strong>，只能重建索引。ES是允许自动创建索引的，可在配置中开启于关闭此功能</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s">action.auto_create_index</span><span class="pi">:</span> <span class="no">true</span>
+</code></pre></div></div>
+
+<p>例子：</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">-XPOST</span> <span class="s1">'http://127.0.0.1:9200/ly95/person'</span> <span class="nt">-d</span> <span class="s1">'{
+  "settings": {
+    "number_of_shards": 1,
+    "number_of_replicas": 1 
+  },
+  "mappings": {
+      "person": {
+          "_source": {
+              "enabled": true
+          },
+          "properties": {
+              "user": {
+                  "type": "string"
+              },
+              "created_date": {
+                  "type": "date",
+                  "format": "strict_date_optional_time"
+              },
+              "note": {
+                  "type": "string"
+              },
+              "age": {
+                  "type": "integer"
+              }
+          }
+      }
+  }
+}'</span>
+</code></pre></div></div>
+
+<p>正确返回结果：</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="s2">"index"</span><span class="p">:</span><span class="s2">"ly95"</span><span class="p">,</span><span class="s2">"type"</span><span class="p">:</span><span class="s2">"person"</span><span class="p">,</span><span class="s2">"id"</span><span class="p">:</span><span class="s2">"AVbf7x4lkuRtCTeIkBAN"</span><span class="p">,</span><span class="s2">"version"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="s2">"_shards"</span><span class="p">:{</span><span class="s2">"total"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="s2">"successful"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="s2">"failed"</span><span class="p">:</span><span class="mi">0</span><span class="p">},</span><span class="s2">"created"</span><span class="p">:</span><span class="kc">true</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>更多字段类型查看 <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-types.html">字段类型表</a></p>
+
+<h2 id="中文分词">中文分词</h2>
+
+<p>默认不支持中文分词，会将中文按字拆分，安装smartcn可以解决。</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./bin/plugin <span class="nb">install </span>analysis-smartcn
+</code></pre></div></div>
+
+<p>例子：</p>
+
+<p>创建索引，指定分词器。</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">-XPUT</span> <span class="s1">'http://127.0.0.1:9200/test'</span> <span class="nt">-d</span> <span class="s1">'{
+  "settings": {
+    "index": {
+      "analysis": {
+        "analyzer": {
+          "default": {
+            "type": "smartcn"
+          }
+        }
+      }
+    }
+  }
+}'</span>
+</code></pre></div></div>
+
+<p>GET请求</p>
+
+<p>http://127.0.0.1:9200/test/_analyze?text=凡人牧白</p>
+
+<p>得到分词结果：</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="s2">"tokens"</span><span class="p">:[{</span><span class="s2">"token"</span><span class="p">:</span><span class="s2">"凡人"</span><span class="p">,</span><span class="s2">"start_offset"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="s2">"end_offset"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="s2">"type"</span><span class="p">:</span><span class="s2">"word"</span><span class="p">,</span><span class="s2">"position"</span><span class="p">:</span><span class="mi">0</span><span class="p">},{</span><span class="s2">"token"</span><span class="p">:</span><span class="s2">"牧"</span><span class="p">,</span><span class="s2">"start_offset"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="s2">"end_offset"</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="s2">"type"</span><span class="p">:</span><span class="s2">"word"</span><span class="p">,</span><span class="s2">"position"</span><span class="p">:</span><span class="mi">1</span><span class="p">},{</span><span class="s2">"token"</span><span class="p">:</span><span class="s2">"白"</span><span class="p">,</span><span class="s2">"start_offset"</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="s2">"end_offset"</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span><span class="s2">"type"</span><span class="p">:</span><span class="s2">"word"</span><span class="p">,</span><span class="s2">"position"</span><span class="p">:</span><span class="mi">2</span><span class="p">}]}</span><span class="w">
+</span></code></pre></div></div>
+
+<h2 id="搜索dsl语法">搜索DSL语法</h2>
+
+<p>待续……</p>
+
+<h2 id="script使用">Script使用</h2>
+
+<p>待续……</p>
+
+<h2 id="压测工具">压测工具</h2>
+
+<p>Rally是ES压测工具。在实际使用ES时有各种情况，所以Rally做了2种假设:</p>
+
+<p>1、ES集群每台机器配置一致；</p>
+
+<p>2、你会提交数据给ES做索引，并查询这些数据来做压测。</p>
+
+<p>Rally提供了一份3.8G数据作为测试数据，不用担心压缩后只有198M，Rally也允许自定义压测数据。</p>
+
+<p>安装环境要求：</p>
+
+<ul>
+  <li>Python 3.4+，并安装pip3</li>
+  <li>JDK8</li>
+  <li>git</li>
+</ul>
+
+<p>官方文档没有注明git的版本要求，服务器默认的1.8版本，Rally启动老失败，查阅Rally源码发现问题。</p>
+
+<p>utils/git.py</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">checkout</span><span class="p">(</span><span class="n">src_dir</span><span class="p">,</span> <span class="n">branch</span><span class="o">=</span><span class="s">"master"</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">process</span><span class="o">.</span><span class="n">run_subprocess</span><span class="p">(</span>
+            <span class="s">"git -C {0} checkout --quiet {1}"</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span><span class="n">src_dir</span><span class="p">,</span> <span class="n">branch</span><span class="p">)):</span>
+        <span class="k">raise</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">SupplyError</span><span class="p">(</span><span class="s">"Could not checkout '</span><span class="si">%</span><span class="s">s'"</span> <span class="o">%</span> <span class="n">branch</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>so, 如果git不支持-C选项Rally是不会正常工作的。所以我把git升级到2.9.0才解决。</p>
+
+<p>压测结果如下:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: right">Metric</th>
+      <th style="text-align: right">Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: right">Min Indexing Throughput [docs/s]</td>
+      <td style="text-align: right">34314</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">Median Indexing Throughput [docs/s]</td>
+      <td style="text-align: right">39095.5</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">Max Indexing Throughput [docs/s]</td>
+      <td style="text-align: right">39564</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">Indexing time [min]</td>
+      <td style="text-align: right">41.8126</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">Merge time [min]</td>
+      <td style="text-align: right">12.9383</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">Refresh time [min]</td>
+      <td style="text-align: right">3.70082</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">Flush time [min]</td>
+      <td style="text-align: right">0.2281</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">Merge throttle time [min]</td>
+      <td style="text-align: right">1.56302</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">Query latency term (90.0 percentile) [ms]</td>
+      <td style="text-align: right">2.23644</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">Query latency term (99.0 percentile) [ms]</td>
+      <td style="text-align: right">3.01261</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">Query latency term (99.9 percentile) [ms]</td>
+      <td style="text-align: right">16.868</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">Query latency term (100 percentile) [ms]</td>
+      <td style="text-align: right">17.4577</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">Query latency country_agg_uncached (90.0 percentile) [ms]</td>
+      <td style="text-align: right">113.844</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">Query latency country_agg_uncached (99.0 percentile) [ms]</td>
+      <td style="text-align: right">129.566</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">Query latency country_agg_uncached (99.9 percentile) [ms]</td>
+      <td style="text-align: right">146.583</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">Query latency country_agg_uncached (100 percentile) [ms]</td>
+      <td style="text-align: right">157.9</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">Query latency scroll (90.0 percentile) [ms]</td>
+      <td style="text-align: right">28.8342</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">Query latency scroll (99.0 percentile) [ms]</td>
+      <td style="text-align: right">29.4671</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">Query latency scroll (99.9 percentile) [ms]</td>
+      <td style="text-align: right">29.8244</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">Query latency scroll (100 percentile) [ms]</td>
+      <td style="text-align: right">30.3477</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">Query latency country_agg_cached (90.0 percentile) [ms]</td>
+      <td style="text-align: right">2.55187</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">Query latency country_agg_cached (99.0 percentile) [ms]</td>
+      <td style="text-align: right">4.54663</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">Query latency country_agg_cached (99.9 percentile) [ms]</td>
+      <td style="text-align: right">16.7916</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">Query latency country_agg_cached (100 percentile) [ms]</td>
+      <td style="text-align: right">21.1481</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">Query latency expression (90.0 percentile) [ms]</td>
+      <td style="text-align: right">280.156</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">Query latency expression (99.0 percentile) [ms]</td>
+      <td style="text-align: right">291.208</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">Query latency expression (99.9 percentile) [ms]</td>
+      <td style="text-align: right">299.789</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">Query latency expression (100 percentile) [ms]</td>
+      <td style="text-align: right">301.472</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">Query latency default (90.0 percentile) [ms]</td>
+      <td style="text-align: right">34.4101</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">Query latency default (99.0 percentile) [ms]</td>
+      <td style="text-align: right">45.6405</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">Query latency default (99.9 percentile) [ms]</td>
+      <td style="text-align: right">59.2157</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">Query latency default (100 percentile) [ms]</td>
+      <td style="text-align: right">63.8479</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">Query latency phrase (90.0 percentile) [ms]</td>
+      <td style="text-align: right">3.26815</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">Query latency phrase (99.0 percentile) [ms]</td>
+      <td style="text-align: right">4.02543</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">Query latency phrase (99.9 percentile) [ms]</td>
+      <td style="text-align: right">20.8176</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">Query latency phrase (100 percentile) [ms]</td>
+      <td style="text-align: right">21.0913</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">Total Young Gen GC [s]</td>
+      <td style="text-align: right">44.911</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">Total Old Gen GC [s]</td>
+      <td style="text-align: right">0.301</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">Segment count</td>
+      <td style="text-align: right">148</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">Indices Stats(90.0 percentile) [ms]</td>
+      <td style="text-align: right">3.70353</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">Indices Stats(99.0 percentile) [ms]</td>
+      <td style="text-align: right">10.9675</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">Indices Stats(100 percentile) [ms]</td>
+      <td style="text-align: right">27.8454</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">Nodes Stats(90.0 percentile) [ms]</td>
+      <td style="text-align: right">4.58134</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">Nodes Stats(99.0 percentile) [ms]</td>
+      <td style="text-align: right">5.46218</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">Nodes Stats(100 percentile) [ms]</td>
+      <td style="text-align: right">6.06723</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>更多Rally使用方法和安装说明请参见 <a href="https://esrally.readthedocs.io/en/latest/">文档</a>。</p>
+
+<h2 id="推荐插件">推荐插件</h2>
+
+<ul>
+  <li><a href="https://mobz.github.io/elasticsearch-head/">Web管理界面</a></li>
+  <li><a href="https://www.elastic.co/guide/en/elasticsearch/plugins/current/analysis-smartcn.html">中文分词</a></li>
+  <li><a href="https://github.com/NLPchina/elasticsearch-sql">elasticsearch-sql</a>使用SQL语句搜索。</li>
+</ul>
+
+<h2 id="其他链接">其他链接</h2>
+
+<ul>
+  <li><a href="https://www.elastic.co/products/elasticsearch">官方网站</a></li>
+  <li><a href="http://es.xiaoleilu.com">Elasticsearch权威指南－中文</a></li>
+</ul>
+
+
+  </div>
+  
+</div>
+
+
+<div class="pagination">
+  
+    <a class="pagination-item older" href="/page/7">下一页</a>
+  
+  
+    
+      <a class="pagination-item newer" href="/page/5">上一页</a>
+    
+  
+</div>
+
+
+      </div>
+    </div>
+
+    <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+
+    <script>
+      (function(document) {
+        var toggle = document.querySelector('.sidebar-toggle');
+        var sidebar = document.querySelector('#sidebar');
+        var checkbox = document.querySelector('#sidebar-checkbox');
+
+        document.addEventListener('click', function(e) {
+          var target = e.target;
+
+          if(!checkbox.checked ||
+             sidebar.contains(target) ||
+             (target === checkbox || target === toggle)) return;
+
+          checkbox.checked = false;
+        }, false);
+      })(document);
+    </script>
+  </body>
+</html>

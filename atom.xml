@@ -1,0 +1,1871 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+ <title>凡人牧白's Blog</title>
+ <link href="http://ly95.me/atom.xml" rel="self"/>
+ <link href="http://ly95.me/"/>
+ <updated>2018-10-15T17:23:12+08:00</updated>
+ <id>http://ly95.me</id>
+ <author>
+   <name>Yang Lin</name>
+   <email>linyang95@aol.com</email>
+ </author>
+
+ 
+ <entry>
+   <title>以太坊私链搭建</title>
+   <link href="http://ly95.me/2018-05-10/ethereum-private-network.html"/>
+   <updated>2018-05-10T00:00:00+08:00</updated>
+   <id>http://ly95.me//2018-05-10/ethereum-private-network</id>
+   <content type="html">&lt;h1 id=&quot;1-私链搭建&quot;&gt;1. 私链搭建&lt;/h1&gt;
+
+&lt;p&gt;由于节点之间的连接只有在对等节点具有相同的协议版本和网络ID的情况下才有效，因此可以通过将这些节点设置为非默认值来有效地隔离网络。建议使用——networkid命令行选项。它的参数是一个整数，主网络有id 1(默认)。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;如果节点没有连接到主网络节点，则以太网络是一个私有网络。在这种情况下，私有只意味着保留或隔离，而不是保护或安全。&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;11-创建世纪块&quot;&gt;1.1 创建世纪块&lt;/h2&gt;
+
+&lt;p&gt;每一个区块链都是从genesis block开始。第一次运行geth时，genesis block将提交到数据库。
+这包括一个小的JSON文件(例如，称为genesis.json)&lt;/p&gt;
+
+&lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;config&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;chainId&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;homesteadBlock&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;eip155Block&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;eip158Block&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;alloc&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+		  &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;7df9a875a174b3bc565e6424a0050ebc1b2d1d82&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;balance&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;300000&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+	  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;coinbase&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;   &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;0x0000000000000000000000000000000000000000&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;difficulty&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;0x00000&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;extraData&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;0x68747470733a2f2f6c7939352e6d65&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;gasLimit&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;   &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;0x2fefd8&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;nonce&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;      &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;0x0000000000000042&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;mixhash&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;0x0000000000000000000000000000000000000000000000000000000000000000&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;parentHash&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;0x0000000000000000000000000000000000000000000000000000000000000000&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;timestamp&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;0x00&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;111-参数说明&quot;&gt;1.1.1 参数说明&lt;/h3&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: right&quot;&gt;参数名&lt;/th&gt;
+      &lt;th style=&quot;text-align: right&quot;&gt;描述&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;&lt;strong&gt;chainId&lt;/strong&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;EIP155后加入，目的区别主网（主网值是1）与其他网络，将影响交易签名&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;&lt;strong&gt;homesteadBlock&lt;/strong&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;当设置为0时，意味着将使用Ethereum的Homestead版本。Homestead是以太坊平台的第二个主要版本，其中包括多项协议更改和网络更改&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;&lt;strong&gt;coinbase&lt;/strong&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;当前块, 挖矿奖励交易地址(160-bit address)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;&lt;strong&gt;difficulty&lt;/strong&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;从上一个块的difficulty和timestamp进行计算得出，难度越高，矿工运算量越大。测试环境可设低值&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;&lt;strong&gt;extraData&lt;/strong&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;可选，字符串长度最大32字节&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;&lt;strong&gt;gasLimit&lt;/strong&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;gas上限&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;&lt;strong&gt;nonce&lt;/strong&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;A 64-bit hash, 用于工作量证明&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;&lt;strong&gt;mixhash&lt;/strong&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;A 256-bit hash, 参与块头有效性验证，具体见论文4.3.4章节&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;&lt;strong&gt;parentHash&lt;/strong&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;指向父块，Keccak 256位散列，从而有效地构建块链。在创世纪块的情况下，只有在这种情况下，它是0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;&lt;strong&gt;timestamp&lt;/strong&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;当前块开始的时间戳&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;&lt;strong&gt;alloc&lt;/strong&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;允许定义预先填充的钱包列表&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&quot;112-初始化数据库&quot;&gt;1.1.2 初始化数据库&lt;/h3&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;geth &lt;span class=&quot;nt&quot;&gt;--datadir&lt;/span&gt; path/to/custom/data/folder init genesis.json
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;启动需要指定networkid，与chainId值保持一致&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;geth &lt;span class=&quot;nt&quot;&gt;--datadir&lt;/span&gt; path/to/custom/data/folder &lt;span class=&quot;nt&quot;&gt;--networkid&lt;/span&gt; 0
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;12-网络引导节点可选&quot;&gt;1.2 网络引导节点(可选)&lt;/h2&gt;
+
+&lt;p&gt;启动一个引导节点(高可用)，其他人可以通过引导节点在网络上发现彼此。(官方推荐)&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bootnode &lt;span class=&quot;nt&quot;&gt;--genkey&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;boot.key
+bootnode &lt;span class=&quot;nt&quot;&gt;--nodekey&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;boot.key
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;运行后会在控制台输出enode URL供其他节点连接，并在bootnode上交换节点信息。(注意：需要把URL中的字符[::]替换为可访问的IP地址)&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;INFO &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;05-09|13:08:44] UDP listener up &lt;span class=&quot;nv&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;enode://a81d4bba596f9674f9eaae11f4fbd3c33eacf00763e66b0e7435cac14764548ab511261c1c175e346a57a8bfc42b4f674251e4beeabfb20a507d80a01f567f9a@[::]:30301
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;注意：执行make all编译才会出现 build/bin/bootnode 可执行文件&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;13-启动成员节点&quot;&gt;1.3 启动成员节点&lt;/h2&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;geth --datadir path/to/custom/data/folder --ethash.dagdir path/to/custom/data/folder/ethash --identity &quot;node00&quot; --networkid 0 --bootnodes enode://a81d4bba596f9674f9eaae11f4fbd3c33eacf00763e66b0e7435cac14764548ab511261c1c175e346a57a8bfc42b4f674251e4beeabfb20a507d80a01f567f9a@127.0.0.1:30301
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;14-接口&quot;&gt;1.4 接口&lt;/h2&gt;
+
+&lt;h3 id=&quot;141-rpc接口参数&quot;&gt;1.4.1 RPC接口参数&lt;/h3&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;nt&quot;&gt;--rpc&lt;/span&gt;                  Enable the HTTP-RPC server
+  &lt;span class=&quot;nt&quot;&gt;--rpcaddr&lt;/span&gt; value        HTTP-RPC server listening interface &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;default: &lt;span class=&quot;s2&quot;&gt;&quot;localhost&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;--rpcport&lt;/span&gt; value        HTTP-RPC server listening port &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;default: 8545&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;--rpcapi&lt;/span&gt; value         API&lt;span class=&quot;s1&quot;&gt;'s offered over the HTTP-RPC interface
+  --rpccorsdomain value  Comma separated list of domains from which to accept cross origin requests (browser enforced)
+  --rpcvhosts value      Comma separated list of virtual hostnames from which to accept requests (server enforced). Accepts '&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;' wildcard. (default: &quot;localhost&quot;)
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;142-websocket接口参数&quot;&gt;1.4.2 WebSocket接口参数&lt;/h3&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;nt&quot;&gt;--ws&lt;/span&gt;                   Enable the WS-RPC server
+  &lt;span class=&quot;nt&quot;&gt;--wsaddr&lt;/span&gt; value         WS-RPC server listening interface &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;default: &lt;span class=&quot;s2&quot;&gt;&quot;localhost&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;--wsport&lt;/span&gt; value         WS-RPC server listening port &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;default: 8546&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;--wsapi&lt;/span&gt; value          API&lt;span class=&quot;s1&quot;&gt;'s offered over the WS-RPC interface
+  --wsorigins value      Origins from which to accept websockets requests
+  --rpccorsdomain value  Comma separated list of domains from which to accept cross origin requests (browser enforced)
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;143-接口权限&quot;&gt;1.4.3 接口权限&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;注意：所有人都可以访问API。&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;例子，仅开启eth和miner接口&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;--rpcapi&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;eth,miner&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;开启其他接口&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;--rpcapi&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;db,eth,net,web3,miner&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;15-console&quot;&gt;1.5 Console&lt;/h2&gt;
+
+&lt;p&gt;进入交互式的JavaScript执行环境&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt; geth attach http://127.0.0.1:8545
+&amp;gt; Welcome to the Geth JavaScript console!
+
+&amp;gt; instance: Geth/v1.8.8-unstable-6cf0ab38/darwin-amd64/go1.10.2
+&amp;gt;  modules: eth:1.0 net:1.0 rpc:1.0 web3:1.0
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;需要留意modules，显示了可用的接口类别。&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;通过unix socket进入执行环境&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; geth attach /Users/linyang/private-geth/data0/geth.ipc
+&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; Welcome to the Geth JavaScript console!
+
+&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; instance: Geth/v1.8.8-unstable-6cf0ab38/darwin-amd64/go1.10.2
+&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;  modules: admin:1.0 debug:1.0 eth:1.0 miner:1.0 net:1.0 personal:1.0 rpc:1.0 txpool:1.0 web3:1.0
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;151-命令简要说明&quot;&gt;1.5.1 命令简要说明&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;eth：包含一些跟操作区块链相关的方法；&lt;/li&gt;
+  &lt;li&gt;net：包含一些查看p2p网络状态的方法；&lt;/li&gt;
+  &lt;li&gt;admin：包含一些与管理节点相关的方法；&lt;/li&gt;
+  &lt;li&gt;miner：包含启动&amp;amp;停止挖矿的一些方法；&lt;/li&gt;
+  &lt;li&gt;personal：主要包含一些管理账户的方法；&lt;/li&gt;
+  &lt;li&gt;txpool：包含一些查看交易内存池的方法；&lt;/li&gt;
+  &lt;li&gt;web3：包含了以上对象，还包含一些单位换算的方法。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;16-启动新节点&quot;&gt;1.6 启动新节点&lt;/h2&gt;
+
+&lt;p&gt;我这里为了更好的理解以太平台，另开新节点。(因为2个节点都在localhost，需要指定不同的端口)&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;geth &lt;span class=&quot;nt&quot;&gt;--datadir&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;folder2&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; init genesis.json
+geth &lt;span class=&quot;nt&quot;&gt;--datadir&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;folder2&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--ethash&lt;/span&gt;.dagdir &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;folder2&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;/ethash &lt;span class=&quot;nt&quot;&gt;--networkid&lt;/span&gt; 0 &lt;span class=&quot;nt&quot;&gt;--identity&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;node01&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--port&lt;/span&gt; 30302 &lt;span class=&quot;nt&quot;&gt;--bootnodes&lt;/span&gt; enode://a81d4bba596f9674f9eaae11f4fbd3c33eacf00763e66b0e7435cac14764548ab511261c1c175e346a57a8bfc42b4f674251e4beeabfb20a507d80a01f567f9a@127.0.0.1:30301
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;进入console，查看是否自动发现了其他节点，正确如下：&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; admin.peers
+&lt;span class=&quot;o&quot;&gt;[{&lt;/span&gt;
+    caps: &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;eth/63&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;,
+    &lt;span class=&quot;nb&quot;&gt;id&lt;/span&gt;: &lt;span class=&quot;s2&quot;&gt;&quot;1662c8187c6a42ffc74939545debfe7bdc2505a7d2041c399124c21884f68cd8d73eaa086c78d91ce156d143630388bb5d1eb84f84a766258cf179f7245170a4&quot;&lt;/span&gt;,
+    name: &lt;span class=&quot;s2&quot;&gt;&quot;Geth/node00/v1.8.8-unstable-6cf0ab38/darwin-amd64/go1.10.2&quot;&lt;/span&gt;,
+    network: &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+      inbound: &lt;span class=&quot;nb&quot;&gt;false&lt;/span&gt;,
+      localAddress: &lt;span class=&quot;s2&quot;&gt;&quot;127.0.0.1:64178&quot;&lt;/span&gt;,
+      remoteAddress: &lt;span class=&quot;s2&quot;&gt;&quot;127.0.0.1:30303&quot;&lt;/span&gt;,
+      static: &lt;span class=&quot;nb&quot;&gt;false&lt;/span&gt;,
+      trusted: &lt;span class=&quot;nb&quot;&gt;false&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;,
+    protocols: &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+      eth: &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        difficulty: 917952,
+        &lt;span class=&quot;nb&quot;&gt;head&lt;/span&gt;: &lt;span class=&quot;s2&quot;&gt;&quot;0xee18cd170606f58f40564b230c067ab4b8b69271276c371c2cef6477d3e674aa&quot;&lt;/span&gt;,
+        version: 63
+      &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;161-挖矿前先创建账号&quot;&gt;1.6.1 挖矿前先创建账号&lt;/h3&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; personal.newAccount&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;miner&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;s2&quot;&gt;&quot;0xfb3aa7ece068bc423629a5e44cb32b39cc367819&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;查询余额，新账号余额为0&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; eth.getBalance&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'0xfb3aa7ece068bc423629a5e44cb32b39cc367819'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+0
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;162-启动时设置挖矿参数重启新节点&quot;&gt;1.6.2 启动时设置挖矿参数，重启新节点。&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;仅用于测试，运行资源最小化minerthreads=1&lt;/li&gt;
+  &lt;li&gt;etherbase 公开账户地址，获取采矿奖励。默认为第一个账户&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;geth &amp;lt;usual-flags&amp;gt; &lt;span class=&quot;nt&quot;&gt;--mine&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--minerthreads&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;1 &lt;span class=&quot;nt&quot;&gt;--etherbase&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;0x78a3a94dd67480bc8b5a6883842077afe495199d
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;完整命令&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;geth &lt;span class=&quot;nt&quot;&gt;--datadir&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;folder2&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--ethash&lt;/span&gt;.dagdir &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;folder2&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;/ethash &lt;span class=&quot;nt&quot;&gt;--networkid&lt;/span&gt; 0 &lt;span class=&quot;nt&quot;&gt;--identity&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;node01&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--port&lt;/span&gt; 30302 &lt;span class=&quot;nt&quot;&gt;--bootnodes&lt;/span&gt; enode://a81d4bba596f9674f9eaae11f4fbd3c33eacf00763e66b0e7435cac14764548ab511261c1c175e346a57a8bfc42b4f674251e4beeabfb20a507d80a01f567f9a@127.0.0.1:30301 &lt;span class=&quot;nt&quot;&gt;--mine&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--minerthreads&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;1 &lt;span class=&quot;nt&quot;&gt;--etherbase&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;0x78a3a94dd67480bc8b5a6883842077afe495199d
+
+......
+INFO &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;05-10|11:36:02] Generating DAG &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;progress               &lt;span class=&quot;nv&quot;&gt;epoch&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;0 &lt;span class=&quot;nv&quot;&gt;percentage&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;98 &lt;span class=&quot;nv&quot;&gt;elapsed&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;2m34.316s
+INFO &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;05-10|11:36:04] Generating DAG &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;progress               &lt;span class=&quot;nv&quot;&gt;epoch&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;0 &lt;span class=&quot;nv&quot;&gt;percentage&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;99 &lt;span class=&quot;nv&quot;&gt;elapsed&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;2m36.242s
+INFO &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;05-10|11:36:04] Generated ethash verification cache      &lt;span class=&quot;nv&quot;&gt;epoch&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;0 &lt;span class=&quot;nv&quot;&gt;elapsed&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;2m36.247s
+INFO &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;05-10|11:36:09] Generating DAG &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;progress               &lt;span class=&quot;nv&quot;&gt;epoch&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;1 &lt;span class=&quot;nv&quot;&gt;percentage&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;0  &lt;span class=&quot;nv&quot;&gt;elapsed&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;1.822s
+INFO &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;05-10|11:36:10] Generating DAG &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;progress               &lt;span class=&quot;nv&quot;&gt;epoch&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;1 &lt;span class=&quot;nv&quot;&gt;percentage&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;1  &lt;span class=&quot;nv&quot;&gt;elapsed&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;3.630s
+INFO &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;05-10|11:36:11] Successfully sealed new block            &lt;span class=&quot;nv&quot;&gt;number&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;1 &lt;span class=&quot;nb&quot;&gt;hash&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;06604a…a3e592
+INFO &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;05-10|11:36:11] 🔨 mined potential block                  &lt;span class=&quot;nv&quot;&gt;number&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;1 &lt;span class=&quot;nb&quot;&gt;hash&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;06604a…a3e592
+INFO &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;05-10|11:36:11] Commit new mining work                   &lt;span class=&quot;nv&quot;&gt;number&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;2 &lt;span class=&quot;nv&quot;&gt;txs&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;0 &lt;span class=&quot;nv&quot;&gt;uncles&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;0 &lt;span class=&quot;nv&quot;&gt;elapsed&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;356.439µs
+......
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;挖坑一段时间后，查询账户余额&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; eth.getBalance&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'0x3f81d9bbbe36113ff6f78f9567e277aa604ed7a9'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+30000000000000000000
+&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; web3.fromWei&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'30000000000000000000'&lt;/span&gt;, &lt;span class=&quot;s1&quot;&gt;'ether'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+30
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;账户中就有30以太币了&lt;/p&gt;
+
+&lt;h2 id=&quot;17-交易&quot;&gt;1.7 交易&lt;/h2&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; personal.newAccount&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'ly'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;s2&quot;&gt;&quot;0xf8e938812d246692d825d51b8e57da96a5eb8b6d&quot;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; var tx &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;from: &lt;span class=&quot;s2&quot;&gt;&quot;0x3f81d9bbbe36113ff6f78f9567e277aa604ed7a9&quot;&lt;/span&gt;, to: &lt;span class=&quot;s2&quot;&gt;&quot;0xf8e938812d246692d825d51b8e57da96a5eb8b6d&quot;&lt;/span&gt;, value: web3.toWei&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;1.5, &lt;span class=&quot;s2&quot;&gt;&quot;ether&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; eth.sendTransaction&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;tx&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;未完待续……&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;参考&quot;&gt;参考&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://ethfans.org/posts/ethereum-whitepaper&quot;&gt;白皮书-以太坊:下一代智能合约和去中心化应用平台&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/ethereum/go-ethereum&quot;&gt;以太坊源码 github.com&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/ethereum/go-ethereum#operating-a-private-network&quot;&gt;https://github.com/ethereum/go-ethereum#operating-a-private-network&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/ethereum/go-ethereum/wiki/Management-APIs#list-of-management-apis&quot;&gt;Management APIs · ethereum/go-ethereum Wiki · GitHub&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Python Openssl issue</title>
+   <link href="http://ly95.me/2017-04-19/python-openssl-issue.html"/>
+   <updated>2017-04-19T18:03:00+08:00</updated>
+   <id>http://ly95.me//2017-04-19/python_openssl_issue</id>
+   <content type="html">&lt;p&gt;在debian8环境中scrapy爬取https网站时报错&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Traceback &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;most recent call last&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;:
+  ...
+  File &lt;span class=&quot;s2&quot;&gt;&quot;/usr/lib/convoy/lib/python2.7/site-packages/twisted/protocols/tls.py&quot;&lt;/span&gt;, line 41, &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &amp;lt;module&amp;gt;
+    from OpenSSL.SSL import Error, ZeroReturnError, WantReadError
+  File &lt;span class=&quot;s2&quot;&gt;&quot;/usr/lib/convoy/lib/python2.7/site-packages/OpenSSL/__init__.py&quot;&lt;/span&gt;, line 8, &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &amp;lt;module&amp;gt;
+    from OpenSSL import rand, crypto, SSL
+  File &lt;span class=&quot;s2&quot;&gt;&quot;/usr/lib/convoy/lib/python2.7/site-packages/OpenSSL/SSL.py&quot;&lt;/span&gt;, line 112, &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &amp;lt;module&amp;gt;
+    &lt;span class=&quot;k&quot;&gt;if &lt;/span&gt;_lib.Cryptography_HAS_SSL_ST:
+AttributeError: &lt;span class=&quot;s1&quot;&gt;'FFILibrary'&lt;/span&gt; object has no attribute &lt;span class=&quot;s1&quot;&gt;'Cryptography_HAS_SSL_ST'&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;解决办法是将Python加密库cryptography升级&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;pip &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-U&lt;/span&gt; cryptography
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;得到新的报错信息&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;c/_cffi_backend.c:15:17: fatal error: ffi.h: No such file or directory
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;需要安装cffi源码&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;apt-get &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;libffi-dev
+pip &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-U&lt;/span&gt; cffi
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;再次尝试升级cryptography，问题解决了。&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>《孩子你慢慢来》</title>
+   <link href="http://ly95.me/2017-03-22/%E5%AD%A9%E5%AD%90%E4%BD%A0%E6%85%A2%E6%85%A2%E6%9D%A5.html"/>
+   <updated>2017-03-22T01:24:43+08:00</updated>
+   <id>http://ly95.me//2017-03-22/孩子你慢慢来</id>
+   <content type="html">&lt;p&gt;最近有读《孩子你慢慢来》，载录书中几句：&lt;/p&gt;
+
+&lt;p&gt;关于教育&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;在一个西方的家庭里就比较简单。孩子的母亲有最大的权利，任何人都得尊重”生母”的权利。我的婆婆很清楚地认知：宝宝首先是我的儿子，其次才是她的孙子。对孩子的教养，她可以从旁帮忙，或是提供过来人的经验，甚至于表示不同的意见，但她最后一句话永远是：”当然，决定还是在于你做妈妈的。”&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;关于细节&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;华安站在床边看着妈妈穿衣服，他指着素色的裙子说：“妈妈，新的？”&lt;/p&gt;
+
+  &lt;p&gt;妈妈点点头：“是，是新的。”&lt;/p&gt;
+
+  &lt;p&gt;安安赞许地说：“很漂亮！”&lt;/p&gt;
+
+  &lt;p&gt;做母亲的停止了手的动作，惊异地望着那刚满两岁的小孩，心里在想：老天，这小人儿在跟我“聊天”哪，用他仅有的辞汇。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>小说《幻夜》</title>
+   <link href="http://ly95.me/2016-10-08/huanye.html"/>
+   <updated>2016-10-08T17:50:49+08:00</updated>
+   <id>http://ly95.me//2016-10-08/huanye</id>
+   <content type="html">&lt;p&gt;国庆期间一直住在医院里，空闲时间读完了《幻夜》。&lt;/p&gt;
+
+&lt;p&gt;结局很突然，细想后也比较合理、又可怕。合理是因为我想不出其他更合理的结局，可怕在于新海冬美是不是早知道了水原雅也会来杀她，所以警察加藤告知她这个消息的时候她依然保存冷静；水原雅也金属技艺超群按图纸制造的手枪不会有什么问题，最后手枪自爆，问题只能出在图纸上，这福田工厂早就在新海冬美眼里，会不会也是新海冬美设计陷害的呢？仅仅是我的猜想，这样的女人没有弱点反而很不真实。&lt;/p&gt;
+
+&lt;p&gt;或许东野圭吾也只是通过塑造一个完美的女人告知读者在当下日本社会什么样的女人才能适应社会逆流而上。&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>《嫌疑人x的献身》</title>
+   <link href="http://ly95.me/2016-09-08/book-xianyirenxdexianshen.html"/>
+   <updated>2016-09-08T12:01:39+08:00</updated>
+   <id>http://ly95.me//2016-09-08/book-xianyirenxdexianshen</id>
+   <content type="html">&lt;p&gt;花了2天晚上把书看完了，结局相当精彩。书中最喜欢的角色是“岸谷”。&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Elasticsearch 浅谈</title>
+   <link href="http://ly95.me/2016-08-31/elasticsearch.html"/>
+   <updated>2016-08-31T22:56:00+08:00</updated>
+   <id>http://ly95.me//2016-08-31/Elasticsearch</id>
+   <content type="html">&lt;h2 id=&quot;elasticsearch是什么&quot;&gt;Elasticsearch是什么？&lt;/h2&gt;
+
+&lt;p&gt;简单说明，&lt;strong&gt;Elasticsearch是一个基于Lucene的开源搜索引擎&lt;/strong&gt;。拥有一下特点:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;分布式的实时文件存储，每个字段都被索引并可被v搜索。&lt;/li&gt;
+  &lt;li&gt;分布式的实时分析搜索引擎。&lt;/li&gt;
+  &lt;li&gt;可以扩展到上百台服务器，处理PB级结构化或非结构化数据。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;在ES中存储数据的行为就叫做索引，数据存储在文档，文档归属于一种类型(type)，而这些类型存在于索引(index)中，我们可以画一些简单的对比图来类比传统关系型数据库：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Relational DB -&amp;gt; Databases -&amp;gt; Tables -&amp;gt; Rows -&amp;gt; Columns
+Elasticsearch -&amp;gt; Indices   -&amp;gt; Types  -&amp;gt; Documents -&amp;gt; Fields
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;更多内容可查阅官网。&lt;/p&gt;
+
+&lt;h2 id=&quot;排名&quot;&gt;排名&lt;/h2&gt;
+
+&lt;p&gt;截止2016年8月，Search engine 类型数据库排名第一、309种数据库中排名11。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://db-engines.com/en/ranking&quot;&gt;Ranking链接&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;安装配置&quot;&gt;安装配置&lt;/h2&gt;
+
+&lt;p&gt;比较简单不再叙述。&lt;/p&gt;
+
+&lt;h2 id=&quot;api&quot;&gt;Api&lt;/h2&gt;
+
+&lt;p&gt;基于HTTP协议，以JSON为数据交互格式的RESTful API，通过9200端口的与ES进行通信。&lt;/p&gt;
+
+&lt;p&gt;例子：&lt;/p&gt;
+
+&lt;p&gt;索引数据&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;curl &lt;span class=&quot;nt&quot;&gt;-XPOST&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'http://127.0.0.1:9200/ly95/person'&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'{
+    &quot;user&quot; : &quot;ly95&quot;,
+    &quot;created_date&quot; : &quot;2016-08-22T17:25:12&quot;,
+    &quot;note&quot; : &quot;trying out Elasticsearch&quot;,
+    &quot;age&quot;: 24
+}'&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;mapping&quot;&gt;Mapping&lt;/h2&gt;
+
+&lt;p&gt;Mapping是定义文档字段类型的过程，好比关系型数据库建表，这里称为创建索引，&lt;strong&gt;索引创建后字段类型是不允许修改的&lt;/strong&gt;，只能重建索引。ES是允许自动创建索引的，可在配置中开启于关闭此功能&lt;/p&gt;
+
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s&quot;&gt;action.auto_create_index&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;true&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;例子：&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;curl &lt;span class=&quot;nt&quot;&gt;-XPOST&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'http://127.0.0.1:9200/ly95/person'&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'{
+  &quot;settings&quot;: {
+    &quot;number_of_shards&quot;: 1,
+    &quot;number_of_replicas&quot;: 1 
+  },
+  &quot;mappings&quot;: {
+      &quot;person&quot;: {
+          &quot;_source&quot;: {
+              &quot;enabled&quot;: true
+          },
+          &quot;properties&quot;: {
+              &quot;user&quot;: {
+                  &quot;type&quot;: &quot;string&quot;
+              },
+              &quot;created_date&quot;: {
+                  &quot;type&quot;: &quot;date&quot;,
+                  &quot;format&quot;: &quot;strict_date_optional_time&quot;
+              },
+              &quot;note&quot;: {
+                  &quot;type&quot;: &quot;string&quot;
+              },
+              &quot;age&quot;: {
+                  &quot;type&quot;: &quot;integer&quot;
+              }
+          }
+      }
+  }
+}'&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;正确返回结果：&lt;/p&gt;
+
+&lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;index&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;ly95&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;type&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;person&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;id&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;AVbf7x4lkuRtCTeIkBAN&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;version&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;_shards&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:{&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;total&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;successful&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;failed&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;created&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;更多字段类型查看 &lt;a href=&quot;https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-types.html&quot;&gt;字段类型表&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;中文分词&quot;&gt;中文分词&lt;/h2&gt;
+
+&lt;p&gt;默认不支持中文分词，会将中文按字拆分，安装smartcn可以解决。&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;./bin/plugin &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;analysis-smartcn
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;例子：&lt;/p&gt;
+
+&lt;p&gt;创建索引，指定分词器。&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;curl &lt;span class=&quot;nt&quot;&gt;-XPUT&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'http://127.0.0.1:9200/test'&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'{
+  &quot;settings&quot;: {
+    &quot;index&quot;: {
+      &quot;analysis&quot;: {
+        &quot;analyzer&quot;: {
+          &quot;default&quot;: {
+            &quot;type&quot;: &quot;smartcn&quot;
+          }
+        }
+      }
+    }
+  }
+}'&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;GET请求&lt;/p&gt;
+
+&lt;p&gt;http://127.0.0.1:9200/test/_analyze?text=凡人牧白&lt;/p&gt;
+
+&lt;p&gt;得到分词结果：&lt;/p&gt;
+
+&lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;tokens&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:[{&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;token&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;凡人&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;start_offset&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;end_offset&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;type&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;word&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;position&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},{&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;token&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;牧&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;start_offset&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;end_offset&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;type&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;word&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;position&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},{&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;token&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;白&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;start_offset&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;end_offset&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;type&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;word&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;position&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}]}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;搜索dsl语法&quot;&gt;搜索DSL语法&lt;/h2&gt;
+
+&lt;p&gt;待续……&lt;/p&gt;
+
+&lt;h2 id=&quot;script使用&quot;&gt;Script使用&lt;/h2&gt;
+
+&lt;p&gt;待续……&lt;/p&gt;
+
+&lt;h2 id=&quot;压测工具&quot;&gt;压测工具&lt;/h2&gt;
+
+&lt;p&gt;Rally是ES压测工具。在实际使用ES时有各种情况，所以Rally做了2种假设:&lt;/p&gt;
+
+&lt;p&gt;1、ES集群每台机器配置一致；&lt;/p&gt;
+
+&lt;p&gt;2、你会提交数据给ES做索引，并查询这些数据来做压测。&lt;/p&gt;
+
+&lt;p&gt;Rally提供了一份3.8G数据作为测试数据，不用担心压缩后只有198M，Rally也允许自定义压测数据。&lt;/p&gt;
+
+&lt;p&gt;安装环境要求：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Python 3.4+，并安装pip3&lt;/li&gt;
+  &lt;li&gt;JDK8&lt;/li&gt;
+  &lt;li&gt;git&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;官方文档没有注明git的版本要求，服务器默认的1.8版本，Rally启动老失败，查阅Rally源码发现问题。&lt;/p&gt;
+
+&lt;p&gt;utils/git.py&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;checkout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;src_dir&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;branch&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;master&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;process&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;run_subprocess&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+            &lt;span class=&quot;s&quot;&gt;&quot;git -C {0} checkout --quiet {1}&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;src_dir&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;branch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)):&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;raise&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;exceptions&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SupplyError&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Could not checkout '&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;s'&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;branch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;so, 如果git不支持-C选项Rally是不会正常工作的。所以我把git升级到2.9.0才解决。&lt;/p&gt;
+
+&lt;p&gt;压测结果如下:&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: right&quot;&gt;Metric&lt;/th&gt;
+      &lt;th style=&quot;text-align: right&quot;&gt;Value&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;Min Indexing Throughput [docs/s]&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;34314&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;Median Indexing Throughput [docs/s]&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;39095.5&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;Max Indexing Throughput [docs/s]&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;39564&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;Indexing time [min]&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;41.8126&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;Merge time [min]&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;12.9383&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;Refresh time [min]&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;3.70082&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;Flush time [min]&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;0.2281&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;Merge throttle time [min]&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;1.56302&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;Query latency term (90.0 percentile) [ms]&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;2.23644&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;Query latency term (99.0 percentile) [ms]&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;3.01261&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;Query latency term (99.9 percentile) [ms]&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;16.868&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;Query latency term (100 percentile) [ms]&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;17.4577&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;Query latency country_agg_uncached (90.0 percentile) [ms]&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;113.844&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;Query latency country_agg_uncached (99.0 percentile) [ms]&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;129.566&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;Query latency country_agg_uncached (99.9 percentile) [ms]&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;146.583&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;Query latency country_agg_uncached (100 percentile) [ms]&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;157.9&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;Query latency scroll (90.0 percentile) [ms]&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;28.8342&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;Query latency scroll (99.0 percentile) [ms]&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;29.4671&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;Query latency scroll (99.9 percentile) [ms]&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;29.8244&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;Query latency scroll (100 percentile) [ms]&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;30.3477&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;Query latency country_agg_cached (90.0 percentile) [ms]&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;2.55187&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;Query latency country_agg_cached (99.0 percentile) [ms]&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;4.54663&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;Query latency country_agg_cached (99.9 percentile) [ms]&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;16.7916&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;Query latency country_agg_cached (100 percentile) [ms]&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;21.1481&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;Query latency expression (90.0 percentile) [ms]&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;280.156&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;Query latency expression (99.0 percentile) [ms]&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;291.208&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;Query latency expression (99.9 percentile) [ms]&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;299.789&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;Query latency expression (100 percentile) [ms]&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;301.472&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;Query latency default (90.0 percentile) [ms]&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;34.4101&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;Query latency default (99.0 percentile) [ms]&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;45.6405&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;Query latency default (99.9 percentile) [ms]&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;59.2157&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;Query latency default (100 percentile) [ms]&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;63.8479&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;Query latency phrase (90.0 percentile) [ms]&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;3.26815&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;Query latency phrase (99.0 percentile) [ms]&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;4.02543&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;Query latency phrase (99.9 percentile) [ms]&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;20.8176&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;Query latency phrase (100 percentile) [ms]&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;21.0913&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;Total Young Gen GC [s]&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;44.911&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;Total Old Gen GC [s]&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;0.301&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;Segment count&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;148&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;Indices Stats(90.0 percentile) [ms]&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;3.70353&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;Indices Stats(99.0 percentile) [ms]&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;10.9675&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;Indices Stats(100 percentile) [ms]&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;27.8454&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;Nodes Stats(90.0 percentile) [ms]&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;4.58134&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;Nodes Stats(99.0 percentile) [ms]&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;5.46218&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;Nodes Stats(100 percentile) [ms]&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;6.06723&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;更多Rally使用方法和安装说明请参见 &lt;a href=&quot;https://esrally.readthedocs.io/en/latest/&quot;&gt;文档&lt;/a&gt;。&lt;/p&gt;
+
+&lt;h2 id=&quot;推荐插件&quot;&gt;推荐插件&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://mobz.github.io/elasticsearch-head/&quot;&gt;Web管理界面&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.elastic.co/guide/en/elasticsearch/plugins/current/analysis-smartcn.html&quot;&gt;中文分词&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/NLPchina/elasticsearch-sql&quot;&gt;elasticsearch-sql&lt;/a&gt;使用SQL语句搜索。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;其他链接&quot;&gt;其他链接&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.elastic.co/products/elasticsearch&quot;&gt;官方网站&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://es.xiaoleilu.com&quot;&gt;Elasticsearch权威指南－中文&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>学习笔记DNS协议</title>
+   <link href="http://ly95.me/2016-07-01/domain-name-sytem-protocol.html"/>
+   <updated>2016-07-01T16:39:00+08:00</updated>
+   <id>http://ly95.me//2016-07-01/domain-name-sytem-protocol</id>
+   <content type="html">&lt;p&gt;本着学习和理解DNS协议的想法，决定简单实现DNS.&lt;/p&gt;
+
+&lt;p&gt;参考 RFC1024, RFC1035&lt;/p&gt;
+
+&lt;p&gt;代码库：
+&lt;a href=&quot;https://github.com/ly95/dns&quot;&gt;github.com/ly95/dns&lt;/a&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>学习词汇解析</title>
+   <link href="http://ly95.me/2016-04-15/nodejs-php-symbols.html"/>
+   <updated>2016-04-15T10:35:00+08:00</updated>
+   <id>http://ly95.me//2016-04-15/nodejs-php-symbols</id>
+   <content type="html">&lt;p&gt;起因在使用Visual Studio Code无法查看到PHP代码结构，突然打算动手解决此事。&lt;/p&gt;
+
+&lt;p&gt;能力有限，起初想到的解决办法：通过PHP脚本来解析PHP文档。
+可利用相关函数&lt;/p&gt;
+
+&lt;div class=&quot;language-php highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;token_get_all&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// get_defined_*&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;缺点就是存在环境依赖、版本兼容、被编辑的文件语法错误的时候无法解析。&lt;/p&gt;
+
+&lt;p&gt;不依赖开发环境，只有使用nodejs扫描PHP源码并生成symbols信息，于是决定就这样做。
+中间过程略，学习路线是这样的：了解词汇解析，阅读PHP Zend部分源码，学习re2c，动手写代码。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;好有的想法一定要努力实现不管结果怎样。&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;昨晚该插件已发布，名为 php symbols 
+&lt;a href=&quot;https://marketplace.visualstudio.com/items?itemName=linyang95.php-symbols&quot;&gt;地址&lt;/a&gt;。&lt;/p&gt;
+
+&lt;p&gt;参考资料：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://zh.wikipedia.org/wiki/词法分析&quot;&gt;Wiki 词法分析&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.cs.berkeley.edu/%7Ebodik/cs164sp13&quot;&gt;CS164&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://tldp.org/HOWTO/Lex-YACC-HOWTO.html&quot;&gt;Lex and YACC primer/HOWTO&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.ibm.com/developerworks/cn/linux/sdk/lex/&quot;&gt;Yacc 与 Lex 快速入门&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;《领域专用语言实战》(亚马逊购买的kindle版)&lt;/li&gt;
+&lt;/ul&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Mysql连接数过多</title>
+   <link href="http://ly95.me/2015-12-12/mysql-lian-jie-guo-duo.html"/>
+   <updated>2015-12-12T08:31:26+08:00</updated>
+   <id>http://ly95.me//2015-12-12/mysql-lian-jie-guo-duo</id>
+   <content type="html">&lt;p&gt;最近mysql数据库连接数突然增多，经过模拟测试和阅读php源码确认是由于php超时有关，这种连接状态多为sleep。&lt;/p&gt;
+
+&lt;div class=&quot;language-c highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;# file: php-src/sapi/fpm/fpm/fpm_main.c
+&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;argc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;char&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;argv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[])&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// 代码略...&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;zend_first_try&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;EXPECTED&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fcgi_accept_request&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;c1&quot;&gt;// 代码略...&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;php_execute_script&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;file_handle&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+            &lt;span class=&quot;c1&quot;&gt;// 代码略...&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;php_request_shutdown&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+            &lt;span class=&quot;c1&quot;&gt;// 代码略...&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;// 代码略...&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;zend_catch&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;exit_status&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;FPM_EXIT_SOFTWARE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;zend_end_try&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+
+    &lt;span class=&quot;c1&quot;&gt;// 代码略...&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;exit_status&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;宏zend_first_try和zend_catch看作长跳转(setjump)，
+当发生超时，函数php_execute_script将抛出E_ERROR类型错误。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;E_ERROR&lt;/li&gt;
+  &lt;li&gt;E_CORE_ERROR&lt;/li&gt;
+  &lt;li&gt;E_COMPILE_ERROR&lt;/li&gt;
+  &lt;li&gt;E_USER_ERROR&lt;/li&gt;
+  &lt;li&gt;E_PARSE&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;以上错误类型不能捕获，源码中这样描述fatal errors:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;fatal errors are real errors and cannot be made exceptions&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;函数php_request_shutdown会跳过执行，最终析构方法不会被执行。&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>VSCode的PhpMD插件</title>
+   <link href="http://ly95.me/2015-11-24/vscode-phpmd-plugin.html"/>
+   <updated>2015-11-24T23:51:00+08:00</updated>
+   <id>http://ly95.me//2015-11-24/vscode-phpmd-plugin</id>
+   <content type="html">&lt;p&gt;VSCode(Visual Studio Code) 早有关注。前不久发布了v0.10.1，支持插件开发，兴奋不已。&lt;/p&gt;
+
+&lt;p&gt;所以为php开发了phpmd插件，已经可以在插件库里搜索和下载。vscode插件开发文档不多，后期再慢慢改善这个插件。&lt;/p&gt;
+
+&lt;p&gt;地址：&lt;a href=&quot;https://github.com/ly95/vsc.phpmd&quot;&gt;github&lt;/a&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>PHP开发工具PHPDCD</title>
+   <link href="http://ly95.me/2015-08-31/php-tool-phpdcd.html"/>
+   <updated>2015-08-31T04:23:44+08:00</updated>
+   <id>http://ly95.me//2015-08-31/php-tool-phpdcd</id>
+   <content type="html">&lt;p&gt;PHP开发工具PHPMD和PHPCS都不在做介绍了，今天在Github上发现的一款工具也很不错。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;PHP Dead Code Detector (PHPDCD)&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;phpdcd 可以扫描php项目中的没有在使用的函数或方法（死代码）&lt;/p&gt;
+
+&lt;p&gt;使用方法也简单，下载https://phar.phpunit.de/phpdcd.phar后即可使用。&lt;/p&gt;
+
+&lt;p&gt;以Mac OS为例&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;wget https://phar.phpunit.de/phpdcd.phar
+&lt;span class=&quot;nb&quot;&gt;chmod&lt;/span&gt; +x phpdcd.phar
+&lt;span class=&quot;nb&quot;&gt;mv &lt;/span&gt;phpdcd.phar /usr/local/bin/phpdcd
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;进入项目目录&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; /var/www/site
+phpdcd &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;即可立即返回扫描报告。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;可选参数&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Usage:
+ phpdcd &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;--names&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;...&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;--names-exclude&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;...&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;--exclude&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;...&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;--recursive&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;values1] ... &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;valuesN]
+Arguments:
+ values
+Options:
+ &lt;span class=&quot;nt&quot;&gt;--names&lt;/span&gt;               需要检查的文件名列表，数组形势 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;如: &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;*.php&quot;&lt;/span&gt;, &lt;span class=&quot;s2&quot;&gt;&quot;*.ini&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;])&lt;/span&gt;
+ &lt;span class=&quot;nt&quot;&gt;--names-exclude&lt;/span&gt;       不需要检查的文件名列表，值也是数组形式
+ &lt;span class=&quot;nt&quot;&gt;--exclude&lt;/span&gt;             按目录排除不需要检查的文件
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>跨域代理</title>
+   <link href="http://ly95.me/2015-07-19/python-cross-domain-proxy.html"/>
+   <updated>2015-07-19T00:07:52+08:00</updated>
+   <id>http://ly95.me//2015-07-19/python-cross-domain-proxy</id>
+   <content type="html">&lt;p&gt;Javascript 跨域&lt;/p&gt;
+
+&lt;p&gt;在做基于ionicframework的App的时候，顺便写了一个简单代理服务。&lt;/p&gt;
+
+&lt;p&gt;目的是为了使服务器的接口增加接入控制，以支持Javascript跨域。&lt;/p&gt;
+
+&lt;p&gt;代码：&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/ly95/py-crossdomain-proxy&quot;&gt;https://github.com/ly95/py-crossdomain-proxy&lt;/a&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Discuz! 接口开发</title>
+   <link href="http://ly95.me/2015-02-17/discuz-api-case.html"/>
+   <updated>2015-02-17T22:16:01+08:00</updated>
+   <id>http://ly95.me//2015-02-17/discuz-api-case</id>
+   <content type="html">&lt;p&gt;为Discuz!论坛提供App使用的接口，支持3x以上版本。&lt;/p&gt;
+
+&lt;p&gt;登陆，注册接口(含上传头像)，修改头像，修改密码，忘记密码，我收藏的帖子，我发的帖子，获取分类下的帖子，获取帖子详情(含楼层和只看楼主功能)，发帖（图片上传），收藏(取消)帖子。&lt;/p&gt;
+
+&lt;p&gt;接口有以下特点：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Resful风格使用方便&lt;/li&gt;
+  &lt;li&gt;Http auth 权限验证&lt;/li&gt;
+  &lt;li&gt;结合论坛配置&lt;/li&gt;
+  &lt;li&gt;安装方便&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;有需要请与本人联系。linyang95#aol.com&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Python Bug CERTIFICATE_VERIFY_FAILED</title>
+   <link href="http://ly95.me/2015-02-04/python-bug-certificate-verify-failed.html"/>
+   <updated>2015-02-04T07:04:23+08:00</updated>
+   <id>http://ly95.me//2015-02-04/python-bug-certificate-verify-failed</id>
+   <content type="html">&lt;p&gt;urllib2请求ssh网址的时候抛出异常&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;File &lt;span class=&quot;s2&quot;&gt;&quot;/opt/local/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py&quot;&lt;/span&gt;, line 1197, &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;do_open
+raise URLError&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;err&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+urllib2.URLError: &amp;lt;urlopen error &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;_ssl.c:581&lt;span class=&quot;o&quot;&gt;)&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;该问题是python一个bug，影响版本：3.5, 3.4, 2.7。临时解决办法程序中加入下面代码&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;ssl&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;hasattr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ssl&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'_create_unverified_context'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;ssl&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_create_default_https_context&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ssl&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_create_unverified_context&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;相关链接&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://bugs.python.org/issue22417&quot;&gt;https://bugs.python.org/issue22417&lt;/a&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Git svn rebase异常</title>
+   <link href="http://ly95.me/2014-08-22/git-svn-rebase-exception.html"/>
+   <updated>2014-08-22T02:06:16+08:00</updated>
+   <id>http://ly95.me//2014-08-22/git-svn-rebase-exception</id>
+   <content type="html">&lt;p&gt;环境MacOS，git版本1.9.3(Apple Git-50)，同步版本信息时遭遇此错误提示&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git svn rebase
+
+Incomplete data: Delta &lt;span class=&quot;nb&quot;&gt;source &lt;/span&gt;ended unexpectedly at /Applications/Xcode.app/Contents/Developer/usr/share/git-core/perl/Git/SVN/Ra.pm line 290.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;处理办法指定同步版本&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git svn reset —r 版本号
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;然后再试&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git svn rebase
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;如果还报错，重试指定较低的版本。&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>MacOS Git-svn 使用笔记</title>
+   <link href="http://ly95.me/2014-08-15/macos-git-svn.html"/>
+   <updated>2014-08-15T21:33:00+08:00</updated>
+   <id>http://ly95.me//2014-08-15/macos-git-svn</id>
+   <content type="html">&lt;p&gt;公司服务器使用版本控制工具为svn-1.6，项目较大，开发任务量大，再一次意外将svn升级到1.8并且更新了svn本地资源，造成无法再提交新文件。&lt;/p&gt;
+
+&lt;p&gt;一咬牙决心使用git-svn代替svn-client。&lt;/p&gt;
+
+&lt;p&gt;Xcode 安装命令行工具&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;xcode-select —install
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;克隆远程资源&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git svn clone svn://res-url/something
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;会从第一个版本下载一直到最新版本，如果版本很高那可能花上几天的时间&lt;/p&gt;
+
+&lt;p&gt;增加参数节约时间，-r1 是开始版本号&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git svn clone svn://res-url/something &lt;span class=&quot;nt&quot;&gt;-r1&lt;/span&gt;:2
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;建好以后再使用rebase同步版本信息&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git svn rebase
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;完成后，最好创建开发分支，和master分开，提交代码前，将开发分支合并到master上再提交到svn服务器，避免冲突。&lt;/p&gt;
+
+&lt;p&gt;原svn项目资源大小为3G，git svn下载完毕后大小为3.14G.&lt;/p&gt;
+
+&lt;p&gt;常用命令&lt;/p&gt;
+
+&lt;p&gt;更新本地资源 git svn rebase&lt;/p&gt;
+
+&lt;p&gt;提交本地修改到svn服务端 git svn dcommit&lt;/p&gt;
+
+&lt;p&gt;最后推荐免费git客户端：SourceTree&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>MacPorts创建本地Portfile</title>
+   <link href="http://ly95.me/2014-06-24/macports-create-local-portfile.html"/>
+   <updated>2014-06-24T22:06:14+08:00</updated>
+   <id>http://ly95.me//2014-06-24/macports-create-local-portfile</id>
+   <content type="html">&lt;p&gt;使用macport安装编译的时候希望能自定义configure。&lt;/p&gt;
+
+&lt;p&gt;直接修改macports官方Portfile不方便管理，创建自定义的本地Portfile是最好选择。编辑文件/opt/local/etc/macports/sources.conf找到这行&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;rsync://rsync.macports.org/release/tarballs/ports.tar &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;default]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;上面增加一行&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;file:///opt/local/portfiles
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;创建资源&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo mkdir&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; /opt/local/portfiles/ports/www/my_nginx
+&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; /opt/local/portfiles/ports/www/my_nginx
+&lt;span class=&quot;nb&quot;&gt;sudo cp&lt;/span&gt; /opt/local/var/macports/sources/rsync.macports.org/release/tarballs/ports/www/nginx/Portfile Portfile
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;编辑Portfile&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vi Portfile
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;找到configure.args-append就可以修改configure，最后加入macport索引&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; /opt/local/portfiles
+portindex
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;运行命令进行测试&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;port search my_nginx
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Paramiko命令执行失败</title>
+   <link href="http://ly95.me/2014-06-23/paramiko-not-work.html"/>
+   <updated>2014-06-23T22:59:56+08:00</updated>
+   <id>http://ly95.me//2014-06-23/paramiko-not-work</id>
+   <content type="html">&lt;p&gt;一个测试站，使用git管理代码。每次同步需要ssh连接更新代码。用python写小程序来完成重复的工作。&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;paramiko&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;client&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;paramiko&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SSHClient&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;client&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;set_missing_host_key_policy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;paramiko&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;AutoAddPolicy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;client&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;connect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'xxxx'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;22&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;username&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'nobody'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;password&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;''&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;timeout&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;stdin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;stdout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;stderr&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;client&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;exec_command&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;git pull /var/www/sites&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;stdout&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;read&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;stderr&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;read&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;client&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;close&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;结果输出&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;fatal: Not a git repository &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;or any of the parent directories&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;: .git
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;最后修改后，执行成功。&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;stdin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;stdout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;stderr&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;client&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;exec_command&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;cd /var/www/sites;git pull&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Session+memcache问题</title>
+   <link href="http://ly95.me/2014-04-02/sesson-memcache-warning.html"/>
+   <updated>2014-04-02T02:42:56+08:00</updated>
+   <id>http://ly95.me//2014-04-02/sesson-memcache-warning</id>
+   <content type="html">&lt;p&gt;配置php.ini&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;session.save_handler &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; memcache
+session.save_path &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;localhost:11211&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;日志提示&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Warning: session_start&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;function&lt;/span&gt;.session-start]: Keycannot be empty
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;原因未知，先记录一下。&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>MacPort安装libunwind失败</title>
+   <link href="http://ly95.me/2013-11-19/macports-install-libunwind-failed.html"/>
+   <updated>2013-11-19T18:33:30+08:00</updated>
+   <id>http://ly95.me//2013-11-19/macports-install-libunwind-failed</id>
+   <content type="html">&lt;p&gt;通过macport重新安装golang的时候得到下面提示&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Extracting libunwind-headers
+Error: org.macports.extract &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;port libunwind-headers returned: &lt;span class=&quot;nb&quot;&gt;command &lt;/span&gt;execution failed
+Please see the log file &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;port libunwind-headers &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;details:
+/opt/local/var/macports/logs/_opt_local_var_macports_sources_rsync.macports.org_release_tarballs_ports_devel_libunwind-headers/libunwind-headers/main.log
+Error: Problem &lt;span class=&quot;k&quot;&gt;while &lt;/span&gt;installing libunwind-headers
+Error: Unable to execute port: upgrade llvm-gcc42 failed
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;通过搜索得到是xcode5升级造成的，先接受新许可。&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;xcodebuild &lt;span class=&quot;nt&quot;&gt;-license&lt;/span&gt; agree
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;打开错误日志 main.log 看到&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;-xf&lt;/span&gt; - 
+:info:extract sh: /usr/bin/gnutar: No such file or directory
+:info:extract &lt;span class=&quot;nb&quot;&gt;gzip&lt;/span&gt;: error writing to output: Broken pipe
+:info:extract &lt;span class=&quot;nb&quot;&gt;gzip&lt;/span&gt;: /opt/local/var/macports/distfiles/libunwind-headers/libunwind-35.1.tar.gz: uncompress failed
+:info:extract Command failed:  &lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt;
+&lt;span class=&quot;s2&quot;&gt;&quot;/opt/local/var/macports/build/_opt_local_var_macports_sources_rsync.macports.org_release_tarballs_ports_devel_libunwind-headers/libunwind-headers/work&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; /usr/bin/gzip &lt;span class=&quot;nt&quot;&gt;-dc&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'/opt/local/var/macports/distfiles/libunwind-headers/libunwind-35.1.tar.gz'&lt;/span&gt; | /usr/bin/gnutar &lt;span class=&quot;nt&quot;&gt;--no-same-owner&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;-xf&lt;/span&gt; -
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;原来是gnutar不存在，回想起来，macos是10.7时安装的macport ，现在已经升级到10.9了。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The problem is that your version of MacPorts was not built on Mavericks and assumes the tools that were there when it was installed are still available. Since this is no longer the case, you should re-install MacPorts, which will automatically fix this issue.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;所以只能重新安装macport&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>[MACOS] MYSQL Error : Thread stack overrun</title>
+   <link href="http://ly95.me/2013-08-22/mysql-error-thread-stack-overrun.html"/>
+   <updated>2013-08-22T19:20:41+08:00</updated>
+   <id>http://ly95.me//2013-08-22/mysql-error-thread-stack-overrun</id>
+   <content type="html">&lt;p&gt;locahost执行一简单update语句的时候，遇见Mysql线程堆栈溢出。&lt;/p&gt;
+
+&lt;p&gt;完整错误提示：&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Error : Thread stack overrun: 14616 bytes used of a 131072 byte stack, and 128000 bytes needed. Use &lt;span class=&quot;s1&quot;&gt;'mysqld --thread_stack=#'&lt;/span&gt; to specify a bigger stack.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;本机环境：
+max os 10.8.4
+mysql-server55&lt;/p&gt;
+
+&lt;p&gt;修改my.conf设置&lt;/p&gt;
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;thread_stack &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 132K
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;重启mysql-server服务&lt;/p&gt;
+
+&lt;p&gt;还是不行，提示&lt;/p&gt;
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Error: Thread stack overrun: 14616 bytes used of a 135168 byte stack, and 128000 bytes needed. Use &lt;span class=&quot;s1&quot;&gt;'mysqld --thread_stack=#'&lt;/span&gt; to specify a bigger stack.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;真是得寸进尺，索性改到160k，这次没问题了。&lt;/p&gt;
+
+&lt;p&gt;原因未知，主观觉得跟使用的客户端工具Navicat Premium有关。&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>搜酒店App</title>
+   <link href="http://ly95.me/2013-08-19/sou-jiu-dian.html"/>
+   <updated>2013-08-19T19:13:57+08:00</updated>
+   <id>http://ly95.me//2013-08-19/sou-jiu-dian</id>
+   <content type="html">&lt;p&gt;&lt;img class=&quot;alignnone size-full wp-image-238&quot; alt=&quot;logo@2x&quot; src=&quot;http://ly95.me/wp-content/uploads/2013/08/logo@2x.png&quot; width=&quot;114&quot; height=&quot;114&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;基于lbs寻找附近酒店&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>用php计算wav文件播放时间</title>
+   <link href="http://ly95.me/2013-05-29/yong-php-ji-suan-wav-bo-fang-shi-jian.html"/>
+   <updated>2013-05-29T00:21:14+08:00</updated>
+   <id>http://ly95.me//2013-05-29/yong-php-ji-suan-wav-bo-fang-shi-jian</id>
+   <content type="html">&lt;p&gt;开发需要，试写了一个php版的&lt;/p&gt;
+
+&lt;p&gt;代码如下：&lt;/p&gt;
+
+&lt;div class=&quot;language-php highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;sd&quot;&gt;/**
+ * get length of wav audio in minutes/seconds
+ *
+ * @package default
+ * @author linyang95#aol.com
+ **/&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$filename&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'voice_0.wav'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$fp&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;fopen&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$filename&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'r'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;fseek&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$fp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;20&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$rawheader&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;fread&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$fp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;16&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// v short string&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// V long string&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$header&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;unpack&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'vwFormatTag/vnChannels/VnSamplesPerSec/VnAvgBytesPerSec/vnBlockAlign/vwBitsPerSample'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$rawheader&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;extract&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$header&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$rawbody&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;fread&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$fp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;filesize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$filename&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;36&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$second&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;strlen&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$rawbody&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$nChannels&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$nSamplesPerSec&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$wBitsPerSample&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;ceil&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$second&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;参考&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://ccrma.stanford.edu/courses/422/projects/WaveFormat&quot;&gt;https://ccrma.stanford.edu/courses/422/projects/WaveFormat&lt;/a&gt;
+&lt;a href=&quot;http://blog.csdn.net/qingdaoxuelei/article/details/2815516&quot;&gt;http://blog.csdn.net/qingdaoxuelei/article/details/2815516&lt;/a&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>mysql_config not found on osx10.8</title>
+   <link href="http://ly95.me/2013-05-23/mysql-config-not-found-on-osx.html"/>
+   <updated>2013-05-23T23:30:17+08:00</updated>
+   <id>http://ly95.me//2013-05-23/mysql_config-not-found-on-osx</id>
+   <content type="html">&lt;p&gt;系统：osx 10.8.3&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;pip &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;mysql-python
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;抛出异常&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;EnvironmentError: mysql_config not found
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;由于mysql是macport安装，版本55，所以问题就简单了&lt;/p&gt;
+
+&lt;p&gt;只需运行命令&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo ln&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-s&lt;/span&gt; /opt/local/bin/mysql_config5 /opt/local/bin/mysql_config
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>无限可用xp激活码</title>
+   <link href="http://ly95.me/2013-05-04/window-xp-key.html"/>
+   <updated>2013-05-04T22:04:05+08:00</updated>
+   <id>http://ly95.me//2013-05-04/window-xp-key</id>
+   <content type="html">&lt;p&gt;DG8FV-B9TKY-FRT9J-6CRCC-XPQ4G&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Pch file error</title>
+   <link href="http://ly95.me/2013-04-19/pch-file-error.html"/>
+   <updated>2013-04-19T08:48:47+08:00</updated>
+   <id>http://ly95.me//2013-04-19/pch-file-error</id>
+   <content type="html">&lt;p&gt;更新Xcode到4.6.2后，运行项目得到错误&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;error: PCH file built from a different branch &lt;span class=&quot;o&quot;&gt;((&lt;/span&gt;clang-425.0.27&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt; than the compiler &lt;span class=&quot;o&quot;&gt;((&lt;/span&gt;clang-425.0.28&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;需要clean以后重新编译&lt;/p&gt;
+
+&lt;p&gt;PCH介绍：http://msdn.microsoft.com/zh-cn/library/hd8sctab(v=vs.80).aspx&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>macport清理更新后的旧版本package办法</title>
+   <link href="http://ly95.me/2013-02-26/macport-remove-inactive-packages.html"/>
+   <updated>2013-02-26T08:46:48+08:00</updated>
+   <id>http://ly95.me//2013-02-26/macport-remove-inactive-packages</id>
+   <content type="html">&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;port uninstall inactive
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Couldn't find default.styleproto in framework</title>
+   <link href="http://ly95.me/2013-02-21/could-not-find-default-styleproto-in-framework.html"/>
+   <updated>2013-02-21T07:55:03+08:00</updated>
+   <id>http://ly95.me//2013-02-21/could-not-find-default-styleproto-in-framework</id>
+   <content type="html">&lt;p&gt;在使用MapKit.framework的时候&lt;/p&gt;
+
+&lt;p&gt;控制台提示&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Couldn&lt;span class=&quot;s1&quot;&gt;'t find default.styleproto in framework
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;解决办法&lt;/p&gt;
+
+&lt;p&gt;打开 Terminal输入并Enter&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;rm&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-r&lt;/span&gt; ~/Library/Application Support/iPhone Simulator/版本/Library/Caches/GeoServices
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;重新运行app，错误消失。&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Ubuntu12.10 安装 pptpd 实录</title>
+   <link href="http://ly95.me/2013-01-30/ubuntu12-install-pptpd.html"/>
+   <updated>2013-01-30T23:58:15+08:00</updated>
+   <id>http://ly95.me//2013-01-30/ubuntu12-install-pptpd</id>
+   <content type="html">&lt;p&gt;切换至root帐号下&lt;/p&gt;
+
+&lt;p&gt;安装pptd&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;apt-get &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;pptpd &lt;span class=&quot;nt&quot;&gt;-y&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;配置DNS&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vi /etc/ppp/pptpd-options
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ms-dns 8.8.8.8
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;分配客户端虚拟IP&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vi /etc/pptpd.conf
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;取消注释最后2行&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#localip 192.168.0.1&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#remoteip 192.168.0.234-238,192.168.0.245&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#or&lt;/span&gt;
+localip 192.168.0.234-238,192.168.0.245
+remoteip 192.168.1.234-238,192.168.1.245
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;添加客户端帐号&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vi /etc/ppp/chap-secrets
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;帐号 服务 密码 IP&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;test&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;test&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;路由规则设置ipv4转发&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vi /etc/sysctl.conf
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;找到“net.ipv4.ip_forward”所在行，设置为1&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;net.ipv4.ip_forward &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;更新规则&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sysctl &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;iptables转发设置&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;iptables &lt;span class=&quot;nt&quot;&gt;-P&lt;/span&gt; FORWARD ACCEPT
+/sbin/iptables &lt;span class=&quot;nt&quot;&gt;--table&lt;/span&gt; nat &lt;span class=&quot;nt&quot;&gt;-A&lt;/span&gt; POSTROUTING &lt;span class=&quot;nt&quot;&gt;-o&lt;/span&gt; eth0 &lt;span class=&quot;nt&quot;&gt;-j&lt;/span&gt; MASQUERADE
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;最后重启&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/etc/init.d/pptpd restart
+netstat &lt;span class=&quot;nt&quot;&gt;-anp&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;grep &lt;/span&gt;pptpd
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;pptpd已经在监听1723端口说明一切正常&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Ubuntu记录所有用户操作日志</title>
+   <link href="http://ly95.me/2013-01-27/ubuntu-ji-lu-suo-you-yong-hu-cao-zuo-ri-zhi.html"/>
+   <updated>2013-01-27T04:29:16+08:00</updated>
+   <id>http://ly95.me//2013-01-27/ubuntu-ji-lu-suo-you-yong-hu-cao-zuo-ri-zhi</id>
+   <content type="html">&lt;p&gt;在/etc/profile.d/目录创建userlog.sh文件&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;vi /etc/profile.d/userlog.sh
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;内容如下&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;PS1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;whoami&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;hostname&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;:&quot;&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'[$PWD]'&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;history
+&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;USER_IP&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;who&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-u&lt;/span&gt; am i 2&amp;gt;/dev/null| &lt;span class=&quot;nb&quot;&gt;awk&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'{print $NF}'&lt;/span&gt;|sed &lt;span class=&quot;nt&quot;&gt;-e&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'s/[()]//g'&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$USER_IP&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;then
+&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;USER_IP&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;hostname&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;fi
+if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; /tmp/history &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;then
+&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;mkdir&lt;/span&gt; /tmp/history
+&lt;span class=&quot;nb&quot;&gt;chmod &lt;/span&gt;777 /tmp/history
+&lt;span class=&quot;k&quot;&gt;fi
+if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; /tmp/history/&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;LOGNAME&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;then
+&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;mkdir&lt;/span&gt; /tmp/history/&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;LOGNAME&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;chmod &lt;/span&gt;300 /tmp/history/&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;LOGNAME&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;fi
+&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;HISTSIZE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;4096
+&lt;span class=&quot;nv&quot;&gt;DT&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;date&lt;/span&gt; +&lt;span class=&quot;s2&quot;&gt;&quot;%Y%m%d_%H%M%S&quot;&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;HISTFILE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;/tmp/history/&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;LOGNAME&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;USER_IP&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; history.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$DT&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;chmod &lt;/span&gt;600 /tmp/history/&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;LOGNAME&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;/&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;history&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; 2&amp;gt;/dev/null
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>PHP Class 'HttpRequest' not found on Ubuntu</title>
+   <link href="http://ly95.me/2013-01-10/php-class-httprequest-not-found-on-ubuntu.html"/>
+   <updated>2013-01-10T02:42:30+08:00</updated>
+   <id>http://ly95.me//2013-01-10/php-class-httprequest-not-found-on-ubuntu</id>
+   <content type="html">&lt;p&gt;安装 pecl_http&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-get &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;php-pear
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-get &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;libcurl3-openssl-dev
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-get &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;re2c
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;pecl &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;pecl_http
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;vi /etc/php5/cli/php.ini
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;添加一行&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s2&quot;&gt;&quot;extension=http.so&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>ReflectionMethod getDocComment返回false</title>
+   <link href="http://ly95.me/2012-12-19/reflectionmethod-getdoccomment-return-false.html"/>
+   <updated>2012-12-19T22:25:32+08:00</updated>
+   <id>http://ly95.me//2012-12-19/ReflectionMethod-getDocComment-return-false</id>
+   <content type="html">&lt;p&gt;开发soap接口的时候，使用Reflector自动生成wsdl文件。&lt;/p&gt;
+
+&lt;p&gt;getDocComment服务端则始终为false。&lt;/p&gt;
+
+&lt;p&gt;最终发现是eAccelerator删除了phpdoc&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Ubuntu12.10安装日志分析工具AWStats</title>
+   <link href="http://ly95.me/2012-12-09/ubuntu12-install-awstats.html"/>
+   <updated>2012-12-09T02:18:39+08:00</updated>
+   <id>http://ly95.me//2012-12-09/ubuntu12-install-awstats</id>
+   <content type="html">&lt;p&gt;安装&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;apt-get &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;awstats
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;配置&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vi /etc/awstats/awstats.conf
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;查询并修改下列参数&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;LogFile&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;/var/log/apache2/access.log&quot;&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;LogFormat&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;1
+&lt;span class=&quot;nv&quot;&gt;SiteDomain&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;ly95.me&quot;&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;HostAliases&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;localhost 127.0.0.1 ly95.me&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;增加一条定时任务&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vi /etc/crontab
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;0 &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;/3 &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; root /usr/lib/cgi-bin/awstats.pl &lt;span class=&quot;nt&quot;&gt;-config&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;ly95.me &lt;span class=&quot;nt&quot;&gt;-update&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; /var/log/awstats.log
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Apache 默认VirtualHost标签里增加&lt;/p&gt;
+
+&lt;div class=&quot;language-ini highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;err&quot;&gt;Alias&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;/awstatsclasses&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;“/usr/share/awstats/lib/&quot;&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;Alias&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;/awstats-icon/&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;“/usr/share/awstats/icon/&quot;&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;Alias&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;/awstatscss&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;“/usr/share/doc/awstats/examples/css&quot;&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;ScriptAlias&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;/awstats/&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;/usr/lib/cgi-bin/&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;重启Apache&lt;/p&gt;
+
+&lt;p&gt;访问 http://ly95.me/awstats/awstats.pl&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>文字转语音并保存文件(PHP)</title>
+   <link href="http://ly95.me/2012-10-27/php-tts.html"/>
+   <updated>2012-10-27T08:56:41+08:00</updated>
+   <id>http://ly95.me//2012-10-27/php-tts</id>
+   <content type="html">&lt;p&gt;利用win32api实现&lt;/p&gt;
+
+&lt;p&gt;代码：&lt;/p&gt;
+
+&lt;div class=&quot;language-php highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;?php&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt;/**
+ * TTS Sample
+ *
+ * @author linyang95#aol.com
+ */&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;define&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;SSFMCreateForWrite&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;nv&quot;&gt;$filename&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;tts.mp3&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;nv&quot;&gt;$SpVoice&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;COM&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;SAPI.SpVoice&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$SpFileStream&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;COM&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;SAPI.SpFileStream&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$SpFileStream&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;Open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$filename&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;SSFMCreateForWrite&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// 可用声音&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$_voices&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$SpVoice&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;GetVoices&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;foreach&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$_voices&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$_voice&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$_voice&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;GetDescription&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;n&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// 语速&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$SpVoice&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;Rate&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$SpVoice&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;Voice&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$_voices&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$SpVoice&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;AudioOutputStream&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$SpFileStream&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$SpVoice&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;Speak&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;你好，http://ly95.me&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$SpFileStream&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;Close&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;?&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;参考资料：&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://msdn.microsoft.com/en-us/library/ms723602(v=vs.85).aspx&quot;&gt;msdn.microsoft.com&lt;/a&gt;&lt;/p&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>php垃圾回收机制</title>
+   <link href="http://ly95.me/2012-10-23/php-gc.html"/>
+   <updated>2012-10-23T10:09:30+08:00</updated>
+   <id>http://ly95.me//2012-10-23/php-gc</id>
+   <content type="html">&lt;p&gt;使用XMPPPHP试写gtalk机器人的脚本程序，目的是协助我监控服务器运行状态。&lt;/p&gt;
+
+&lt;p&gt;在这个过程中，发现php的内存不断上升，记得5.3＋版本采用新的gc机制，问题依旧。&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>再遇error: failed to attach to process ID 0</title>
+   <link href="http://ly95.me/2012-10-21/failed-to-attach-to-process-id.html"/>
+   <updated>2012-10-21T05:45:19+08:00</updated>
+   <id>http://ly95.me//2012-10-21/failed-to-attach-to-process-id</id>
+   <content type="html">&lt;p&gt;我确定程序是正确无误的，昨晚都能模拟器上正常运行，所以我不再从xcode上找问题了。&lt;/p&gt;
+
+&lt;p&gt;然后连接iphone测试，运行正常。&lt;/p&gt;
+
+&lt;p&gt;问题很明显了，模拟器菜单栏选择“还原内容和设置”，搞定。&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>国家电网App</title>
+   <link href="http://ly95.me/2012-10-16/guo-jia-dian-wang-app.html"/>
+   <updated>2012-10-16T18:36:42+08:00</updated>
+   <id>http://ly95.me//2012-10-16/guo-jia-dian-wang-app</id>
+   <content type="html">&lt;p&gt;&lt;img class=&quot;alignnone&quot; title=&quot;app&quot; src=&quot;http://a1626.phobos.apple.com/us/r30/Purple/v4/b8/2c/ea/b82cea63-62a8-b9b6-89c3-cac663c8581d/mzl.asmxndzg.170x170-75.png&quot; alt=&quot;&quot; width=&quot;170&quot; height=&quot;170&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;提交时间：Sep 10, 2012，今天终于审核过了。&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>TextMate开源</title>
+   <link href="http://ly95.me/2012-10-15/textmate.html"/>
+   <updated>2012-10-15T07:30:16+08:00</updated>
+   <id>http://ly95.me//2012-10-15/textmate</id>
+   <content type="html">&lt;p&gt;&lt;img src=&quot;https://raw.github.com/textmate/textmate/gh-pages/images/screenshot.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;TextMate 采用GPL协议，已在9月25日在github.com公开源码。&lt;/p&gt;
+
+&lt;p&gt;如果只想免费使用，请前往&lt;a href=&quot;https://github.com/textmate/textmate/downloads&quot;&gt;Github&lt;/a&gt;下载。&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>[Xcode4.5]MuPDF编译问题stdio.h not found</title>
+   <link href="http://ly95.me/2012-09-29/mupdf-stdio-not-found.html"/>
+   <updated>2012-09-29T18:58:44+08:00</updated>
+   <id>http://ly95.me//2012-09-29/mupdf-stdio-not-found</id>
+   <content type="html">&lt;p&gt;App因为ios data storage拒绝后，使用更新后的Xcode编译App失败&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;stdio.h not found
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;解决办法是，ctrl+,开打Preferences，下载Command Line Tools。&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>取消对某个文件的ARC支持</title>
+   <link href="http://ly95.me/2012-09-02/disable-file-arc-support.html"/>
+   <updated>2012-09-02T07:14:59+08:00</updated>
+   <id>http://ly95.me//2012-09-02/disable-file-ARC-support</id>
+   <content type="html">&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;-fno-objc-arc&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img class=&quot;alignnone&quot; src=&quot;http://i.imgur.com/BgteG.png&quot; /&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Duplicate protocol definition of 'SoapDelegate'</title>
+   <link href="http://ly95.me/2012-08-11/duplicate-protocol-definition-of-soapdelegate-ignored.html"/>
+   <updated>2012-08-11T22:03:04+08:00</updated>
+   <id>http://ly95.me//2012-08-11/duplicate-protocol-definition-of-soapDelegate-ignored</id>
+   <content type="html">&lt;blockquote&gt;
+  &lt;p&gt;Check to make sure you don’t have the header file added in your project twice, or two different files that both implement the protocol.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://stackoverflow.com/questions/8138689/warning-duplicate-protocol-definition-of-is-ignored&quot;&gt;link&lt;/a&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Windows8 最新预览版密钥</title>
+   <link href="http://ly95.me/2012-08-10/window8-key.html"/>
+   <updated>2012-08-10T20:21:25+08:00</updated>
+   <id>http://ly95.me//2012-08-10/window8-key</id>
+   <content type="html">&lt;p&gt;TK8TP-9JN6P-7X7WW-RFFTV-B7QPF&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>隐藏apache/php信息</title>
+   <link href="http://ly95.me/2012-08-01/hide-apache-php-version.html"/>
+   <updated>2012-08-01T19:13:36+08:00</updated>
+   <id>http://ly95.me//2012-08-01/hide-apache-php-version</id>
+   <content type="html">&lt;p&gt;编辑文件/etc/php5/apache2/php.ini&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vi /etc/php5/apache2/php.ini
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;参数expose_php设置为Off&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;expose_php Off
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;编辑文件/etc/apache2/conf.d/security&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vi /etc/apache2/conf.d/security
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;修改如下&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ServerTokens Prod
+ServerSignature Off
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;最后重启Apache就好了&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>［MacOS］卸载PhoneGap1.9</title>
+   <link href="http://ly95.me/2012-07-30/uninstall-phonegap1-9.html"/>
+   <updated>2012-07-30T00:33:18+08:00</updated>
+   <id>http://ly95.me//2012-07-30/uninstall-phonegap1.9</id>
+   <content type="html">&lt;p&gt;打开AppleScript编辑器&lt;/p&gt;
+
+&lt;p&gt;复制粘贴以下内容，然后运行。&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;--&lt;/span&gt; Licensed to the Apache Software Foundation &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;ASF&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; under one
+&lt;span class=&quot;nt&quot;&gt;--&lt;/span&gt; or more contributor license agreements.  See the NOTICE file
+&lt;span class=&quot;nt&quot;&gt;--&lt;/span&gt; distributed with this work &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;additional information
+&lt;span class=&quot;nt&quot;&gt;--&lt;/span&gt; regarding copyright ownership.  The ASF licenses this file
+&lt;span class=&quot;nt&quot;&gt;--&lt;/span&gt; to you under the Apache License, Version 2.0 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;the
+&lt;span class=&quot;nt&quot;&gt;--&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;License&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; you may not use this file except &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;compliance
+&lt;span class=&quot;nt&quot;&gt;--&lt;/span&gt; with the License.  You may obtain a copy of the License at
+&lt;span class=&quot;nt&quot;&gt;--&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;--&lt;/span&gt;   http://www.apache.org/licenses/LICENSE-2.0
+&lt;span class=&quot;nt&quot;&gt;--&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;--&lt;/span&gt; Unless required by applicable law or agreed to &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;writing,
+&lt;span class=&quot;nt&quot;&gt;--&lt;/span&gt; software distributed under the License is distributed on an
+&lt;span class=&quot;nt&quot;&gt;--&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;AS IS&quot;&lt;/span&gt; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+&lt;span class=&quot;nt&quot;&gt;--&lt;/span&gt; KIND, either express or implied.  See the License &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;the
+&lt;span class=&quot;nt&quot;&gt;--&lt;/span&gt; specific language governing permissions and limitations
+&lt;span class=&quot;nt&quot;&gt;--&lt;/span&gt; under the License.
+&lt;span class=&quot;nb&quot;&gt;set &lt;/span&gt;question to display dialog &lt;span class=&quot;s2&quot;&gt;&quot;Uninstall Cordova?&quot;&lt;/span&gt; buttons &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Yes&quot;&lt;/span&gt;, &lt;span class=&quot;s2&quot;&gt;&quot;No&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; default button 2 with icon caution
+&lt;span class=&quot;nb&quot;&gt;set &lt;/span&gt;answer to button returned of question
+&lt;span class=&quot;k&quot;&gt;if &lt;/span&gt;answer is equal to &lt;span class=&quot;s2&quot;&gt;&quot;Yes&quot;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;then
+&lt;/span&gt;tell application &lt;span class=&quot;s2&quot;&gt;&quot;Finder&quot;&lt;/span&gt; to &lt;span class=&quot;nb&quot;&gt;set &lt;/span&gt;home_path to home as text
+tell application &lt;span class=&quot;s2&quot;&gt;&quot;Finder&quot;&lt;/span&gt; to &lt;span class=&quot;nb&quot;&gt;set &lt;/span&gt;startup_hd to startup disk as string
+&lt;span class=&quot;nt&quot;&gt;--&lt;/span&gt; delete Xcode 3 Template
+&lt;span class=&quot;nb&quot;&gt;set source &lt;/span&gt;to &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;home_path &amp;amp;amp&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Library:Application Support:Developer:Shared:Xcode:Project Templates:Cordova&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+tell application &lt;span class=&quot;s2&quot;&gt;&quot;Finder&quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;if &lt;/span&gt;exists folder &lt;span class=&quot;nb&quot;&gt;source &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;then
+&lt;/span&gt;delete &lt;span class=&quot;nb&quot;&gt;source
+&lt;/span&gt;end &lt;span class=&quot;k&quot;&gt;if
+&lt;/span&gt;end tell
+&lt;span class=&quot;nt&quot;&gt;--&lt;/span&gt; delete Xcode 4 Template
+&lt;span class=&quot;nb&quot;&gt;set source &lt;/span&gt;to &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;home_path &amp;amp;amp&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Library:Developer:Xcode:Templates:Project Templates:Application:Cordova-based Application.xctemplate&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+tell application &lt;span class=&quot;s2&quot;&gt;&quot;Finder&quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;if &lt;/span&gt;exists folder &lt;span class=&quot;nb&quot;&gt;source &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;then
+&lt;/span&gt;delete &lt;span class=&quot;nb&quot;&gt;source
+&lt;/span&gt;end &lt;span class=&quot;k&quot;&gt;if
+&lt;/span&gt;end tell
+&lt;span class=&quot;nt&quot;&gt;--&lt;/span&gt; delete CordovaLib &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;used by Xcode 3 Template, and generating Cordova.framework &lt;span class=&quot;k&quot;&gt;if &lt;/span&gt;need be&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;set source &lt;/span&gt;to &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;home_path &amp;amp;amp&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Documents:CordovaLib&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+tell application &lt;span class=&quot;s2&quot;&gt;&quot;Finder&quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;if &lt;/span&gt;exists folder &lt;span class=&quot;nb&quot;&gt;source &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;then
+&lt;/span&gt;delete &lt;span class=&quot;nb&quot;&gt;source
+&lt;/span&gt;end &lt;span class=&quot;k&quot;&gt;if
+&lt;/span&gt;end tell
+&lt;span class=&quot;nt&quot;&gt;--&lt;/span&gt; delete Cordova.framework &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;used by Xcode 4 Template&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; and its parent directories
+&lt;span class=&quot;nb&quot;&gt;set source &lt;/span&gt;to &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;startup_hd &amp;amp;amp&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Users:Shared:Cordova&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+tell application &lt;span class=&quot;s2&quot;&gt;&quot;Finder&quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;if &lt;/span&gt;exists folder &lt;span class=&quot;nb&quot;&gt;source &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;then
+&lt;/span&gt;delete &lt;span class=&quot;nb&quot;&gt;source
+&lt;/span&gt;end &lt;span class=&quot;k&quot;&gt;if
+&lt;/span&gt;end tell
+&lt;span class=&quot;nt&quot;&gt;--&lt;/span&gt; delete symlink to Cordova.framework
+&lt;span class=&quot;nb&quot;&gt;set source &lt;/span&gt;to &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;home_path &amp;amp;amp&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Library:Frameworks:Cordova.framework&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+tell application &lt;span class=&quot;s2&quot;&gt;&quot;Finder&quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;if &lt;/span&gt;exists file &lt;span class=&quot;nb&quot;&gt;source &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;then
+&lt;/span&gt;delete &lt;span class=&quot;nb&quot;&gt;source
+&lt;/span&gt;end &lt;span class=&quot;k&quot;&gt;if
+&lt;/span&gt;end tell
+&lt;span class=&quot;nt&quot;&gt;--&lt;/span&gt; end
+display dialog &lt;span class=&quot;s2&quot;&gt;&quot;Cordova uninstalled.&quot;&lt;/span&gt; buttons &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Goodbye ☹&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; with icon note
+&lt;span class=&quot;k&quot;&gt;else
+&lt;/span&gt;display dialog &lt;span class=&quot;s2&quot;&gt;&quot;Phew!&quot;&lt;/span&gt; buttons &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;That was close ☺&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; with icon note
+end &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>MuPDF For IOS</title>
+   <link href="http://ly95.me/2012-07-27/mupdf-for-ios.html"/>
+   <updated>2012-07-27T07:20:09+08:00</updated>
+   <id>http://ly95.me//2012-07-27/mupdf-for-ios</id>
+   <content type="html">&lt;p&gt;最近在寻求ios上pdf中文字符搜索并高亮的解决方案。&lt;/p&gt;
+
+&lt;p&gt;在github.com，搜索到一些pdf阅读器相关的项目，还跟PSPDFKit的作者交流过几次，但是都没有一个能完美的解决该问题。&lt;/p&gt;
+
+&lt;p&gt;最后看到了MuPDF，免费软件，已经支持ios了。&lt;/p&gt;
+
+&lt;p&gt;网址：&lt;a href=&quot;http://www.mupdf.com&quot;&gt;http://www.mupdf.com&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;下载&lt;/p&gt;
+
+&lt;p&gt;mupdf-1.0-source.tar.gz&lt;/p&gt;
+
+&lt;p&gt;mupdf-thirdparty-xxx.zip&lt;/p&gt;
+
+&lt;p&gt;解压后的thirdparty目录放入mupdf-source目录内&lt;/p&gt;
+
+&lt;p&gt;Xcode开打iOS DEMO编译libLibraries，完成。&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>[Xcode4.5 DP3] Error: failed to attach to process ID 0</title>
+   <link href="http://ly95.me/2012-07-24/xcode4-5-error-failed-to-attach-to-process-id-0.html"/>
+   <updated>2012-07-24T07:41:51+08:00</updated>
+   <id>http://ly95.me//2012-07-24/xcode4.5-error-failed-to-attach-to-process-id-0</id>
+   <content type="html">&lt;p&gt;编译app时输出&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;error: failed to attach to process ID 0
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;然后把项目使用Xcode4.3编译，问题一样。&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Install PPTP server on Ubuntu 12.04</title>
+   <link href="http://ly95.me/2012-07-22/install-pptp-on-ubuntu.html"/>
+   <updated>2012-07-22T06:28:57+08:00</updated>
+   <id>http://ly95.me//2012-07-22/install-pptp-on-ubuntu</id>
+   <content type="html">&lt;p&gt;参考&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.larmeir.com/2010/03/setting-up-a-pptp-vpn-server-on-debian-and-ubuntu/&quot;&gt;http://www.larmeir.com/2010/03/setting-up-a-pptp-vpn-server-on-debian-and-ubuntu/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;补充：&lt;/p&gt;
+
+&lt;p&gt;记得把iptables rules保存&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;iptables-save &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; /etc/iptables.pptp
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;在/etc/network/if-up.d/目录下创建iptables文件，内容如下：&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/sh&lt;/span&gt;
+iptables-restore &amp;lt; /etc/iptables.pptp
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;增加执行权限&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;chmod&lt;/span&gt; +x /etc/network/if-up.d/iptables
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>支招儿App</title>
+   <link href="http://ly95.me/2012-07-22/zhi-zhao-er.html"/>
+   <updated>2012-07-22T02:48:42+08:00</updated>
+   <id>http://ly95.me//2012-07-22/zhi-zhao-er</id>
+   <content type="html">&lt;p&gt;&lt;img src=&quot;http://a2.mzstatic.com/us/r1000/110/Purple/v4/53/47/14/534714c8-bc75-ee6b-7ea2-2f73bcd1231c/wDeJ7AVm2bgGdkjqRZikBw-temp-upload.ihrklyak.175x175-75.jpg&quot; alt=&quot;8694a4c27d1ed21bf356cd74ad6eddc450da3f80&quot; style=&quot;width: 175px;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;社交类App&lt;/p&gt;
+</content>
+ </entry>
+ 
+
+</feed>
