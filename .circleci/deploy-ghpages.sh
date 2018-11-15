@@ -10,8 +10,8 @@ cd gh-pages-branch
 
 git init
 
-git config user.name "$USER_NAME"
-git config user.email "$USER_EMAIL"
+git config --global user.name "$USER_NAME"
+git config --global user.email "$USER_EMAIL"
 
 git remote add --fetch origin "$remote"
 
@@ -24,6 +24,8 @@ else
 fi
 
 cp -r ../lanyon-1.0.0/_site/* .
+
+echo "ly95.me" > CNAME
 
 git add -A
 
