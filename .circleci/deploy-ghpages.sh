@@ -24,12 +24,13 @@ if git rev-parse --verify origin/gh-pages > /dev/null 2>&1
 then
     git checkout gh-pages
     git rm -rf .
-    git checkout -- CNAME
 else
     git checkout --orphan gh-pages
 fi
 
 cp -r ../lanyon-1.0.0/_site/* .
+
+echo 'ly95.me' > CNAME
 
 git add -A
 
