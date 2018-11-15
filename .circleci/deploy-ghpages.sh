@@ -23,7 +23,7 @@ else
     git checkout --orphan gh-pages
 fi
 
-cp -r lanyon-1.0.0/_site/* .
+cp -r ../lanyon-1.0.0/_site/* .
 
 git add -A
 
