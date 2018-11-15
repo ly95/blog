@@ -1,3 +1,8 @@
+#!/bin/sh
+
+set -e
+
+pwd
 remote=$(git config remote.origin.url)
 
 mkdir gh-pages-branch
