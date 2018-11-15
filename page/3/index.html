@@ -267,7 +267,19 @@
       
     
       
+        
+      
     
+      
+    
+      
+    
+      
+        
+      
+    
+      
+        
       
     
       
@@ -449,31 +461,41 @@
   
   <div class="post">
     <h1 class="post-title">
-      <a href="/2017-03-22/%E5%AD%A9%E5%AD%90%E4%BD%A0%E6%85%A2%E6%85%A2%E6%9D%A5.html">
-        《孩子你慢慢来》
+      <a href="/2017-04-19/python-openssl-issue.html">
+        Python Openssl issue
       </a>
     </h1>
-    <span class="post-date">2017年03月22日</span>
-    <p>最近有读《孩子你慢慢来》，载录书中几句：</p>
+    <span class="post-date">2017年04月19日</span>
+    <p>在debian8环境中scrapy爬取https网站时报错</p>
 
-<p>关于教育</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Traceback <span class="o">(</span>most recent call last<span class="o">)</span>:
+  ...
+  File <span class="s2">"/usr/lib/convoy/lib/python2.7/site-packages/twisted/protocols/tls.py"</span>, line 41, <span class="k">in</span> &lt;module&gt;
+    from OpenSSL.SSL import Error, ZeroReturnError, WantReadError
+  File <span class="s2">"/usr/lib/convoy/lib/python2.7/site-packages/OpenSSL/__init__.py"</span>, line 8, <span class="k">in</span> &lt;module&gt;
+    from OpenSSL import rand, crypto, SSL
+  File <span class="s2">"/usr/lib/convoy/lib/python2.7/site-packages/OpenSSL/SSL.py"</span>, line 112, <span class="k">in</span> &lt;module&gt;
+    <span class="k">if </span>_lib.Cryptography_HAS_SSL_ST:
+AttributeError: <span class="s1">'FFILibrary'</span> object has no attribute <span class="s1">'Cryptography_HAS_SSL_ST'</span>
+</code></pre></div></div>
 
-<blockquote>
-  <p>在一个西方的家庭里就比较简单。孩子的母亲有最大的权利，任何人都得尊重”生母”的权利。我的婆婆很清楚地认知：宝宝首先是我的儿子，其次才是她的孙子。对孩子的教养，她可以从旁帮忙，或是提供过来人的经验，甚至于表示不同的意见，但她最后一句话永远是：”当然，决定还是在于你做妈妈的。”</p>
-</blockquote>
+<p>解决办法是将Python加密库cryptography升级</p>
 
-<p>关于细节</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip <span class="nb">install</span> <span class="nt">-U</span> cryptography
+</code></pre></div></div>
 
-<blockquote>
-  <p>华安站在床边看着妈妈穿衣服，他指着素色的裙子说：“妈妈，新的？”</p>
+<p>得到新的报错信息</p>
 
-  <p>妈妈点点头：“是，是新的。”</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>c/_cffi_backend.c:15:17: fatal error: ffi.h: No such file or directory
+</code></pre></div></div>
 
-  <p>安安赞许地说：“很漂亮！”</p>
+<p>需要安装cffi源码</p>
 
-  <p>做母亲的停止了手的动作，惊异地望着那刚满两岁的小孩，心里在想：老天，这小人儿在跟我“聊天”哪，用他仅有的辞汇。</p>
-</blockquote>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apt-get <span class="nb">install </span>libffi-dev
+pip <span class="nb">install</span> <span class="nt">-U</span> cffi
+</code></pre></div></div>
 
+<p>再次尝试升级cryptography，问题解决了。</p>
 
   </div>
   

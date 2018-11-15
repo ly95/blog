@@ -267,7 +267,19 @@
       
     
       
+        
+      
     
+      
+    
+      
+    
+      
+        
+      
+    
+      
+        
       
     
       
@@ -449,48 +461,29 @@
   
   <div class="post">
     <h1 class="post-title">
-      <a href="/2014-08-15/macos-git-svn.html">
-        MacOS Git-svn 使用笔记
+      <a href="/2014-08-21/git-svn-rebase-exception.html">
+        Git svn rebase异常
       </a>
     </h1>
-    <span class="post-date">2014年08月15日</span>
-    <p>公司服务器使用版本控制工具为svn-1.6，项目较大，开发任务量大，再一次意外将svn升级到1.8并且更新了svn本地资源，造成无法再提交新文件。</p>
+    <span class="post-date">2014年08月21日</span>
+    <p>环境MacOS，git版本1.9.3(Apple Git-50)，同步版本信息时遭遇此错误提示</p>
 
-<p>一咬牙决心使用git-svn代替svn-client。</p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git svn rebase
 
-<p>Xcode 安装命令行工具</p>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>xcode-select —install
+Incomplete data: Delta <span class="nb">source </span>ended unexpectedly at /Applications/Xcode.app/Contents/Developer/usr/share/git-core/perl/Git/SVN/Ra.pm line 290.
 </code></pre></div></div>
 
-<p>克隆远程资源</p>
+<p>处理办法指定同步版本</p>
 
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git svn clone svn://res-url/something
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git svn reset —r 版本号
 </code></pre></div></div>
 
-<p>会从第一个版本下载一直到最新版本，如果版本很高那可能花上几天的时间</p>
-
-<p>增加参数节约时间，-r1 是开始版本号</p>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git svn clone svn://res-url/something <span class="nt">-r1</span>:2
-</code></pre></div></div>
-
-<p>建好以后再使用rebase同步版本信息</p>
+<p>然后再试</p>
 
 <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git svn rebase
 </code></pre></div></div>
 
-<p>完成后，最好创建开发分支，和master分开，提交代码前，将开发分支合并到master上再提交到svn服务器，避免冲突。</p>
-
-<p>原svn项目资源大小为3G，git svn下载完毕后大小为3.14G.</p>
-
-<p>常用命令</p>
-
-<p>更新本地资源 git svn rebase</p>
-
-<p>提交本地修改到svn服务端 git svn dcommit</p>
-
-<p>最后推荐免费git客户端：SourceTree</p>
+<p>如果还报错，重试指定较低的版本。</p>
 
   </div>
   

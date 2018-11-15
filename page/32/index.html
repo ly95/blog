@@ -267,7 +267,19 @@
       
     
       
+        
+      
     
+      
+    
+      
+    
+      
+        
+      
+    
+      
+        
       
     
       
@@ -449,16 +461,24 @@
   
   <div class="post">
     <h1 class="post-title">
-      <a href="/2012-12-19/reflectionmethod-getdoccomment-return-false.html">
-        ReflectionMethod getDocComment返回false
+      <a href="/2013-01-09/php-class-httprequest-not-found-on-ubuntu.html">
+        PHP Class 'HttpRequest' not found on Ubuntu
       </a>
     </h1>
-    <span class="post-date">2012年12月19日</span>
-    <p>开发soap接口的时候，使用Reflector自动生成wsdl文件。</p>
+    <span class="post-date">2013年01月09日</span>
+    <p>安装 pecl_http</p>
 
-<p>getDocComment服务端则始终为false。</p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt-get <span class="nb">install </span>php-pear
+<span class="nb">sudo </span>apt-get <span class="nb">install </span>libcurl3-openssl-dev
+<span class="nb">sudo </span>apt-get <span class="nb">install </span>re2c
+<span class="nb">sudo </span>pecl <span class="nb">install </span>pecl_http
+<span class="nb">sudo </span>vi /etc/php5/cli/php.ini
+</code></pre></div></div>
 
-<p>最终发现是eAccelerator删除了phpdoc</p>
+<p>添加一行</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s2">"extension=http.so"</span>
+</code></pre></div></div>
 
   </div>
   

@@ -267,7 +267,19 @@
       
     
       
+        
+      
     
+      
+    
+      
+    
+      
+        
+      
+    
+      
+        
       
     
       
@@ -449,35 +461,44 @@
   
   <div class="post">
     <h1 class="post-title">
-      <a href="/2013-08-22/mysql-error-thread-stack-overrun.html">
-        [MACOS] MYSQL Error : Thread stack overrun
+      <a href="/2013-11-19/macports-install-libunwind-failed.html">
+        MacPort安装libunwind失败
       </a>
     </h1>
-    <span class="post-date">2013年08月22日</span>
-    <p>locahost执行一简单update语句的时候，遇见Mysql线程堆栈溢出。</p>
+    <span class="post-date">2013年11月19日</span>
+    <p>通过macport重新安装golang的时候得到下面提示</p>
 
-<p>完整错误提示：</p>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Error : Thread stack overrun: 14616 bytes used of a 131072 byte stack, and 128000 bytes needed. Use <span class="s1">'mysqld --thread_stack=#'</span> to specify a bigger stack.
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Extracting libunwind-headers
+Error: org.macports.extract <span class="k">for </span>port libunwind-headers returned: <span class="nb">command </span>execution failed
+Please see the log file <span class="k">for </span>port libunwind-headers <span class="k">for </span>details:
+/opt/local/var/macports/logs/_opt_local_var_macports_sources_rsync.macports.org_release_tarballs_ports_devel_libunwind-headers/libunwind-headers/main.log
+Error: Problem <span class="k">while </span>installing libunwind-headers
+Error: Unable to execute port: upgrade llvm-gcc42 failed
 </code></pre></div></div>
 
-<p>本机环境：
-max os 10.8.4
-mysql-server55</p>
+<p>通过搜索得到是xcode5升级造成的，先接受新许可。</p>
 
-<p>修改my.conf设置</p>
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>thread_stack <span class="o">=</span> 132K
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>xcodebuild <span class="nt">-license</span> agree
 </code></pre></div></div>
 
-<p>重启mysql-server服务</p>
+<p>打开错误日志 main.log 看到</p>
 
-<p>还是不行，提示</p>
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Error: Thread stack overrun: 14616 bytes used of a 135168 byte stack, and 128000 bytes needed. Use <span class="s1">'mysqld --thread_stack=#'</span> to specify a bigger stack.
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">-xf</span> - 
+:info:extract sh: /usr/bin/gnutar: No such file or directory
+:info:extract <span class="nb">gzip</span>: error writing to output: Broken pipe
+:info:extract <span class="nb">gzip</span>: /opt/local/var/macports/distfiles/libunwind-headers/libunwind-35.1.tar.gz: uncompress failed
+:info:extract Command failed:  <span class="nb">cd</span>
+<span class="s2">"/opt/local/var/macports/build/_opt_local_var_macports_sources_rsync.macports.org_release_tarballs_ports_devel_libunwind-headers/libunwind-headers/work"</span> <span class="o">&amp;&amp;</span> /usr/bin/gzip <span class="nt">-dc</span> <span class="s1">'/opt/local/var/macports/distfiles/libunwind-headers/libunwind-35.1.tar.gz'</span> | /usr/bin/gnutar <span class="nt">--no-same-owner</span>
+<span class="nt">-xf</span> -
 </code></pre></div></div>
 
-<p>真是得寸进尺，索性改到160k，这次没问题了。</p>
+<p>原来是gnutar不存在，回想起来，macos是10.7时安装的macport ，现在已经升级到10.9了。</p>
 
-<p>原因未知，主观觉得跟使用的客户端工具Navicat Premium有关。</p>
+<blockquote>
+  <p>The problem is that your version of MacPorts was not built on Mavericks and assumes the tools that were there when it was installed are still available. Since this is no longer the case, you should re-install MacPorts, which will automatically fix this issue.</p>
+</blockquote>
+
+<p>所以只能重新安装macport</p>
 
   </div>
   

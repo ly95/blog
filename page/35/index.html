@@ -267,7 +267,19 @@
       
     
       
+        
+      
     
+      
+    
+      
+    
+      
+        
+      
+    
+      
+        
       
     
       
@@ -449,14 +461,46 @@
   
   <div class="post">
     <h1 class="post-title">
-      <a href="/2012-10-23/php-gc.html">
-        php垃圾回收机制
+      <a href="/2012-10-27/php-tts.html">
+        文字转语音并保存文件(PHP)
       </a>
     </h1>
-    <span class="post-date">2012年10月23日</span>
-    <p>使用XMPPPHP试写gtalk机器人的脚本程序，目的是协助我监控服务器运行状态。</p>
+    <span class="post-date">2012年10月27日</span>
+    <p>利用win32api实现</p>
 
-<p>在这个过程中，发现php的内存不断上升，记得5.3＋版本采用新的gc机制，问题依旧。</p>
+<p>代码：</p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+<span class="sd">/**
+ * TTS Sample
+ *
+ * @author linyang95#aol.com
+ */</span>
+<span class="nb">define</span><span class="p">(</span><span class="s2">"SSFMCreateForWrite"</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
+
+<span class="nv">$filename</span> <span class="o">=</span> <span class="s2">"tts.mp3"</span><span class="p">;</span>
+
+<span class="nv">$SpVoice</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">COM</span><span class="p">(</span><span class="s2">"SAPI.SpVoice"</span><span class="p">);</span>
+<span class="nv">$SpFileStream</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">COM</span><span class="p">(</span><span class="s2">"SAPI.SpFileStream"</span><span class="p">);</span>
+<span class="nv">$SpFileStream</span><span class="o">-&gt;</span><span class="na">Open</span><span class="p">(</span><span class="nv">$filename</span><span class="p">,</span> <span class="nx">SSFMCreateForWrite</span><span class="p">,</span> <span class="kc">false</span><span class="p">);</span>
+<span class="c1">// 可用声音</span>
+<span class="nv">$_voices</span> <span class="o">=</span> <span class="nv">$SpVoice</span><span class="o">-&gt;</span><span class="na">GetVoices</span><span class="p">();</span>
+<span class="k">foreach</span><span class="p">(</span><span class="nv">$_voices</span> <span class="k">as</span> <span class="nv">$_voice</span><span class="p">)</span> <span class="p">{</span>
+<span class="k">echo</span> <span class="nv">$_voice</span><span class="o">-&gt;</span><span class="na">GetDescription</span><span class="p">()</span><span class="o">.</span><span class="s2">"n"</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="c1">// 语速</span>
+<span class="nv">$SpVoice</span><span class="o">-&gt;</span><span class="na">Rate</span> <span class="o">=</span> <span class="o">-</span><span class="mi">3</span><span class="p">;</span>
+<span class="nv">$SpVoice</span><span class="o">-&gt;</span><span class="na">Voice</span> <span class="o">=</span> <span class="nv">$_voices</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+<span class="nv">$SpVoice</span><span class="o">-&gt;</span><span class="na">AudioOutputStream</span> <span class="o">=</span> <span class="nv">$SpFileStream</span><span class="p">;</span>
+<span class="nv">$SpVoice</span><span class="o">-&gt;</span><span class="na">Speak</span><span class="p">(</span><span class="s2">"你好，http://ly95.me"</span><span class="p">);</span>
+<span class="nv">$SpFileStream</span><span class="o">-&gt;</span><span class="na">Close</span><span class="p">();</span>
+<span class="cp">?&gt;</span>
+</code></pre></div></div>
+
+<p>参考资料：</p>
+
+<p><a href="http://msdn.microsoft.com/en-us/library/ms723602(v=vs.85).aspx">msdn.microsoft.com</a></p>
+
 
   </div>
   

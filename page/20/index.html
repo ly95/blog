@@ -267,7 +267,19 @@
       
     
       
+        
+      
     
+      
+    
+      
+    
+      
+        
+      
+    
+      
+        
       
     
       
@@ -449,44 +461,23 @@
   
   <div class="post">
     <h1 class="post-title">
-      <a href="/2013-11-19/macports-install-libunwind-failed.html">
-        MacPort安装libunwind失败
+      <a href="/2014-04-01/sesson-memcache-warning.html">
+        Session+memcache问题
       </a>
     </h1>
-    <span class="post-date">2013年11月19日</span>
-    <p>通过macport重新安装golang的时候得到下面提示</p>
+    <span class="post-date">2014年04月01日</span>
+    <p>配置php.ini</p>
 
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Extracting libunwind-headers
-Error: org.macports.extract <span class="k">for </span>port libunwind-headers returned: <span class="nb">command </span>execution failed
-Please see the log file <span class="k">for </span>port libunwind-headers <span class="k">for </span>details:
-/opt/local/var/macports/logs/_opt_local_var_macports_sources_rsync.macports.org_release_tarballs_ports_devel_libunwind-headers/libunwind-headers/main.log
-Error: Problem <span class="k">while </span>installing libunwind-headers
-Error: Unable to execute port: upgrade llvm-gcc42 failed
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>session.save_handler <span class="o">=</span> memcache
+session.save_path <span class="o">=</span> <span class="s2">"localhost:11211"</span>
 </code></pre></div></div>
 
-<p>通过搜索得到是xcode5升级造成的，先接受新许可。</p>
+<p>日志提示</p>
 
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>xcodebuild <span class="nt">-license</span> agree
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Warning: session_start<span class="o">()</span> <span class="o">[</span><span class="k">function</span>.session-start]: Keycannot be empty
 </code></pre></div></div>
 
-<p>打开错误日志 main.log 看到</p>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">-xf</span> - 
-:info:extract sh: /usr/bin/gnutar: No such file or directory
-:info:extract <span class="nb">gzip</span>: error writing to output: Broken pipe
-:info:extract <span class="nb">gzip</span>: /opt/local/var/macports/distfiles/libunwind-headers/libunwind-35.1.tar.gz: uncompress failed
-:info:extract Command failed:  <span class="nb">cd</span>
-<span class="s2">"/opt/local/var/macports/build/_opt_local_var_macports_sources_rsync.macports.org_release_tarballs_ports_devel_libunwind-headers/libunwind-headers/work"</span> <span class="o">&amp;&amp;</span> /usr/bin/gzip <span class="nt">-dc</span> <span class="s1">'/opt/local/var/macports/distfiles/libunwind-headers/libunwind-35.1.tar.gz'</span> | /usr/bin/gnutar <span class="nt">--no-same-owner</span>
-<span class="nt">-xf</span> -
-</code></pre></div></div>
-
-<p>原来是gnutar不存在，回想起来，macos是10.7时安装的macport ，现在已经升级到10.9了。</p>
-
-<blockquote>
-  <p>The problem is that your version of MacPorts was not built on Mavericks and assumes the tools that were there when it was installed are still available. Since this is no longer the case, you should re-install MacPorts, which will automatically fix this issue.</p>
-</blockquote>
-
-<p>所以只能重新安装macport</p>
+<p>原因未知，先记录一下。</p>
 
   </div>
   
