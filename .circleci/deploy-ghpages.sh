@@ -24,7 +24,7 @@ if git rev-parse --verify origin/gh-pages > /dev/null 2>&1
 then
     git checkout gh-pages
     git rm -rf .
-    git checkout CNAME
+    git checkout -- CNAME
 else
     git checkout --orphan gh-pages
 fi
