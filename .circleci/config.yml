@@ -9,8 +9,8 @@ jobs:
       - run: rm -rf lanyon-1.0.0/_posts
       - run: cp -r _posts lanyon-1.0.0
       - run: cp -r _my_tags lanyon-1.0.0
-      - run: cd lanyon-1.0.0
-      - run: bundle install
+      - run: cd lanyon-1.0.0 && ls -lah
+      - run: ls -lah && bundle install
       - run: bundle exec jekyll build
 workflows:
   version: 2
