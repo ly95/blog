@@ -17,10 +17,7 @@ jobs:
       - run: cp -r _my_tags lanyon-1.0.0
       - run: cd lanyon-1.0.0 && bundle install
       - run: cd lanyon-1.0.0 && bundle exec jekyll build
-      - deploy:
-          name: Deploy Release to GitHub
-          command: |
-            bash .circleci/deploy-ghpages.sh
+      - run: bash .circleci/deploy-ghpages.sh
 
 workflows:
   version: 2
