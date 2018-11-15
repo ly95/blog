@@ -18,3 +18,12 @@ jobs:
       - run: cd lanyon-1.0.0 && bundle install
       - run: cd lanyon-1.0.0 && bundle exec jekyll build
       - run: bash .circleci/deploy-ghpages.sh
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      - deploy:
+        filters:
+          branches:
+            only: master
