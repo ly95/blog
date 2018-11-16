@@ -2,13 +2,12 @@ version: 2
 
 jobs:
   deploy:
+    branches:
+      only: ["master"]
     docker:
       - image: circleci/ruby:2.4.3-node-browsers
     steps:
       - checkout
-      - add_ssh_keys:
-          fingerprints:
-              - "31:47:03:b0:0c:35:7d:96:f7:95:f1:98:78:44:a8:eb"
       - run: |
           curl -L https://github.com/ly95/lanyon/archive/v1.0.0.tar.gz | tar zx
           rm -rf lanyon-1.0.0/_posts
