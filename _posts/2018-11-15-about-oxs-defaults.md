@@ -28,6 +28,8 @@ defaults read > current_default.txt
 vimdiff current_default.txt changed.txt
 ```
 
+![screenshot](https://raw.githubusercontent.com/ly95/blog/master/_posts/2018-11-15-about-oxs-defaults/screenshot.png)
+
 发现有修改的domain是com.apple.spaces，测试有效，问题解决了。
 ```bash
 defaults delete com.apple.spaces
