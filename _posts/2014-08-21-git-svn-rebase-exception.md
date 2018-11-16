@@ -5,7 +5,7 @@ description: Delta source ended unexpectedly...
 date: 2014-08-21 18:06:16
 modified: 2015-02-17 11:32:16
 categories: 笔记
-tags: Git Svn
+tags: Git SVN
 ---
 
 环境MacOS，git版本1.9.3(Apple Git-50)，同步版本信息时遭遇此错误提示

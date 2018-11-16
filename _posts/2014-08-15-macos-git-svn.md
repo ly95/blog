@@ -3,7 +3,7 @@ layout: post
 title: MacOS Git-svn 使用笔记
 date: 2014-08-15 13:33:00
 modified: 2015-02-17 14:05:26
-tags: Git Svn
+tags: Git SVN
 ---
 
 公司服务器使用版本控制工具为svn-1.6，项目较大，开发任务量大，再一次意外将svn升级到1.8并且更新了svn本地资源，造成无法再提交新文件。

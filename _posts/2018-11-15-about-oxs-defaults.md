@@ -3,7 +3,7 @@ layout: post
 title: 关于MacOS配置defaults
 date: 2018-11-15
 categories: 笔记
-tags: MacOS deafults
+tags: MacOS
 ---
 
 前提（一定是闲的蛋疼）有怪癖，爱保持整洁。原因每次修改了MacbookPro外接显示器桌面背景图，下次连接电脑时背景图不会与内建显示器的背景图同步。

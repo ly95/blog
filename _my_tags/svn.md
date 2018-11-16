@@ -1,4 +1,4 @@
 ---
 slug: svn
-name: Svn
+name: SVN
 ---
