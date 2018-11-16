@@ -4,7 +4,7 @@
  <title>凡人牧白's Blog</title>
  <link href="http://ly95.me/atom.xml" rel="self"/>
  <link href="http://ly95.me/"/>
- <updated>2018-11-16T03:26:33+00:00</updated>
+ <updated>2018-11-16T06:11:05+00:00</updated>
  <id>http://ly95.me</id>
  <author>
    <name>Yang Lin</name>
@@ -35,7 +35,7 @@ killall Dock
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vimdiff current_default.txt changed.txt
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/ly95/blog/master/_posts/2018-11-15-about-oxs-defaults/screenshot.png&quot; alt=&quot;screenshot&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/ly95/blog/master/illustration/2018-11-15/screenshot.png&quot; alt=&quot;screenshot&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;发现有修改的domain是com.apple.spaces，测试有效，问题解决了。&lt;/p&gt;
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;defaults delete com.apple.spaces
@@ -375,7 +375,9 @@ pip &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;n
    <link href="http://ly95.me/2017-03-21/%E5%AD%A9%E5%AD%90%E4%BD%A0%E6%85%A2%E6%85%A2%E6%9D%A5.html"/>
    <updated>2017-03-21T17:24:43+00:00</updated>
    <id>http://ly95.me//2017-03-21/孩子你慢慢来</id>
-   <content type="html">&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/ly95/blog/master/_posts/2017-03-21/book.jpg&quot; alt=&quot;book&quot; /&gt;&lt;/p&gt;
+   <content type="html">&lt;p&gt;&amp;lt;div align=center&amp;gt;
+&lt;img src=&quot;https://raw.githubusercontent.com/ly95/blog/master/illustration/2017-03-21/book.jpg =160px&quot; alt=&quot;book&quot; /&gt;
+&amp;lt;/div&amp;gt;&lt;/p&gt;
 
 &lt;p&gt;最近有读《孩子你慢慢来》，载录书中几句：&lt;/p&gt;
 
