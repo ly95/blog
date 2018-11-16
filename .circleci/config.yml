@@ -1,22 +1,26 @@
 version: 2
 
-general:
-  branches:
-    ignore:
-      - gh-pages
-
 jobs:
   deploy:
+    branches:
+      only:
+        - master
     docker:
       - image: circleci/ruby:2.4.3-node-browsers
     steps:
+      - add_ssh_keys:
+        fingerprints:
+          - "e9:59:6d:9c:cb:ff:be:69:15:d9:a9:62:72:8d:37:42"
       - checkout
-      - run: curl -L https://github.com/ly95/lanyon/archive/v1.0.0.tar.gz | tar zx
-      - run: rm -rf lanyon-1.0.0/_posts
-      - run: cp -r _posts lanyon-1.0.0
-      - run: cp -r _my_tags lanyon-1.0.0
-      - run: cd lanyon-1.0.0 && bundle install
-      - run: cd lanyon-1.0.0 && bundle exec jekyll build
+      - run:
+        command: |
+          curl -L https://github.com/ly95/lanyon/archive/v1.0.0.tar.gz | tar zx
+          rm -rf lanyon-1.0.0/_posts
+          cp -r _posts lanyon-1.0.0
+          cp -r _my_tags lanyon-1.0.0
+          cd lanyon-1.0.0
+          bundle install
+          bundle exec jekyll build
       - run: bash .circleci/deploy-ghpages.sh
 
 workflows:
