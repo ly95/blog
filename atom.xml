@@ -4,7 +4,7 @@
  <title>凡人牧白's Blog</title>
  <link href="http://ly95.me/atom.xml" rel="self"/>
  <link href="http://ly95.me/"/>
- <updated>2018-11-16T02:48:21+00:00</updated>
+ <updated>2018-11-16T02:52:02+00:00</updated>
  <id>http://ly95.me</id>
  <author>
    <name>Yang Lin</name>
@@ -34,6 +34,8 @@ killall Dock
 &lt;p&gt;比对差异&lt;/p&gt;
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vimdiff current_default.txt changed.txt
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/ly95/blog/master/_posts/2018-11-15-about-oxs-defaults/screenshot.png&quot; alt=&quot;screenshot&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;发现有修改的domain是com.apple.spaces，测试有效，问题解决了。&lt;/p&gt;
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;defaults delete com.apple.spaces
