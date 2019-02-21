@@ -67,6 +67,8 @@
       
     
       
+    
+      
         
       
     
@@ -76,6 +78,10 @@
         
       
     
+      
+    
+      
+        
       
     
       
@@ -436,7 +442,7 @@
 
   <div class="sidebar-item">
     <p>
-      &copy; 2018. All rights reserved.
+      &copy; 2019. All rights reserved.
     </p>
   </div>
 </div>
@@ -457,40 +463,78 @@
   
   <div class="post">
     <h1 class="post-title">
-      <a href="/2013-01-26/ubuntu-ji-lu-suo-you-yong-hu-cao-zuo-ri-zhi.html">
-        Ubuntu记录所有用户操作日志
+      <a href="/2013-01-30/ubuntu12-install-pptpd.html">
+        Ubuntu12.10 安装 pptpd 实录
       </a>
     </h1>
-    <span class="post-date">2013年01月26日</span>
-    <p>在/etc/profile.d/目录创建userlog.sh文件</p>
+    <span class="post-date">2013年01月30日</span>
+    <p>切换至root帐号下</p>
 
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>vi /etc/profile.d/userlog.sh
+<p>安装pptd</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apt-get <span class="nb">install </span>pptpd <span class="nt">-y</span>
 </code></pre></div></div>
 
-<p>内容如下</p>
+<p>配置DNS</p>
 
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">PS1</span><span class="o">=</span><span class="s2">"</span><span class="sb">`</span><span class="nb">whoami</span><span class="sb">`</span><span class="s2">@</span><span class="sb">`</span><span class="nb">hostname</span><span class="sb">`</span><span class="s2">:"</span><span class="s1">'[$PWD]'</span>
-<span class="nb">history
-</span><span class="nv">USER_IP</span><span class="o">=</span><span class="sb">`</span><span class="nb">who</span> <span class="nt">-u</span> am i 2&gt;/dev/null| <span class="nb">awk</span> <span class="s1">'{print $NF}'</span>|sed <span class="nt">-e</span> <span class="s1">'s/[()]//g'</span><span class="sb">`</span>
-<span class="k">if</span> <span class="o">[</span> <span class="s2">"</span><span class="nv">$USER_IP</span><span class="s2">"</span> <span class="o">=</span> <span class="s2">""</span> <span class="o">]</span>
-<span class="k">then
-</span><span class="nv">USER_IP</span><span class="o">=</span><span class="sb">`</span><span class="nb">hostname</span><span class="sb">`</span>
-<span class="k">fi
-if</span> <span class="o">[</span> <span class="o">!</span> <span class="nt">-d</span> /tmp/history <span class="o">]</span>
-<span class="k">then
-</span><span class="nb">mkdir</span> /tmp/history
-<span class="nb">chmod </span>777 /tmp/history
-<span class="k">fi
-if</span> <span class="o">[</span> <span class="o">!</span> <span class="nt">-d</span> /tmp/history/<span class="k">${</span><span class="nv">LOGNAME</span><span class="k">}</span> <span class="o">]</span>
-<span class="k">then
-</span><span class="nb">mkdir</span> /tmp/history/<span class="k">${</span><span class="nv">LOGNAME</span><span class="k">}</span>
-<span class="nb">chmod </span>300 /tmp/history/<span class="k">${</span><span class="nv">LOGNAME</span><span class="k">}</span>
-<span class="k">fi
-</span><span class="nb">export </span><span class="nv">HISTSIZE</span><span class="o">=</span>4096
-<span class="nv">DT</span><span class="o">=</span><span class="sb">`</span><span class="nb">date</span> +<span class="s2">"%Y%m%d_%H%M%S"</span><span class="sb">`</span>
-<span class="nb">export </span><span class="nv">HISTFILE</span><span class="o">=</span><span class="s2">"/tmp/history/</span><span class="k">${</span><span class="nv">LOGNAME</span><span class="k">}</span><span class="s2">/</span><span class="k">${</span><span class="nv">USER_IP</span><span class="k">}</span><span class="s2"> history.</span><span class="nv">$DT</span><span class="s2">"</span>
-<span class="nb">chmod </span>600 /tmp/history/<span class="k">${</span><span class="nv">LOGNAME</span><span class="k">}</span>/<span class="k">*</span><span class="nb">history</span><span class="k">*</span> 2&gt;/dev/null
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vi /etc/ppp/pptpd-options
 </code></pre></div></div>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ms-dns 8.8.8.8
+</code></pre></div></div>
+
+<p>分配客户端虚拟IP</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vi /etc/pptpd.conf
+</code></pre></div></div>
+
+<p>取消注释最后2行</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#localip 192.168.0.1</span>
+<span class="c">#remoteip 192.168.0.234-238,192.168.0.245</span>
+<span class="c">#or</span>
+localip 192.168.0.234-238,192.168.0.245
+remoteip 192.168.1.234-238,192.168.1.245
+</code></pre></div></div>
+
+<p>添加客户端帐号</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vi /etc/ppp/chap-secrets
+</code></pre></div></div>
+
+<p>帐号 服务 密码 IP</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">test</span> <span class="k">*</span> <span class="nb">test</span> <span class="k">*</span>
+</code></pre></div></div>
+
+<p>路由规则设置ipv4转发</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vi /etc/sysctl.conf
+</code></pre></div></div>
+
+<p>找到“net.ipv4.ip_forward”所在行，设置为1</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>net.ipv4.ip_forward <span class="o">=</span> 1
+</code></pre></div></div>
+
+<p>更新规则</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sysctl <span class="nt">-p</span>
+</code></pre></div></div>
+
+<p>iptables转发设置</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>iptables <span class="nt">-P</span> FORWARD ACCEPT
+/sbin/iptables <span class="nt">--table</span> nat <span class="nt">-A</span> POSTROUTING <span class="nt">-o</span> eth0 <span class="nt">-j</span> MASQUERADE
+</code></pre></div></div>
+
+<p>最后重启</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/etc/init.d/pptpd restart
+netstat <span class="nt">-anp</span> | <span class="nb">grep </span>pptpd
+</code></pre></div></div>
+
+<p>pptpd已经在监听1723端口说明一切正常</p>
 
   </div>
   

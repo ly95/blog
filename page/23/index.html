@@ -67,6 +67,8 @@
       
     
       
+    
+      
         
       
     
@@ -76,6 +78,10 @@
         
       
     
+      
+    
+      
+        
       
     
       
@@ -436,7 +442,7 @@
 
   <div class="sidebar-item">
     <p>
-      &copy; 2018. All rights reserved.
+      &copy; 2019. All rights reserved.
     </p>
   </div>
 </div>
@@ -457,14 +463,35 @@
   
   <div class="post">
     <h1 class="post-title">
-      <a href="/2013-08-19/sou-jiu-dian.html">
-        搜酒店App
+      <a href="/2013-08-22/mysql-error-thread-stack-overrun.html">
+        [MACOS] MYSQL Error : Thread stack overrun
       </a>
     </h1>
-    <span class="post-date">2013年08月19日</span>
-    <p><img class="alignnone size-full wp-image-238" alt="logo@2x" src="http://ly95.me/wp-content/uploads/2013/08/logo@2x.png" width="114" height="114" /></p>
+    <span class="post-date">2013年08月22日</span>
+    <p>locahost执行一简单update语句的时候，遇见Mysql线程堆栈溢出。</p>
 
-<p>基于lbs寻找附近酒店</p>
+<p>完整错误提示：</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Error : Thread stack overrun: 14616 bytes used of a 131072 byte stack, and 128000 bytes needed. Use <span class="s1">'mysqld --thread_stack=#'</span> to specify a bigger stack.
+</code></pre></div></div>
+
+<p>本机环境：
+max os 10.8.4
+mysql-server55</p>
+
+<p>修改my.conf设置</p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>thread_stack <span class="o">=</span> 132K
+</code></pre></div></div>
+
+<p>重启mysql-server服务</p>
+
+<p>还是不行，提示</p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Error: Thread stack overrun: 14616 bytes used of a 135168 byte stack, and 128000 bytes needed. Use <span class="s1">'mysqld --thread_stack=#'</span> to specify a bigger stack.
+</code></pre></div></div>
+
+<p>真是得寸进尺，索性改到160k，这次没问题了。</p>
+
+<p>原因未知，主观觉得跟使用的客户端工具Navicat Premium有关。</p>
 
   </div>
   

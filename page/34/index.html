@@ -67,6 +67,8 @@
       
     
       
+    
+      
         
       
     
@@ -76,6 +78,10 @@
         
       
     
+      
+    
+      
+        
       
     
       
@@ -436,7 +442,7 @@
 
   <div class="sidebar-item">
     <p>
-      &copy; 2018. All rights reserved.
+      &copy; 2019. All rights reserved.
     </p>
   </div>
 </div>
@@ -457,48 +463,16 @@
   
   <div class="post">
     <h1 class="post-title">
-      <a href="/2012-12-08/ubuntu12-install-awstats.html">
-        Ubuntu12.10安装日志分析工具AWStats
+      <a href="/2012-12-19/reflectionmethod-getdoccomment-return-false.html">
+        ReflectionMethod getDocComment返回false
       </a>
     </h1>
-    <span class="post-date">2012年12月08日</span>
-    <p>安装</p>
+    <span class="post-date">2012年12月19日</span>
+    <p>开发soap接口的时候，使用Reflector自动生成wsdl文件。</p>
 
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apt-get <span class="nb">install </span>awstats
-</code></pre></div></div>
+<p>getDocComment服务端则始终为false。</p>
 
-<p>配置</p>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vi /etc/awstats/awstats.conf
-</code></pre></div></div>
-
-<p>查询并修改下列参数</p>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">LogFile</span><span class="o">=</span><span class="s2">"/var/log/apache2/access.log"</span>
-<span class="nv">LogFormat</span><span class="o">=</span>1
-<span class="nv">SiteDomain</span><span class="o">=</span><span class="s2">"ly95.me"</span>
-<span class="nv">HostAliases</span><span class="o">=</span><span class="s2">"localhost 127.0.0.1 ly95.me"</span>
-</code></pre></div></div>
-
-<p>增加一条定时任务</p>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vi /etc/crontab
-</code></pre></div></div>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0 <span class="k">*</span>/3 <span class="k">*</span> <span class="k">*</span> <span class="k">*</span> root /usr/lib/cgi-bin/awstats.pl <span class="nt">-config</span><span class="o">=</span>ly95.me <span class="nt">-update</span> <span class="o">&gt;</span> /var/log/awstats.log
-</code></pre></div></div>
-
-<p>Apache 默认VirtualHost标签里增加</p>
-
-<div class="language-ini highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">Alias</span> <span class="err">/awstatsclasses</span> <span class="err">“/usr/share/awstats/lib/"</span>
-<span class="err">Alias</span> <span class="err">/awstats-icon/</span> <span class="err">“/usr/share/awstats/icon/"</span>
-<span class="err">Alias</span> <span class="err">/awstatscss</span> <span class="err">“/usr/share/doc/awstats/examples/css"</span>
-<span class="err">ScriptAlias</span> <span class="err">/awstats/</span> <span class="err">/usr/lib/cgi-bin/</span>
-</code></pre></div></div>
-
-<p>重启Apache</p>
-
-<p>访问 http://ly95.me/awstats/awstats.pl</p>
+<p>最终发现是eAccelerator删除了phpdoc</p>
 
   </div>
   

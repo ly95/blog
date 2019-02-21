@@ -67,6 +67,8 @@
       
     
       
+    
+      
         
       
     
@@ -76,6 +78,10 @@
         
       
     
+      
+    
+      
+        
       
     
       
@@ -436,7 +442,7 @@
 
   <div class="sidebar-item">
     <p>
-      &copy; 2018. All rights reserved.
+      &copy; 2019. All rights reserved.
     </p>
   </div>
 </div>
@@ -457,20 +463,45 @@
   
   <div class="post">
     <h1 class="post-title">
-      <a href="/2015-07-18/python-cross-domain-proxy.html">
-        跨域代理
+      <a href="/2015-08-30/php-tool-phpdcd.html">
+        PHP开发工具PHPDCD
       </a>
     </h1>
-    <span class="post-date">2015年07月18日</span>
-    <p>Javascript 跨域</p>
+    <span class="post-date">2015年08月30日</span>
+    <p>PHP开发工具PHPMD和PHPCS都不在做介绍了，今天在Github上发现的一款工具也很不错。</p>
 
-<p>在做基于ionicframework的App的时候，顺便写了一个简单代理服务。</p>
+<p><strong>PHP Dead Code Detector (PHPDCD)</strong></p>
 
-<p>目的是为了使服务器的接口增加接入控制，以支持Javascript跨域。</p>
+<p>phpdcd 可以扫描php项目中的没有在使用的函数或方法（死代码）</p>
 
-<p>代码：</p>
+<p>使用方法也简单，下载https://phar.phpunit.de/phpdcd.phar后即可使用。</p>
 
-<p><a href="https://github.com/ly95/py-crossdomain-proxy">https://github.com/ly95/py-crossdomain-proxy</a></p>
+<p>以Mac OS为例</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget https://phar.phpunit.de/phpdcd.phar
+<span class="nb">chmod</span> +x phpdcd.phar
+<span class="nb">mv </span>phpdcd.phar /usr/local/bin/phpdcd
+</code></pre></div></div>
+
+<p>进入项目目录</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> /var/www/site
+phpdcd <span class="nb">.</span>
+</code></pre></div></div>
+
+<p>即可立即返回扫描报告。</p>
+
+<p><strong>可选参数</strong></p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Usage:
+ phpdcd <span class="o">[</span><span class="nt">--names</span><span class="o">=</span><span class="s2">"..."</span><span class="o">]</span> <span class="o">[</span><span class="nt">--names-exclude</span><span class="o">=</span><span class="s2">"..."</span><span class="o">]</span> <span class="o">[</span><span class="nt">--exclude</span><span class="o">=</span><span class="s2">"..."</span><span class="o">]</span> <span class="o">[</span><span class="nt">--recursive</span><span class="o">]</span> <span class="o">[</span>values1] ... <span class="o">[</span>valuesN]
+Arguments:
+ values
+Options:
+ <span class="nt">--names</span>               需要检查的文件名列表，数组形势 <span class="o">(</span>如: <span class="o">[</span><span class="s2">"*.php"</span>, <span class="s2">"*.ini"</span><span class="o">])</span>
+ <span class="nt">--names-exclude</span>       不需要检查的文件名列表，值也是数组形式
+ <span class="nt">--exclude</span>             按目录排除不需要检查的文件
+</code></pre></div></div>
 
   </div>
   
