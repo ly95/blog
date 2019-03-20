@@ -4,13 +4,119 @@
  <title>凡人牧白's Blog</title>
  <link href="http://ly95.me/atom.xml" rel="self"/>
  <link href="http://ly95.me/"/>
- <updated>2019-02-21T09:52:49+00:00</updated>
+ <updated>2019-03-20T06:41:50+00:00</updated>
  <id>http://ly95.me</id>
  <author>
    <name>Yang Lin</name>
    <email>linyang95@aol.com</email>
  </author>
 
+ 
+ <entry>
+   <title>腾讯云容器服务Api实例</title>
+   <link href="http://ly95.me/2019-02-21/tencent-cloud-api-with-postman.html"/>
+   <updated>2019-02-21T00:00:00+00:00</updated>
+   <id>http://ly95.me//2019-02-21/tencent-cloud-api-with-postman</id>
+   <content type="html">&lt;p&gt;为了测试方便，在postman上用javascript实现了签名。&lt;/p&gt;
+
+&lt;p&gt;Pre script代码&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;function ksort(jsonData) {
+    try {
+        let tempJsonObj = {};
+        let sdic = Object.keys(jsonData).sort();
+        sdic.map((item, index) =&amp;gt; {
+            tempJsonObj[item] = jsonData[sdic[index]]
+        })
+        return tempJsonObj;
+    } catch (e) {
+        return jsonData;
+    }
+}
+
+pm.sendRequest(&quot;https://caligatio.github.io/jsSHA/sha.js&quot;, (err, res) =&amp;gt; {
+    var e = eval;
+    e(res.text());
+
+    var ts = Math.round((new Date()).getTime() / 1000);
+    pm.environment.set(&quot;Timestamp&quot;, ts);
+    pm.environment.set(&quot;Nonce&quot;, Math.random().toString().slice(-6));
+
+    var list = [
+        'Action',
+        'Nonce',
+        'Region',
+        'SecretId',
+        'Timestamp',
+        'clusterId',
+        'allnamespace',
+    ];
+
+    var params = [];
+    for (var i in list) {
+        var k = list[i];
+        params[k] = pm.environment.get(k);
+    }
+    console.log(params);
+    var params2 = ksort(params);
+    var temp = [];
+    for (var k2 in params2) {
+        temp.push(k2 + &quot;=&quot; + params[k2]);
+    }
+    var reqStr = temp.join(&quot;&amp;amp;&quot;);
+
+    var sign = &quot;GET&quot; + pm.globals.get(&quot;uri&quot;) + &quot;?&quot; + reqStr;
+
+    var hmacObj = new jsSHA(&quot;SHA-1&quot;, &quot;TEXT&quot;);
+    hmacObj.setHMACKey(pm.environment.get(&quot;TXAPI_SECRETKEY&quot;), &quot;TEXT&quot;);
+    hmacObj.update(sign);
+    
+    var signed = hmacObj.getHMAC(&quot;B64&quot;);
+
+    pm.environment.set(&quot;Signature&quot;, signed);
+
+});
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;部分变量设置&quot;&gt;部分变量设置&lt;/h3&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;name&lt;/th&gt;
+      &lt;th&gt;Value&lt;/th&gt;
+      &lt;th&gt; &lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;uri&lt;/td&gt;
+      &lt;td&gt;ccs.api.qcloud.com/v2/index.php&lt;/td&gt;
+      &lt;td&gt;-&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Action&lt;/td&gt;
+      &lt;td&gt;DescribeClusterService&lt;/td&gt;
+      &lt;td&gt;具体操作的指令接口名称，例如想要调用查询伸缩组列表 接口，则 Action 参数即为 DescribeInstances。&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Region&lt;/td&gt;
+      &lt;td&gt;bj&lt;/td&gt;
+      &lt;td&gt;区域参数，用来标识希望操作哪个区域的实例。各区域的参数值为: 北京:bj，广州:gz，上海:sh，香港:hk，北美:ca。&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;allnamespace&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;是否展示所有命名空间下的服务。1：是，0 或不传：否&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&quot;postman模版分享&quot;&gt;postman模版分享&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://documenter.getpostman.com/view/4561089/S17qR8Q3#7da4f05d-810d-48a1-b317-85daa2e0249b&quot;&gt;https://documenter.getpostman.com/view/4561089/S17qR8Q3#7da4f05d-810d-48a1-b317-85daa2e0249b&lt;/a&gt;&lt;/p&gt;
+
+</content>
+ </entry>
  
  <entry>
    <title>Bet365数据抓取分析完成</title>

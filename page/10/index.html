@@ -277,6 +277,10 @@
       
     
       
+        
+      
+    
+      
     
       
     
@@ -463,40 +467,17 @@
   
   <div class="post">
     <h1 class="post-title">
-      <a href="/2016-04-15/nodejs-php-symbols.html">
-        学习词汇解析
+      <a href="/2016-07-01/domain-name-sytem-protocol.html">
+        学习笔记DNS协议
       </a>
     </h1>
-    <span class="post-date">2016年04月15日</span>
-    <p>起因在使用Visual Studio Code无法查看到PHP代码结构，突然打算动手解决此事。</p>
+    <span class="post-date">2016年07月01日</span>
+    <p>本着学习和理解DNS协议的想法，决定简单实现DNS.</p>
 
-<p>能力有限，起初想到的解决办法：通过PHP脚本来解析PHP文档。
-可利用相关函数</p>
+<p>参考 RFC1024, RFC1035</p>
 
-<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">token_get_all</span><span class="p">();</span>
-<span class="c1">// get_defined_*</span>
-</code></pre></div></div>
-
-<p>缺点就是存在环境依赖、版本兼容、被编辑的文件语法错误的时候无法解析。</p>
-
-<p>不依赖开发环境，只有使用nodejs扫描PHP源码并生成symbols信息，于是决定就这样做。
-中间过程略，学习路线是这样的：了解词汇解析，阅读PHP Zend部分源码，学习re2c，动手写代码。</p>
-
-<p><strong>好有的想法一定要努力实现不管结果怎样。</strong></p>
-
-<p>昨晚该插件已发布，名为 php symbols 
-<a href="https://marketplace.visualstudio.com/items?itemName=linyang95.php-symbols">地址</a>。</p>
-
-<p>参考资料：</p>
-
-<ul>
-  <li><a href="https://zh.wikipedia.org/wiki/词法分析">Wiki 词法分析</a></li>
-  <li><a href="http://www.cs.berkeley.edu/%7Ebodik/cs164sp13">CS164</a></li>
-  <li><a href="http://tldp.org/HOWTO/Lex-YACC-HOWTO.html">Lex and YACC primer/HOWTO</a></li>
-  <li><a href="https://www.ibm.com/developerworks/cn/linux/sdk/lex/">Yacc 与 Lex 快速入门</a></li>
-  <li>《领域专用语言实战》(亚马逊购买的kindle版)</li>
-</ul>
-
+<p>代码库：
+<a href="https://github.com/ly95/dns">github.com/ly95/dns</a></p>
 
   </div>
   

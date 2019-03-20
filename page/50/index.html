@@ -277,6 +277,10 @@
       
     
       
+        
+      
+    
+      
     
       
     
@@ -463,14 +467,32 @@
   
   <div class="post">
     <h1 class="post-title">
-      <a href="/2012-07-21/zhi-zhao-er.html">
-        支招儿App
+      <a href="/2012-07-21/install-pptp-on-ubuntu.html">
+        Install PPTP server on Ubuntu 12.04
       </a>
     </h1>
     <span class="post-date">2012年07月21日</span>
-    <p><img src="http://a2.mzstatic.com/us/r1000/110/Purple/v4/53/47/14/534714c8-bc75-ee6b-7ea2-2f73bcd1231c/wDeJ7AVm2bgGdkjqRZikBw-temp-upload.ihrklyak.175x175-75.jpg" alt="8694a4c27d1ed21bf356cd74ad6eddc450da3f80" style="width: 175px;" /></p>
+    <p>参考</p>
 
-<p>社交类App</p>
+<p><a href="http://www.larmeir.com/2010/03/setting-up-a-pptp-vpn-server-on-debian-and-ubuntu/">http://www.larmeir.com/2010/03/setting-up-a-pptp-vpn-server-on-debian-and-ubuntu/</a></p>
+
+<p>补充：</p>
+
+<p>记得把iptables rules保存</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>iptables-save <span class="o">&gt;</span> /etc/iptables.pptp
+</code></pre></div></div>
+
+<p>在/etc/network/if-up.d/目录下创建iptables文件，内容如下：</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/sh</span>
+iptables-restore &lt; /etc/iptables.pptp
+</code></pre></div></div>
+
+<p>增加执行权限</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">chmod</span> +x /etc/network/if-up.d/iptables
+</code></pre></div></div>
 
   </div>
   
@@ -479,7 +501,7 @@
 
 <div class="pagination">
   
-    <span class="pagination-item older">下一页</span>
+    <a class="pagination-item older" href="/page/51">下一页</a>
   
   
     

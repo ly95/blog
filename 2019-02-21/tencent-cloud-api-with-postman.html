@@ -11,7 +11,9 @@
 
   <title>
     
-      凡人牧白's Blog &middot; Personal Blog
+      
+        腾讯云容器服务Api实例 &middot; 凡人牧白's Blog
+      
     
   </title>
 
@@ -463,48 +465,145 @@
       </div>
 
       <div class="container content">
-        <div class="posts">
+        <div class="post">
+  <h1 class="post-title">腾讯云容器服务Api实例</h1>
+  <span class="post-date">2019年02月21日</span>
   
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/2013-05-23/mysql-config-not-found-on-osx.html">
-        mysql_config not found on osx10.8
-      </a>
-    </h1>
-    <span class="post-date">2013年05月23日</span>
-    <p>系统：osx 10.8.3</p>
+  <hr>
+  <p>为了测试方便，在postman上用javascript实现了签名。</p>
 
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip <span class="nb">install </span>mysql-python
+<p>Pre script代码</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function ksort(jsonData) {
+    try {
+        let tempJsonObj = {};
+        let sdic = Object.keys(jsonData).sort();
+        sdic.map((item, index) =&gt; {
+            tempJsonObj[item] = jsonData[sdic[index]]
+        })
+        return tempJsonObj;
+    } catch (e) {
+        return jsonData;
+    }
+}
+
+pm.sendRequest("https://caligatio.github.io/jsSHA/sha.js", (err, res) =&gt; {
+    var e = eval;
+    e(res.text());
+
+    var ts = Math.round((new Date()).getTime() / 1000);
+    pm.environment.set("Timestamp", ts);
+    pm.environment.set("Nonce", Math.random().toString().slice(-6));
+
+    var list = [
+        'Action',
+        'Nonce',
+        'Region',
+        'SecretId',
+        'Timestamp',
+        'clusterId',
+        'allnamespace',
+    ];
+
+    var params = [];
+    for (var i in list) {
+        var k = list[i];
+        params[k] = pm.environment.get(k);
+    }
+    console.log(params);
+    var params2 = ksort(params);
+    var temp = [];
+    for (var k2 in params2) {
+        temp.push(k2 + "=" + params[k2]);
+    }
+    var reqStr = temp.join("&amp;");
+
+    var sign = "GET" + pm.globals.get("uri") + "?" + reqStr;
+
+    var hmacObj = new jsSHA("SHA-1", "TEXT");
+    hmacObj.setHMACKey(pm.environment.get("TXAPI_SECRETKEY"), "TEXT");
+    hmacObj.update(sign);
+    
+    var signed = hmacObj.getHMAC("B64");
+
+    pm.environment.set("Signature", signed);
+
+});
 </code></pre></div></div>
 
-<p>抛出异常</p>
+<h3 id="部分变量设置">部分变量设置</h3>
 
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>EnvironmentError: mysql_config not found
-</code></pre></div></div>
+<table>
+  <thead>
+    <tr>
+      <th>name</th>
+      <th>Value</th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>uri</td>
+      <td>ccs.api.qcloud.com/v2/index.php</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>Action</td>
+      <td>DescribeClusterService</td>
+      <td>具体操作的指令接口名称，例如想要调用查询伸缩组列表 接口，则 Action 参数即为 DescribeInstances。</td>
+    </tr>
+    <tr>
+      <td>Region</td>
+      <td>bj</td>
+      <td>区域参数，用来标识希望操作哪个区域的实例。各区域的参数值为: 北京:bj，广州:gz，上海:sh，香港:hk，北美:ca。</td>
+    </tr>
+    <tr>
+      <td>allnamespace</td>
+      <td>1</td>
+      <td>是否展示所有命名空间下的服务。1：是，0 或不传：否</td>
+    </tr>
+  </tbody>
+</table>
 
-<p>由于mysql是macport安装，版本55，所以问题就简单了</p>
+<h3 id="postman模版分享">postman模版分享</h3>
 
-<p>只需运行命令</p>
+<p><a href="https://documenter.getpostman.com/view/4561089/S17qR8Q3#7da4f05d-810d-48a1-b317-85daa2e0249b">https://documenter.getpostman.com/view/4561089/S17qR8Q3#7da4f05d-810d-48a1-b317-85daa2e0249b</a></p>
 
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo ln</span> <span class="nt">-s</span> /opt/local/bin/mysql_config5 /opt/local/bin/mysql_config
-</code></pre></div></div>
 
-  </div>
-  
 </div>
 
-
-<div class="pagination">
-  
-    <a class="pagination-item older" href="/page/28">下一页</a>
-  
-  
+<div class="related">
+  <h2>相关文章</h2>
+  <ul class="related-posts">
     
-      <a class="pagination-item newer" href="/page/26">上一页</a>
+      <li>
+        <h3>
+          <small>2019年02月21日</small>
+          <a href="/2019-02-21/analyse-javascript.html">
+            Bet365数据抓取分析完成
+          </a>
+        </h3>
+      </li>
     
-  
+      <li>
+        <h3>
+          <small>2018年11月15日</small>
+          <a href="/2018-11-15/about-oxs-defaults.html">
+            关于MacOS配置defaults
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <small>2018年05月10日</small>
+          <a href="/2018-05-10/ethereum-private-network.html">
+            以太坊私链搭建
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
 </div>
-
 
       </div>
     </div>

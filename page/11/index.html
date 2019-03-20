@@ -277,6 +277,10 @@
       
     
       
+        
+      
+    
+      
     
       
     
@@ -463,54 +467,40 @@
   
   <div class="post">
     <h1 class="post-title">
-      <a href="/2015-12-12/mysql-lian-jie-guo-duo.html">
-        Mysql连接数过多
+      <a href="/2016-04-15/nodejs-php-symbols.html">
+        学习词汇解析
       </a>
     </h1>
-    <span class="post-date">2015年12月12日</span>
-    <p>最近mysql数据库连接数突然增多，经过模拟测试和阅读php源码确认是由于php超时有关，这种连接状态多为sleep。</p>
+    <span class="post-date">2016年04月15日</span>
+    <p>起因在使用Visual Studio Code无法查看到PHP代码结构，突然打算动手解决此事。</p>
 
-<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp"># file: php-src/sapi/fpm/fpm/fpm_main.c
-</span>
-<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">argv</span><span class="p">[])</span>
-<span class="p">{</span>
-    <span class="c1">// 代码略...</span>
-    <span class="n">zend_first_try</span> <span class="p">{</span>
-        <span class="k">while</span> <span class="p">(</span><span class="n">EXPECTED</span><span class="p">(</span><span class="n">fcgi_accept_request</span><span class="p">(</span><span class="n">request</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">))</span> <span class="p">{</span>
-            <span class="c1">// 代码略...</span>
-            <span class="n">php_execute_script</span><span class="p">(</span><span class="o">&amp;</span><span class="n">file_handle</span><span class="p">);</span>
-            <span class="c1">// 代码略...</span>
-            <span class="n">php_request_shutdown</span><span class="p">((</span><span class="kt">void</span> <span class="o">*</span><span class="p">)</span> <span class="mi">0</span><span class="p">);</span>
-            <span class="c1">// 代码略...</span>
-        <span class="p">}</span>
-        <span class="c1">// 代码略...</span>
-    <span class="p">}</span> <span class="n">zend_catch</span> <span class="p">{</span>
-        <span class="n">exit_status</span> <span class="o">=</span> <span class="n">FPM_EXIT_SOFTWARE</span><span class="p">;</span>
-    <span class="p">}</span> <span class="n">zend_end_try</span><span class="p">();</span>
+<p>能力有限，起初想到的解决办法：通过PHP脚本来解析PHP文档。
+可利用相关函数</p>
 
-    <span class="c1">// 代码略...</span>
-    <span class="k">return</span> <span class="n">exit_status</span><span class="p">;</span>
-<span class="p">}</span>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">token_get_all</span><span class="p">();</span>
+<span class="c1">// get_defined_*</span>
 </code></pre></div></div>
 
-<p>宏zend_first_try和zend_catch看作长跳转(setjump)，
-当发生超时，函数php_execute_script将抛出E_ERROR类型错误。</p>
+<p>缺点就是存在环境依赖、版本兼容、被编辑的文件语法错误的时候无法解析。</p>
+
+<p>不依赖开发环境，只有使用nodejs扫描PHP源码并生成symbols信息，于是决定就这样做。
+中间过程略，学习路线是这样的：了解词汇解析，阅读PHP Zend部分源码，学习re2c，动手写代码。</p>
+
+<p><strong>好有的想法一定要努力实现不管结果怎样。</strong></p>
+
+<p>昨晚该插件已发布，名为 php symbols 
+<a href="https://marketplace.visualstudio.com/items?itemName=linyang95.php-symbols">地址</a>。</p>
+
+<p>参考资料：</p>
 
 <ul>
-  <li>E_ERROR</li>
-  <li>E_CORE_ERROR</li>
-  <li>E_COMPILE_ERROR</li>
-  <li>E_USER_ERROR</li>
-  <li>E_PARSE</li>
+  <li><a href="https://zh.wikipedia.org/wiki/词法分析">Wiki 词法分析</a></li>
+  <li><a href="http://www.cs.berkeley.edu/%7Ebodik/cs164sp13">CS164</a></li>
+  <li><a href="http://tldp.org/HOWTO/Lex-YACC-HOWTO.html">Lex and YACC primer/HOWTO</a></li>
+  <li><a href="https://www.ibm.com/developerworks/cn/linux/sdk/lex/">Yacc 与 Lex 快速入门</a></li>
+  <li>《领域专用语言实战》(亚马逊购买的kindle版)</li>
 </ul>
 
-<p>以上错误类型不能捕获，源码中这样描述fatal errors:</p>
-
-<blockquote>
-  <p>fatal errors are real errors and cannot be made exceptions</p>
-</blockquote>
-
-<p>函数php_request_shutdown会跳过执行，最终析构方法不会被执行。</p>
 
   </div>
   

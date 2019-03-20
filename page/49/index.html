@@ -277,6 +277,10 @@
       
     
       
+        
+      
+    
+      
     
       
     
@@ -463,32 +467,17 @@
   
   <div class="post">
     <h1 class="post-title">
-      <a href="/2012-07-21/install-pptp-on-ubuntu.html">
-        Install PPTP server on Ubuntu 12.04
+      <a href="/2012-07-23/xcode4-5-error-failed-to-attach-to-process-id-0.html">
+        [Xcode4.5 DP3] Error: failed to attach to process ID 0
       </a>
     </h1>
-    <span class="post-date">2012年07月21日</span>
-    <p>参考</p>
+    <span class="post-date">2012年07月23日</span>
+    <p>编译app时输出</p>
 
-<p><a href="http://www.larmeir.com/2010/03/setting-up-a-pptp-vpn-server-on-debian-and-ubuntu/">http://www.larmeir.com/2010/03/setting-up-a-pptp-vpn-server-on-debian-and-ubuntu/</a></p>
-
-<p>补充：</p>
-
-<p>记得把iptables rules保存</p>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>iptables-save <span class="o">&gt;</span> /etc/iptables.pptp
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>error: failed to attach to process ID 0
 </code></pre></div></div>
 
-<p>在/etc/network/if-up.d/目录下创建iptables文件，内容如下：</p>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/sh</span>
-iptables-restore &lt; /etc/iptables.pptp
-</code></pre></div></div>
-
-<p>增加执行权限</p>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">chmod</span> +x /etc/network/if-up.d/iptables
-</code></pre></div></div>
+<p>然后把项目使用Xcode4.3编译，问题一样。</p>
 
   </div>
   

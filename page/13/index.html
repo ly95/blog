@@ -277,6 +277,10 @@
       
     
       
+        
+      
+    
+      
     
       
     
@@ -463,45 +467,16 @@
   
   <div class="post">
     <h1 class="post-title">
-      <a href="/2015-08-30/php-tool-phpdcd.html">
-        PHP开发工具PHPDCD
+      <a href="/2015-11-24/vscode-phpmd-plugin.html">
+        VSCode的PhpMD插件
       </a>
     </h1>
-    <span class="post-date">2015年08月30日</span>
-    <p>PHP开发工具PHPMD和PHPCS都不在做介绍了，今天在Github上发现的一款工具也很不错。</p>
+    <span class="post-date">2015年11月24日</span>
+    <p>VSCode(Visual Studio Code) 早有关注。前不久发布了v0.10.1，支持插件开发，兴奋不已。</p>
 
-<p><strong>PHP Dead Code Detector (PHPDCD)</strong></p>
+<p>所以为php开发了phpmd插件，已经可以在插件库里搜索和下载。vscode插件开发文档不多，后期再慢慢改善这个插件。</p>
 
-<p>phpdcd 可以扫描php项目中的没有在使用的函数或方法（死代码）</p>
-
-<p>使用方法也简单，下载https://phar.phpunit.de/phpdcd.phar后即可使用。</p>
-
-<p>以Mac OS为例</p>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget https://phar.phpunit.de/phpdcd.phar
-<span class="nb">chmod</span> +x phpdcd.phar
-<span class="nb">mv </span>phpdcd.phar /usr/local/bin/phpdcd
-</code></pre></div></div>
-
-<p>进入项目目录</p>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> /var/www/site
-phpdcd <span class="nb">.</span>
-</code></pre></div></div>
-
-<p>即可立即返回扫描报告。</p>
-
-<p><strong>可选参数</strong></p>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Usage:
- phpdcd <span class="o">[</span><span class="nt">--names</span><span class="o">=</span><span class="s2">"..."</span><span class="o">]</span> <span class="o">[</span><span class="nt">--names-exclude</span><span class="o">=</span><span class="s2">"..."</span><span class="o">]</span> <span class="o">[</span><span class="nt">--exclude</span><span class="o">=</span><span class="s2">"..."</span><span class="o">]</span> <span class="o">[</span><span class="nt">--recursive</span><span class="o">]</span> <span class="o">[</span>values1] ... <span class="o">[</span>valuesN]
-Arguments:
- values
-Options:
- <span class="nt">--names</span>               需要检查的文件名列表，数组形势 <span class="o">(</span>如: <span class="o">[</span><span class="s2">"*.php"</span>, <span class="s2">"*.ini"</span><span class="o">])</span>
- <span class="nt">--names-exclude</span>       不需要检查的文件名列表，值也是数组形式
- <span class="nt">--exclude</span>             按目录排除不需要检查的文件
-</code></pre></div></div>
+<p>地址：<a href="https://github.com/ly95/vsc.phpmd">github</a></p>
 
   </div>
   
