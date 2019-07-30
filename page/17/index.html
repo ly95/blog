@@ -281,6 +281,10 @@
       
     
       
+        
+      
+    
+      
     
       
     
@@ -467,28 +471,25 @@
   
   <div class="post">
     <h1 class="post-title">
-      <a href="/2015-02-03/python-bug-certificate-verify-failed.html">
-        Python Bug CERTIFICATE_VERIFY_FAILED
+      <a href="/2015-02-17/discuz-api-case.html">
+        Discuz! 接口开发
       </a>
     </h1>
-    <span class="post-date">2015年02月03日</span>
-    <p>urllib2请求ssh网址的时候抛出异常</p>
+    <span class="post-date">2015年02月17日</span>
+    <p>为Discuz!论坛提供App使用的接口，支持3x以上版本。</p>
 
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>File <span class="s2">"/opt/local/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py"</span>, line 1197, <span class="k">in </span>do_open
-raise URLError<span class="o">(</span>err<span class="o">)</span>
-urllib2.URLError: &lt;urlopen error <span class="o">[</span>SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed <span class="o">(</span>_ssl.c:581<span class="o">)&gt;</span>
-</code></pre></div></div>
+<p>登陆，注册接口(含上传头像)，修改头像，修改密码，忘记密码，我收藏的帖子，我发的帖子，获取分类下的帖子，获取帖子详情(含楼层和只看楼主功能)，发帖（图片上传），收藏(取消)帖子。</p>
 
-<p>该问题是python一个bug，影响版本：3.5, 3.4, 2.7。临时解决办法程序中加入下面代码</p>
+<p>接口有以下特点：</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">ssl</span>
-    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">ssl</span><span class="p">,</span> <span class="s">'_create_unverified_context'</span><span class="p">):</span>
-        <span class="n">ssl</span><span class="o">.</span><span class="n">_create_default_https_context</span> <span class="o">=</span> <span class="n">ssl</span><span class="o">.</span><span class="n">_create_unverified_context</span>
-</code></pre></div></div>
+<ul>
+  <li>Resful风格使用方便</li>
+  <li>Http auth 权限验证</li>
+  <li>结合论坛配置</li>
+  <li>安装方便</li>
+</ul>
 
-<p>相关链接</p>
-
-<p><a href="https://bugs.python.org/issue22417">https://bugs.python.org/issue22417</a></p>
+<p>有需要请与本人联系。linyang95#aol.com</p>
 
   </div>
   

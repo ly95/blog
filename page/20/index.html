@@ -281,6 +281,10 @@
       
     
       
+        
+      
+    
+      
     
       
     
@@ -467,45 +471,48 @@
   
   <div class="post">
     <h1 class="post-title">
-      <a href="/2014-06-24/macports-create-local-portfile.html">
-        MacPorts创建本地Portfile
+      <a href="/2014-08-15/macos-git-svn.html">
+        MacOS Git-svn 使用笔记
       </a>
     </h1>
-    <span class="post-date">2014年06月24日</span>
-    <p>使用macport安装编译的时候希望能自定义configure。</p>
+    <span class="post-date">2014年08月15日</span>
+    <p>公司服务器使用版本控制工具为svn-1.6，项目较大，开发任务量大，再一次意外将svn升级到1.8并且更新了svn本地资源，造成无法再提交新文件。</p>
 
-<p>直接修改macports官方Portfile不方便管理，创建自定义的本地Portfile是最好选择。编辑文件/opt/local/etc/macports/sources.conf找到这行</p>
+<p>一咬牙决心使用git-svn代替svn-client。</p>
 
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rsync://rsync.macports.org/release/tarballs/ports.tar <span class="o">[</span>default]
+<p>Xcode 安装命令行工具</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>xcode-select —install
 </code></pre></div></div>
 
-<p>上面增加一行</p>
+<p>克隆远程资源</p>
 
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>file:///opt/local/portfiles
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git svn clone svn://res-url/something
 </code></pre></div></div>
 
-<p>创建资源</p>
+<p>会从第一个版本下载一直到最新版本，如果版本很高那可能花上几天的时间</p>
 
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo mkdir</span> <span class="nt">-p</span> /opt/local/portfiles/ports/www/my_nginx
-<span class="nb">cd</span> /opt/local/portfiles/ports/www/my_nginx
-<span class="nb">sudo cp</span> /opt/local/var/macports/sources/rsync.macports.org/release/tarballs/ports/www/nginx/Portfile Portfile
+<p>增加参数节约时间，-r1 是开始版本号</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git svn clone svn://res-url/something <span class="nt">-r1</span>:2
 </code></pre></div></div>
 
-<p>编辑Portfile</p>
+<p>建好以后再使用rebase同步版本信息</p>
 
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vi Portfile
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git svn rebase
 </code></pre></div></div>
 
-<p>找到configure.args-append就可以修改configure，最后加入macport索引</p>
+<p>完成后，最好创建开发分支，和master分开，提交代码前，将开发分支合并到master上再提交到svn服务器，避免冲突。</p>
 
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> /opt/local/portfiles
-portindex
-</code></pre></div></div>
+<p>原svn项目资源大小为3G，git svn下载完毕后大小为3.14G.</p>
 
-<p>运行命令进行测试</p>
+<p>常用命令</p>
 
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>port search my_nginx
-</code></pre></div></div>
+<p>更新本地资源 git svn rebase</p>
+
+<p>提交本地修改到svn服务端 git svn dcommit</p>
+
+<p>最后推荐免费git客户端：SourceTree</p>
 
   </div>
   

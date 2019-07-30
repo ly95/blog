@@ -283,6 +283,10 @@
       
     
       
+        
+      
+    
+      
     
       
     
@@ -563,7 +567,7 @@ Elasticsearch -&gt; Indices   -&gt; Types  -&gt; Documents -&gt; Fields
 
 <p>正确返回结果：</p>
 
-<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="s2">"index"</span><span class="p">:</span><span class="s2">"ly95"</span><span class="p">,</span><span class="s2">"type"</span><span class="p">:</span><span class="s2">"person"</span><span class="p">,</span><span class="s2">"id"</span><span class="p">:</span><span class="s2">"AVbf7x4lkuRtCTeIkBAN"</span><span class="p">,</span><span class="s2">"version"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="s2">"_shards"</span><span class="p">:{</span><span class="s2">"total"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="s2">"successful"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="s2">"failed"</span><span class="p">:</span><span class="mi">0</span><span class="p">},</span><span class="s2">"created"</span><span class="p">:</span><span class="kc">true</span><span class="p">}</span><span class="w">
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="nl">"index"</span><span class="p">:</span><span class="nl">"ly95","type"</span><span class="p">:</span><span class="nl">"person","id"</span><span class="p">:</span><span class="nl">"AVbf7x4lkuRtCTeIkBAN","version"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="nl">"_shards"</span><span class="p">:{</span><span class="nl">"total"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="nl">"successful"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="nl">"failed"</span><span class="p">:</span><span class="mi">0</span><span class="p">},</span><span class="nl">"created"</span><span class="p">:</span><span class="kc">true</span><span class="p">}</span><span class="w">
 </span></code></pre></div></div>
 
 <p>更多字段类型查看 <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-types.html">字段类型表</a></p>
@@ -600,7 +604,7 @@ Elasticsearch -&gt; Indices   -&gt; Types  -&gt; Documents -&gt; Fields
 
 <p>得到分词结果：</p>
 
-<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="s2">"tokens"</span><span class="p">:[{</span><span class="s2">"token"</span><span class="p">:</span><span class="s2">"凡人"</span><span class="p">,</span><span class="s2">"start_offset"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="s2">"end_offset"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="s2">"type"</span><span class="p">:</span><span class="s2">"word"</span><span class="p">,</span><span class="s2">"position"</span><span class="p">:</span><span class="mi">0</span><span class="p">},{</span><span class="s2">"token"</span><span class="p">:</span><span class="s2">"牧"</span><span class="p">,</span><span class="s2">"start_offset"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="s2">"end_offset"</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="s2">"type"</span><span class="p">:</span><span class="s2">"word"</span><span class="p">,</span><span class="s2">"position"</span><span class="p">:</span><span class="mi">1</span><span class="p">},{</span><span class="s2">"token"</span><span class="p">:</span><span class="s2">"白"</span><span class="p">,</span><span class="s2">"start_offset"</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="s2">"end_offset"</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span><span class="s2">"type"</span><span class="p">:</span><span class="s2">"word"</span><span class="p">,</span><span class="s2">"position"</span><span class="p">:</span><span class="mi">2</span><span class="p">}]}</span><span class="w">
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="nl">"tokens"</span><span class="p">:[{</span><span class="nl">"token"</span><span class="p">:</span><span class="nl">"凡人","start_offset"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="nl">"end_offset"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="nl">"type"</span><span class="p">:</span><span class="nl">"word","position"</span><span class="p">:</span><span class="mi">0</span><span class="p">},{</span><span class="nl">"token"</span><span class="p">:</span><span class="nl">"牧","start_offset"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="nl">"end_offset"</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="nl">"type"</span><span class="p">:</span><span class="nl">"word","position"</span><span class="p">:</span><span class="mi">1</span><span class="p">},{</span><span class="nl">"token"</span><span class="p">:</span><span class="nl">"白","start_offset"</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="nl">"end_offset"</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span><span class="nl">"type"</span><span class="p">:</span><span class="nl">"word","position"</span><span class="p">:</span><span class="mi">2</span><span class="p">}]}</span><span class="w">
 </span></code></pre></div></div>
 
 <h2 id="搜索dsl语法">搜索DSL语法</h2>
@@ -860,6 +864,15 @@ Elasticsearch -&gt; Indices   -&gt; Types  -&gt; Documents -&gt; Fields
     
       <li>
         <h3>
+          <small>2019年07月30日</small>
+          <a href="/2019-07-30/new-life.html">
+            新开始
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
           <small>2019年02月21日</small>
           <a href="/2019-02-21/tencent-cloud-api-with-postman.html">
             腾讯云容器服务Api实例
@@ -872,15 +885,6 @@ Elasticsearch -&gt; Indices   -&gt; Types  -&gt; Documents -&gt; Fields
           <small>2019年02月21日</small>
           <a href="/2019-02-21/analyse-javascript.html">
             Bet365数据抓取分析完成
-          </a>
-        </h3>
-      </li>
-    
-      <li>
-        <h3>
-          <small>2018年11月15日</small>
-          <a href="/2018-11-15/about-oxs-defaults.html">
-            关于MacOS配置defaults
           </a>
         </h3>
       </li>

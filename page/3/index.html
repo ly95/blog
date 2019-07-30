@@ -281,6 +281,10 @@
       
     
       
+        
+      
+    
+      
     
       
     
@@ -467,35 +471,12 @@
   
   <div class="post">
     <h1 class="post-title">
-      <a href="/2018-11-15/about-oxs-defaults.html">
-        关于MacOS配置defaults
+      <a href="/2019-02-21/analyse-javascript.html">
+        Bet365数据抓取分析完成
       </a>
     </h1>
-    <span class="post-date">2018年11月15日</span>
-    <p>前提（一定是闲的蛋疼）有怪癖，爱保持整洁。原因每次修改了MacbookPro外接显示器桌面背景图，下次连接电脑时背景图不会与内建显示器的背景图同步。</p>
-
-<p>于是想到删除相关配置。</p>
-
-<p>从熟悉的命令入手，重新给Launchpad的应用程序排序：</p>
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>defaults write com.apple.dock ResetLaunchPad <span class="nt">-bool</span> TRUE
-killall Dock
-</code></pre></div></div>
-<p>问题来了，不知道显示相关配置的domain值如何重置配置。网上找资料就算了，有怪癖的人不多。思路是先保存一份当前配置到文件，然后修改外接显示器的背景图片比较配置的差异部分。</p>
-
-<p>保存当前配置内容</p>
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>defaults <span class="nb">read</span> <span class="o">&gt;</span> current_default.txt
-</code></pre></div></div>
-
-<p>比对差异</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vimdiff current_default.txt changed.txt
-</code></pre></div></div>
-
-<p><img src="https://raw.githubusercontent.com/ly95/blog/master/illustration/2018-11-15/screenshot.png" alt="screenshot" /></p>
-
-<p>发现有修改的domain是com.apple.spaces，测试有效，问题解决了。</p>
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>defaults delete com.apple.spaces
-<span class="nb">sudo </span>shutdown <span class="nt">-r</span> 0
-</code></pre></div></div>
+    <span class="post-date">2019年02月21日</span>
+    <p>这段时间花费了大力气解决Bet365数据抓取问题，在分析了接近3万行javascript代码后终于拨开云雾见月明。噢耶！</p>
 
   </div>
   

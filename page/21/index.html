@@ -281,6 +281,10 @@
       
     
       
+        
+      
+    
+      
     
       
     
@@ -467,32 +471,44 @@
   
   <div class="post">
     <h1 class="post-title">
-      <a href="/2014-06-23/paramiko-not-work.html">
-        Paramiko命令执行失败
+      <a href="/2014-06-24/macports-create-local-portfile.html">
+        MacPorts创建本地Portfile
       </a>
     </h1>
-    <span class="post-date">2014年06月23日</span>
-    <p>一个测试站，使用git管理代码。每次同步需要ssh连接更新代码。用python写小程序来完成重复的工作。</p>
+    <span class="post-date">2014年06月24日</span>
+    <p>使用macport安装编译的时候希望能自定义configure。</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">paramiko</span>
+<p>直接修改macports官方Portfile不方便管理，创建自定义的本地Portfile是最好选择。编辑文件/opt/local/etc/macports/sources.conf找到这行</p>
 
-<span class="n">client</span> <span class="o">=</span> <span class="n">paramiko</span><span class="o">.</span><span class="n">SSHClient</span><span class="p">()</span>
-<span class="n">client</span><span class="o">.</span><span class="n">set_missing_host_key_policy</span><span class="p">(</span><span class="n">paramiko</span><span class="o">.</span><span class="n">AutoAddPolicy</span><span class="p">())</span>
-<span class="n">client</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s">'xxxx'</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="n">username</span><span class="o">=</span><span class="s">'nobody'</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="s">''</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
-<span class="n">stdin</span><span class="p">,</span> <span class="n">stdout</span><span class="p">,</span> <span class="n">stderr</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">exec_command</span><span class="p">(</span><span class="s">"git pull /var/www/sites"</span><span class="p">)</span>
-<span class="k">print</span> <span class="n">stdout</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-<span class="k">print</span> <span class="n">stderr</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-<span class="n">client</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rsync://rsync.macports.org/release/tarballs/ports.tar <span class="o">[</span>default]
 </code></pre></div></div>
 
-<p>结果输出</p>
+<p>上面增加一行</p>
 
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>fatal: Not a git repository <span class="o">(</span>or any of the parent directories<span class="o">)</span>: .git
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>file:///opt/local/portfiles
 </code></pre></div></div>
 
-<p>最后修改后，执行成功。</p>
+<p>创建资源</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">stdin</span><span class="p">,</span> <span class="n">stdout</span><span class="p">,</span> <span class="n">stderr</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">exec_command</span><span class="p">(</span><span class="s">"cd /var/www/sites;git pull"</span><span class="p">)</span>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo mkdir</span> <span class="nt">-p</span> /opt/local/portfiles/ports/www/my_nginx
+<span class="nb">cd</span> /opt/local/portfiles/ports/www/my_nginx
+<span class="nb">sudo cp</span> /opt/local/var/macports/sources/rsync.macports.org/release/tarballs/ports/www/nginx/Portfile Portfile
+</code></pre></div></div>
+
+<p>编辑Portfile</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vi Portfile
+</code></pre></div></div>
+
+<p>找到configure.args-append就可以修改configure，最后加入macport索引</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> /opt/local/portfiles
+portindex
+</code></pre></div></div>
+
+<p>运行命令进行测试</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>port search my_nginx
 </code></pre></div></div>
 
   </div>
