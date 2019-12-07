@@ -285,6 +285,10 @@
       
     
       
+        
+      
+    
+      
     
       
     
@@ -471,23 +475,33 @@
   
   <div class="post">
     <h1 class="post-title">
-      <a href="/2014-04-01/sesson-memcache-warning.html">
-        Session+memcache问题
+      <a href="/2014-06-23/paramiko-not-work.html">
+        Paramiko命令执行失败
       </a>
     </h1>
-    <span class="post-date">2014年04月01日</span>
-    <p>配置php.ini</p>
+    <span class="post-date">2014年06月23日</span>
+    <p>一个测试站，使用git管理代码。每次同步需要ssh连接更新代码。用python写小程序来完成重复的工作。</p>
 
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>session.save_handler <span class="o">=</span> memcache
-session.save_path <span class="o">=</span> <span class="s2">"localhost:11211"</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">paramiko</span>
+
+<span class="n">client</span> <span class="o">=</span> <span class="n">paramiko</span><span class="o">.</span><span class="n">SSHClient</span><span class="p">()</span>
+<span class="n">client</span><span class="o">.</span><span class="n">set_missing_host_key_policy</span><span class="p">(</span><span class="n">paramiko</span><span class="o">.</span><span class="n">AutoAddPolicy</span><span class="p">())</span>
+<span class="n">client</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s">'xxxx'</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="n">username</span><span class="o">=</span><span class="s">'nobody'</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="s">''</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">stdin</span><span class="p">,</span> <span class="n">stdout</span><span class="p">,</span> <span class="n">stderr</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">exec_command</span><span class="p">(</span><span class="s">"git pull /var/www/sites"</span><span class="p">)</span>
+<span class="k">print</span> <span class="n">stdout</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="k">print</span> <span class="n">stderr</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="n">client</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p>日志提示</p>
+<p>结果输出</p>
 
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Warning: session_start<span class="o">()</span> <span class="o">[</span><span class="k">function</span>.session-start]: Keycannot be empty
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>fatal: Not a git repository <span class="o">(</span>or any of the parent directories<span class="o">)</span>: .git
 </code></pre></div></div>
 
-<p>原因未知，先记录一下。</p>
+<p>最后修改后，执行成功。</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">stdin</span><span class="p">,</span> <span class="n">stdout</span><span class="p">,</span> <span class="n">stderr</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">exec_command</span><span class="p">(</span><span class="s">"cd /var/www/sites;git pull"</span><span class="p">)</span>
+</code></pre></div></div>
 
   </div>
   

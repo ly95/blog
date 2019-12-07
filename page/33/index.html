@@ -285,6 +285,10 @@
       
     
       
+        
+      
+    
+      
     
       
     
@@ -471,78 +475,26 @@
   
   <div class="post">
     <h1 class="post-title">
-      <a href="/2013-01-30/ubuntu12-install-pptpd.html">
-        Ubuntu12.10 安装 pptpd 实录
+      <a href="/2013-02-20/could-not-find-default-styleproto-in-framework.html">
+        Couldn't find default.styleproto in framework
       </a>
     </h1>
-    <span class="post-date">2013年01月30日</span>
-    <p>切换至root帐号下</p>
+    <span class="post-date">2013年02月20日</span>
+    <p>在使用MapKit.framework的时候</p>
 
-<p>安装pptd</p>
+<p>控制台提示</p>
 
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apt-get <span class="nb">install </span>pptpd <span class="nt">-y</span>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Couldn<span class="s1">'t find default.styleproto in framework
+</span></code></pre></div></div>
+
+<p>解决办法</p>
+
+<p>打开 Terminal输入并Enter</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">rm</span> <span class="nt">-r</span> ~/Library/Application Support/iPhone Simulator/版本/Library/Caches/GeoServices
 </code></pre></div></div>
 
-<p>配置DNS</p>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vi /etc/ppp/pptpd-options
-</code></pre></div></div>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ms-dns 8.8.8.8
-</code></pre></div></div>
-
-<p>分配客户端虚拟IP</p>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vi /etc/pptpd.conf
-</code></pre></div></div>
-
-<p>取消注释最后2行</p>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#localip 192.168.0.1</span>
-<span class="c">#remoteip 192.168.0.234-238,192.168.0.245</span>
-<span class="c">#or</span>
-localip 192.168.0.234-238,192.168.0.245
-remoteip 192.168.1.234-238,192.168.1.245
-</code></pre></div></div>
-
-<p>添加客户端帐号</p>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vi /etc/ppp/chap-secrets
-</code></pre></div></div>
-
-<p>帐号 服务 密码 IP</p>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">test</span> <span class="k">*</span> <span class="nb">test</span> <span class="k">*</span>
-</code></pre></div></div>
-
-<p>路由规则设置ipv4转发</p>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vi /etc/sysctl.conf
-</code></pre></div></div>
-
-<p>找到“net.ipv4.ip_forward”所在行，设置为1</p>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>net.ipv4.ip_forward <span class="o">=</span> 1
-</code></pre></div></div>
-
-<p>更新规则</p>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sysctl <span class="nt">-p</span>
-</code></pre></div></div>
-
-<p>iptables转发设置</p>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>iptables <span class="nt">-P</span> FORWARD ACCEPT
-/sbin/iptables <span class="nt">--table</span> nat <span class="nt">-A</span> POSTROUTING <span class="nt">-o</span> eth0 <span class="nt">-j</span> MASQUERADE
-</code></pre></div></div>
-
-<p>最后重启</p>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/etc/init.d/pptpd restart
-netstat <span class="nt">-anp</span> | <span class="nb">grep </span>pptpd
-</code></pre></div></div>
-
-<p>pptpd已经在监听1723端口说明一切正常</p>
+<p>重新运行app，错误消失。</p>
 
   </div>
   

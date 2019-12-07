@@ -285,6 +285,10 @@
       
     
       
+        
+      
+    
+      
     
       
     
@@ -471,26 +475,13 @@
   
   <div class="post">
     <h1 class="post-title">
-      <a href="/2013-02-20/could-not-find-default-styleproto-in-framework.html">
-        Couldn't find default.styleproto in framework
+      <a href="/2013-02-26/macport-remove-inactive-packages.html">
+        macport清理更新后的旧版本package办法
       </a>
     </h1>
-    <span class="post-date">2013年02月20日</span>
-    <p>在使用MapKit.framework的时候</p>
-
-<p>控制台提示</p>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Couldn<span class="s1">'t find default.styleproto in framework
-</span></code></pre></div></div>
-
-<p>解决办法</p>
-
-<p>打开 Terminal输入并Enter</p>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">rm</span> <span class="nt">-r</span> ~/Library/Application Support/iPhone Simulator/版本/Library/Caches/GeoServices
+    <span class="post-date">2013年02月26日</span>
+    <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>port uninstall inactive
 </code></pre></div></div>
-
-<p>重新运行app，错误消失。</p>
 
   </div>
   
