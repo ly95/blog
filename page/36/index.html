@@ -69,6 +69,8 @@
       
     
       
+    
+      
         
       
     
@@ -78,6 +80,10 @@
         
       
     
+      
+    
+      
+        
       
     
       
@@ -454,7 +460,7 @@
 
   <div class="sidebar-item">
     <p>
-      &copy; 2019. All rights reserved.
+      &copy; 2020. All rights reserved.
     </p>
   </div>
 </div>
@@ -475,23 +481,39 @@
   
   <div class="post">
     <h1 class="post-title">
-      <a href="/2013-01-09/php-class-httprequest-not-found-on-ubuntu.html">
-        PHP Class 'HttpRequest' not found on Ubuntu
+      <a href="/2013-01-26/ubuntu-ji-lu-suo-you-yong-hu-cao-zuo-ri-zhi.html">
+        Ubuntu记录所有用户操作日志
       </a>
     </h1>
-    <span class="post-date">2013年01月09日</span>
-    <p>安装 pecl_http</p>
+    <span class="post-date">2013年01月26日</span>
+    <p>在/etc/profile.d/目录创建userlog.sh文件</p>
 
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt-get <span class="nb">install </span>php-pear
-<span class="nb">sudo </span>apt-get <span class="nb">install </span>libcurl3-openssl-dev
-<span class="nb">sudo </span>apt-get <span class="nb">install </span>re2c
-<span class="nb">sudo </span>pecl <span class="nb">install </span>pecl_http
-<span class="nb">sudo </span>vi /etc/php5/cli/php.ini
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>vi /etc/profile.d/userlog.sh
 </code></pre></div></div>
 
-<p>添加一行</p>
+<p>内容如下</p>
 
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s2">"extension=http.so"</span>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">PS1</span><span class="o">=</span><span class="s2">"</span><span class="sb">`</span><span class="nb">whoami</span><span class="sb">`</span><span class="s2">@</span><span class="sb">`</span><span class="nb">hostname</span><span class="sb">`</span><span class="s2">:"</span><span class="s1">'[$PWD]'</span>
+<span class="nb">history
+</span><span class="nv">USER_IP</span><span class="o">=</span><span class="sb">`</span><span class="nb">who</span> <span class="nt">-u</span> am i 2&gt;/dev/null| <span class="nb">awk</span> <span class="s1">'{print $NF}'</span>|sed <span class="nt">-e</span> <span class="s1">'s/[()]//g'</span><span class="sb">`</span>
+<span class="k">if</span> <span class="o">[</span> <span class="s2">"</span><span class="nv">$USER_IP</span><span class="s2">"</span> <span class="o">=</span> <span class="s2">""</span> <span class="o">]</span>
+<span class="k">then
+</span><span class="nv">USER_IP</span><span class="o">=</span><span class="sb">`</span><span class="nb">hostname</span><span class="sb">`</span>
+<span class="k">fi
+if</span> <span class="o">[</span> <span class="o">!</span> <span class="nt">-d</span> /tmp/history <span class="o">]</span>
+<span class="k">then
+</span><span class="nb">mkdir</span> /tmp/history
+<span class="nb">chmod </span>777 /tmp/history
+<span class="k">fi
+if</span> <span class="o">[</span> <span class="o">!</span> <span class="nt">-d</span> /tmp/history/<span class="k">${</span><span class="nv">LOGNAME</span><span class="k">}</span> <span class="o">]</span>
+<span class="k">then
+</span><span class="nb">mkdir</span> /tmp/history/<span class="k">${</span><span class="nv">LOGNAME</span><span class="k">}</span>
+<span class="nb">chmod </span>300 /tmp/history/<span class="k">${</span><span class="nv">LOGNAME</span><span class="k">}</span>
+<span class="k">fi
+</span><span class="nb">export </span><span class="nv">HISTSIZE</span><span class="o">=</span>4096
+<span class="nv">DT</span><span class="o">=</span><span class="sb">`</span><span class="nb">date</span> +<span class="s2">"%Y%m%d_%H%M%S"</span><span class="sb">`</span>
+<span class="nb">export </span><span class="nv">HISTFILE</span><span class="o">=</span><span class="s2">"/tmp/history/</span><span class="k">${</span><span class="nv">LOGNAME</span><span class="k">}</span><span class="s2">/</span><span class="k">${</span><span class="nv">USER_IP</span><span class="k">}</span><span class="s2"> history.</span><span class="nv">$DT</span><span class="s2">"</span>
+<span class="nb">chmod </span>600 /tmp/history/<span class="k">${</span><span class="nv">LOGNAME</span><span class="k">}</span>/<span class="k">*</span><span class="nb">history</span><span class="k">*</span> 2&gt;/dev/null
 </code></pre></div></div>
 
   </div>

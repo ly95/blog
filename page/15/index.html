@@ -69,6 +69,8 @@
       
     
       
+    
+      
         
       
     
@@ -78,6 +80,10 @@
         
       
     
+      
+    
+      
+        
       
     
       
@@ -454,7 +460,7 @@
 
   <div class="sidebar-item">
     <p>
-      &copy; 2019. All rights reserved.
+      &copy; 2020. All rights reserved.
     </p>
   </div>
 </div>
@@ -475,16 +481,54 @@
   
   <div class="post">
     <h1 class="post-title">
-      <a href="/2015-11-24/vscode-phpmd-plugin.html">
-        VSCode的PhpMD插件
+      <a href="/2015-12-12/mysql-lian-jie-guo-duo.html">
+        Mysql连接数过多
       </a>
     </h1>
-    <span class="post-date">2015年11月24日</span>
-    <p>VSCode(Visual Studio Code) 早有关注。前不久发布了v0.10.1，支持插件开发，兴奋不已。</p>
+    <span class="post-date">2015年12月12日</span>
+    <p>最近mysql数据库连接数突然增多，经过模拟测试和阅读php源码确认是由于php超时有关，这种连接状态多为sleep。</p>
 
-<p>所以为php开发了phpmd插件，已经可以在插件库里搜索和下载。vscode插件开发文档不多，后期再慢慢改善这个插件。</p>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp"># file: php-src/sapi/fpm/fpm/fpm_main.c
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">argv</span><span class="p">[])</span>
+<span class="p">{</span>
+    <span class="c1">// 代码略...</span>
+    <span class="n">zend_first_try</span> <span class="p">{</span>
+        <span class="k">while</span> <span class="p">(</span><span class="n">EXPECTED</span><span class="p">(</span><span class="n">fcgi_accept_request</span><span class="p">(</span><span class="n">request</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">))</span> <span class="p">{</span>
+            <span class="c1">// 代码略...</span>
+            <span class="n">php_execute_script</span><span class="p">(</span><span class="o">&amp;</span><span class="n">file_handle</span><span class="p">);</span>
+            <span class="c1">// 代码略...</span>
+            <span class="n">php_request_shutdown</span><span class="p">((</span><span class="kt">void</span> <span class="o">*</span><span class="p">)</span> <span class="mi">0</span><span class="p">);</span>
+            <span class="c1">// 代码略...</span>
+        <span class="p">}</span>
+        <span class="c1">// 代码略...</span>
+    <span class="p">}</span> <span class="n">zend_catch</span> <span class="p">{</span>
+        <span class="n">exit_status</span> <span class="o">=</span> <span class="n">FPM_EXIT_SOFTWARE</span><span class="p">;</span>
+    <span class="p">}</span> <span class="n">zend_end_try</span><span class="p">();</span>
 
-<p>地址：<a href="https://github.com/ly95/vsc.phpmd">github</a></p>
+    <span class="c1">// 代码略...</span>
+    <span class="k">return</span> <span class="n">exit_status</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>宏zend_first_try和zend_catch看作长跳转(setjump)，
+当发生超时，函数php_execute_script将抛出E_ERROR类型错误。</p>
+
+<ul>
+  <li>E_ERROR</li>
+  <li>E_CORE_ERROR</li>
+  <li>E_COMPILE_ERROR</li>
+  <li>E_USER_ERROR</li>
+  <li>E_PARSE</li>
+</ul>
+
+<p>以上错误类型不能捕获，源码中这样描述fatal errors:</p>
+
+<blockquote>
+  <p>fatal errors are real errors and cannot be made exceptions</p>
+</blockquote>
+
+<p>函数php_request_shutdown会跳过执行，最终析构方法不会被执行。</p>
 
   </div>
   

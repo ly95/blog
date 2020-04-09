@@ -69,6 +69,8 @@
       
     
       
+    
+      
         
       
     
@@ -78,6 +80,10 @@
         
       
     
+      
+    
+      
+        
       
     
       
@@ -454,7 +460,7 @@
 
   <div class="sidebar-item">
     <p>
-      &copy; 2019. All rights reserved.
+      &copy; 2020. All rights reserved.
     </p>
   </div>
 </div>
@@ -475,109 +481,12 @@
   
   <div class="post">
     <h1 class="post-title">
-      <a href="/2019-02-21/tencent-cloud-api-with-postman.html">
-        腾讯云容器服务Api实例
+      <a href="/2019-07-30/new-life.html">
+        新开始
       </a>
     </h1>
-    <span class="post-date">2019年02月21日</span>
-    <p>为了测试方便，在postman上用javascript实现了签名。</p>
-
-<p>Pre script代码</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function ksort(jsonData) {
-    try {
-        let tempJsonObj = {};
-        let sdic = Object.keys(jsonData).sort();
-        sdic.map((item, index) =&gt; {
-            tempJsonObj[item] = jsonData[sdic[index]]
-        })
-        return tempJsonObj;
-    } catch (e) {
-        return jsonData;
-    }
-}
-
-pm.sendRequest("https://caligatio.github.io/jsSHA/sha.js", (err, res) =&gt; {
-    var e = eval;
-    e(res.text());
-
-    var ts = Math.round((new Date()).getTime() / 1000);
-    pm.environment.set("Timestamp", ts);
-    pm.environment.set("Nonce", Math.random().toString().slice(-6));
-
-    var list = [
-        'Action',
-        'Nonce',
-        'Region',
-        'SecretId',
-        'Timestamp',
-        'clusterId',
-        'allnamespace',
-    ];
-
-    var params = [];
-    for (var i in list) {
-        var k = list[i];
-        params[k] = pm.environment.get(k);
-    }
-    console.log(params);
-    var params2 = ksort(params);
-    var temp = [];
-    for (var k2 in params2) {
-        temp.push(k2 + "=" + params[k2]);
-    }
-    var reqStr = temp.join("&amp;");
-
-    var sign = "GET" + pm.globals.get("uri") + "?" + reqStr;
-
-    var hmacObj = new jsSHA("SHA-1", "TEXT");
-    hmacObj.setHMACKey(pm.environment.get("TXAPI_SECRETKEY"), "TEXT");
-    hmacObj.update(sign);
-    
-    var signed = hmacObj.getHMAC("B64");
-
-    pm.environment.set("Signature", signed);
-
-});
-</code></pre></div></div>
-
-<h3 id="部分变量设置">部分变量设置</h3>
-
-<table>
-  <thead>
-    <tr>
-      <th>name</th>
-      <th>Value</th>
-      <th> </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>uri</td>
-      <td>ccs.api.qcloud.com/v2/index.php</td>
-      <td>-</td>
-    </tr>
-    <tr>
-      <td>Action</td>
-      <td>DescribeClusterService</td>
-      <td>具体操作的指令接口名称，例如想要调用查询伸缩组列表 接口，则 Action 参数即为 DescribeInstances。</td>
-    </tr>
-    <tr>
-      <td>Region</td>
-      <td>bj</td>
-      <td>区域参数，用来标识希望操作哪个区域的实例。各区域的参数值为: 北京:bj，广州:gz，上海:sh，香港:hk，北美:ca。</td>
-    </tr>
-    <tr>
-      <td>allnamespace</td>
-      <td>1</td>
-      <td>是否展示所有命名空间下的服务。1：是，0 或不传：否</td>
-    </tr>
-  </tbody>
-</table>
-
-<h3 id="postman模版分享">postman模版分享</h3>
-
-<p><a href="https://documenter.getpostman.com/view/4561089/S17qR8Q3#7da4f05d-810d-48a1-b317-85daa2e0249b">https://documenter.getpostman.com/view/4561089/S17qR8Q3#7da4f05d-810d-48a1-b317-85daa2e0249b</a></p>
-
+    <span class="post-date">2019年07月30日</span>
+    <p>开启新的工作和生活状态，半年后再看！加油！！</p>
 
   </div>
   
