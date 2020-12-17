@@ -295,6 +295,10 @@
       
     
       
+        
+      
+    
+      
     
       
     
@@ -481,12 +485,27 @@
   
   <div class="post">
     <h1 class="post-title">
-      <a href="/2013-05-04/window-xp-key.html">
-        无限可用xp激活码
+      <a href="/2013-05-23/mysql-config-not-found-on-osx.html">
+        mysql_config not found on osx10.8
       </a>
     </h1>
-    <span class="post-date">2013年05月04日</span>
-    <p>DG8FV-B9TKY-FRT9J-6CRCC-XPQ4G</p>
+    <span class="post-date">2013年05月23日</span>
+    <p>系统：osx 10.8.3</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip <span class="nb">install </span>mysql-python
+</code></pre></div></div>
+
+<p>抛出异常</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>EnvironmentError: mysql_config not found
+</code></pre></div></div>
+
+<p>由于mysql是macport安装，版本55，所以问题就简单了</p>
+
+<p>只需运行命令</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo ln</span> <span class="nt">-s</span> /opt/local/bin/mysql_config5 /opt/local/bin/mysql_config
+</code></pre></div></div>
 
   </div>
   

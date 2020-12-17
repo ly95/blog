@@ -297,6 +297,10 @@
       
     
       
+        
+      
+    
+      
     
       
     
@@ -504,7 +508,7 @@
 
 <p>在ES中存储数据的行为就叫做索引，数据存储在文档，文档归属于一种类型(type)，而这些类型存在于索引(index)中，我们可以画一些简单的对比图来类比传统关系型数据库：</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Relational DB -&gt; Databases -&gt; Tables -&gt; Rows -&gt; Columns
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Relational DB -&gt; Databases -&gt; Tables -&gt; Rows -&gt; Columns
 Elasticsearch -&gt; Indices   -&gt; Types  -&gt; Documents -&gt; Fields
 </code></pre></div></div>
 
@@ -648,9 +652,9 @@ Elasticsearch -&gt; Indices   -&gt; Types  -&gt; Documents -&gt; Fields
 <p>utils/git.py</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">checkout</span><span class="p">(</span><span class="n">src_dir</span><span class="p">,</span> <span class="n">branch</span><span class="o">=</span><span class="s">"master"</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">process</span><span class="o">.</span><span class="n">run_subprocess</span><span class="p">(</span>
-            <span class="s">"git -C {0} checkout --quiet {1}"</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span><span class="n">src_dir</span><span class="p">,</span> <span class="n">branch</span><span class="p">)):</span>
-        <span class="k">raise</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">SupplyError</span><span class="p">(</span><span class="s">"Could not checkout '</span><span class="si">%</span><span class="s">s'"</span> <span class="o">%</span> <span class="n">branch</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">process</span><span class="p">.</span><span class="n">run_subprocess</span><span class="p">(</span>
+            <span class="s">"git -C {0} checkout --quiet {1}"</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">src_dir</span><span class="p">,</span> <span class="n">branch</span><span class="p">)):</span>
+        <span class="k">raise</span> <span class="n">exceptions</span><span class="p">.</span><span class="n">SupplyError</span><span class="p">(</span><span class="s">"Could not checkout '%s'"</span> <span class="o">%</span> <span class="n">branch</span><span class="p">)</span>
 </code></pre></div></div>
 
 <p>so, 如果git不支持-C选项Rally是不会正常工作的。所以我把git升级到2.9.0才解决。</p>
@@ -874,6 +878,15 @@ Elasticsearch -&gt; Indices   -&gt; Types  -&gt; Documents -&gt; Fields
     
       <li>
         <h3>
+          <small>2020年12月17日</small>
+          <a href="/2020-12-17/2020-12-17-swiftui-scrollview-keep-bottom.html">
+            
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
           <small>2020年04月09日</small>
           <a href="/2020-04-09/ios-message-filter-extension-memory-limited.html">
             IOS应用扩展的内存限制
@@ -886,15 +899,6 @@ Elasticsearch -&gt; Indices   -&gt; Types  -&gt; Documents -&gt; Fields
           <small>2019年12月07日</small>
           <a href="/2019-12-07/espanso.html">
             输入辅助工具Espanso
-          </a>
-        </h3>
-      </li>
-    
-      <li>
-        <h3>
-          <small>2019年07月30日</small>
-          <a href="/2019-07-30/new-life.html">
-            新开始
           </a>
         </h3>
       </li>

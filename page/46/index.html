@@ -295,6 +295,10 @@
       
     
       
+        
+      
+    
+      
     
       
     
@@ -481,15 +485,17 @@
   
   <div class="post">
     <h1 class="post-title">
-      <a href="/2012-09-01/disable-file-arc-support.html">
-        取消对某个文件的ARC支持
+      <a href="/2012-09-29/mupdf-stdio-not-found.html">
+        [Xcode4.5]MuPDF编译问题stdio.h not found
       </a>
     </h1>
-    <span class="post-date">2012年09月01日</span>
-    <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">-fno-objc-arc</span>
+    <span class="post-date">2012年09月29日</span>
+    <p>App因为ios data storage拒绝后，使用更新后的Xcode编译App失败</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>stdio.h not found
 </code></pre></div></div>
 
-<p><img class="alignnone" src="http://i.imgur.com/BgteG.png" /></p>
+<p>解决办法是，ctrl+,开打Preferences，下载Command Line Tools。</p>
 
   </div>
   
