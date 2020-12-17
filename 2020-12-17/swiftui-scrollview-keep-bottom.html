@@ -12,7 +12,7 @@
   <title>
     
       
-        Ubuntu12.10安装日志分析工具AWStats &middot; 凡人牧白's Blog
+        ScollView保持滑动到底部 &middot; 凡人牧白's Blog
       
     
   </title>
@@ -484,68 +484,53 @@
 
       <div class="container content">
         <div class="post">
-  <h1 class="post-title">Ubuntu12.10安装日志分析工具AWStats</h1>
-  <span class="post-date">2012年12月08日</span>
+  <h1 class="post-title">ScollView保持滑动到底部</h1>
+  <span class="post-date">2020年12月17日</span>
   
   <div class="post-tags">
     
-    <a href="/tag/ubuntu">Ubuntu</a>
+    <a href="/tag/ios">IOS</a>
     
   </div>
   
   <hr>
-  <p>安装</p>
+  <p>没有什么好说的，直接看代码片段。</p>
 
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apt-get <span class="nb">install </span>awstats
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">import</span> <span class="kt">SwiftUI</span>
+
+<span class="kd">struct</span> <span class="kt">Message</span><span class="p">:</span> <span class="kt">Identifiable</span><span class="p">,</span> <span class="kt">Equatable</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="nv">id</span><span class="p">:</span> <span class="kt">Int</span>
+    <span class="k">let</span> <span class="nv">content</span><span class="p">:</span> <span class="kt">String</span>
+<span class="p">}</span>
+
+<span class="kd">struct</span> <span class="kt">ContentView</span><span class="p">:</span> <span class="kt">View</span> <span class="p">{</span>
+    <span class="kd">@State</span> <span class="kd">private</span> <span class="k">var</span> <span class="nv">messages</span><span class="p">:</span> <span class="p">[</span><span class="kt">Message</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="kt">Message</span><span class="p">(</span><span class="nv">id</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nv">content</span><span class="p">:</span> <span class="s">"hi"</span><span class="p">)]</span>
+    <span class="k">var</span> <span class="nv">body</span><span class="p">:</span> <span class="kd">some</span> <span class="kt">View</span> <span class="p">{</span>
+        <span class="kt">ScrollView</span> <span class="p">{</span>
+            <span class="kt">Button</span><span class="p">(</span><span class="s">"Add message"</span><span class="p">)</span> <span class="p">{</span> 
+                <span class="n">messages</span><span class="o">.</span><span class="nf">append</span><span class="p">(</span><span class="kt">Message</span><span class="p">(</span><span class="nv">id</span><span class="p">:</span> <span class="n">messages</span><span class="o">.</span><span class="n">last</span><span class="o">!.</span><span class="n">id</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="nv">content</span><span class="p">:</span> <span class="s">"hi"</span><span class="p">))</span>
+            <span class="p">}</span><span class="o">.</span><span class="nf">padding</span><span class="p">(</span><span class="o">.</span><span class="n">bottom</span><span class="p">)</span>
+            
+            <span class="kt">ScrollViewReader</span> <span class="p">{</span> <span class="n">reader</span> <span class="k">in</span>
+                <span class="kt">ForEach</span><span class="p">(</span><span class="n">messages</span><span class="p">)</span> <span class="p">{</span> <span class="n">item</span> <span class="k">in</span>
+                    <span class="kt">Text</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
+                        <span class="o">.</span><span class="nf">id</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+                <span class="p">}</span>
+                <span class="kt">EmptyView</span><span class="p">()</span>
+                    <span class="o">.</span><span class="nf">onChange</span><span class="p">(</span><span class="nv">of</span><span class="p">:</span> <span class="n">messages</span><span class="p">)</span> <span class="p">{</span> <span class="n">newValue</span> <span class="k">in</span>
+                        <span class="n">reader</span><span class="o">.</span><span class="nf">scrollTo</span><span class="p">(</span><span class="n">messages</span><span class="o">.</span><span class="n">last</span><span class="p">?</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="nv">anchor</span><span class="p">:</span> <span class="o">.</span><span class="n">bottom</span><span class="p">)</span>
+                    <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div></div>
-
-<p>配置</p>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vi /etc/awstats/awstats.conf
-</code></pre></div></div>
-
-<p>查询并修改下列参数</p>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">LogFile</span><span class="o">=</span><span class="s2">"/var/log/apache2/access.log"</span>
-<span class="nv">LogFormat</span><span class="o">=</span>1
-<span class="nv">SiteDomain</span><span class="o">=</span><span class="s2">"ly95.me"</span>
-<span class="nv">HostAliases</span><span class="o">=</span><span class="s2">"localhost 127.0.0.1 ly95.me"</span>
-</code></pre></div></div>
-
-<p>增加一条定时任务</p>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vi /etc/crontab
-</code></pre></div></div>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0 <span class="k">*</span>/3 <span class="k">*</span> <span class="k">*</span> <span class="k">*</span> root /usr/lib/cgi-bin/awstats.pl <span class="nt">-config</span><span class="o">=</span>ly95.me <span class="nt">-update</span> <span class="o">&gt;</span> /var/log/awstats.log
-</code></pre></div></div>
-
-<p>Apache 默认VirtualHost标签里增加</p>
-
-<div class="language-ini highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">Alias</span> <span class="err">/awstatsclasses</span> <span class="err">“/usr/share/awstats/lib/"</span>
-<span class="err">Alias</span> <span class="err">/awstats-icon/</span> <span class="err">“/usr/share/awstats/icon/"</span>
-<span class="err">Alias</span> <span class="err">/awstatscss</span> <span class="err">“/usr/share/doc/awstats/examples/css"</span>
-<span class="err">ScriptAlias</span> <span class="err">/awstats/</span> <span class="err">/usr/lib/cgi-bin/</span>
-</code></pre></div></div>
-
-<p>重启Apache</p>
-
-<p>访问 http://ly95.me/awstats/awstats.pl</p>
 
 </div>
 
 <div class="related">
   <h2>相关文章</h2>
   <ul class="related-posts">
-    
-      <li>
-        <h3>
-          <small>2020年12月17日</small>
-          <a href="/2020-12-17/swiftui-scrollview-keep-bottom.html">
-            ScollView保持滑动到底部
-          </a>
-        </h3>
-      </li>
     
       <li>
         <h3>
@@ -561,6 +546,15 @@
           <small>2019年12月07日</small>
           <a href="/2019-12-07/espanso.html">
             输入辅助工具Espanso
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <small>2019年07月30日</small>
+          <a href="/2019-07-30/new-life.html">
+            新开始
           </a>
         </h3>
       </li>

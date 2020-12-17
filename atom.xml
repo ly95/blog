@@ -4,7 +4,7 @@
  <title>凡人牧白's Blog</title>
  <link href="http://ly95.me/atom.xml" rel="self"/>
  <link href="http://ly95.me/"/>
- <updated>2020-12-17T19:25:08+00:00</updated>
+ <updated>2020-12-17T19:31:34+00:00</updated>
  <id>http://ly95.me</id>
  <author>
    <name>Yang Lin</name>
@@ -13,10 +13,10 @@
 
  
  <entry>
-   <title></title>
-   <link href="http://ly95.me/2020-12-17/2020-12-17-swiftui-scrollview-keep-bottom.html"/>
-   <updated>2020-12-17T19:25:08+00:00</updated>
-   <id>http://ly95.me//2020-12-17/2020-12-17-swiftui-scrollview-keep-bottom</id>
+   <title>ScollView保持滑动到底部</title>
+   <link href="http://ly95.me/2020-12-17/swiftui-scrollview-keep-bottom.html"/>
+   <updated>2020-12-17T00:00:00+00:00</updated>
+   <id>http://ly95.me//2020-12-17/swiftui-scrollview-keep-bottom</id>
    <content type="html">&lt;p&gt;没有什么好说的，直接看代码片段。&lt;/p&gt;
 
 &lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;SwiftUI&lt;/span&gt;
