@@ -24,7 +24,7 @@ else
     git checkout --orphan gh-pages
 fi
 
-cp -r ../lanyon-1.0.0/_site/* .
+cp -r ../lanyon-master/_site/* .
 
 echo 'ly95.me' > CNAME
 
