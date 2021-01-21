@@ -7,7 +7,7 @@ jobs:
     steps:
       - checkout
       - run: |
-          curl -L https://github.com/ly95/lanyon/archive/v1.1.0.tar.gz | tar zx
+          curl -L https://github.com/ly95/lanyon/archive/1.1.0.tar.gz | tar zx
           rm -rf lanyon-1.1.0/_posts
           cp -r _posts lanyon-1.1.0
           cp -r _my_tags lanyon-1.1.0
