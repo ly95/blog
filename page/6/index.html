@@ -3,10 +3,8 @@
 
   <head>
   <link href="http://gmpg.org/xfn/11" rel="profile">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
 
-  <!-- Enable responsiveness on mobile devices-->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 
   <title>
@@ -15,17 +13,21 @@
     
   </title>
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="/public/css/poole.css">
-  <link rel="stylesheet" href="/public/css/syntax.css">
-  <link rel="stylesheet" href="/public/css/lanyon.css">
+  
+  <link rel="canonical" href="http://ly95.me/page/6/">
+  
 
-  <!-- Icons -->
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
-  <link rel="shortcut icon" href="/public/favicon.ico">
+  <link rel="stylesheet" href="http://ly95.me/public/css/poole.css">
+  <link rel="stylesheet" href="http://ly95.me/public/css/syntax.css">
+  <link rel="stylesheet" href="http://ly95.me/public/css/lanyon.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
 
-  <!-- RSS -->
-  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://ly95.me/public/apple-touch-icon-precomposed.png">
+  <link rel="shortcut icon" href="http://ly95.me/public/favicon.ico">
+
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://ly95.me/atom.xml">
+
+  
 </head>
 
 
@@ -42,7 +44,7 @@
   </div>
 
   <nav class="sidebar-nav">
-    <a class="sidebar-nav-item" href="/">首页</a>
+    <a class="sidebar-nav-item active" href="http://ly95.me/">首页</a>
 
     
 
@@ -76,7 +78,7 @@
     
       
         
-          <a class="sidebar-nav-item" href="/about/">关于我</a>
+          <a class="sidebar-nav-item" href="http://ly95.me/about/">关于我</a>
         
       
     
@@ -127,179 +129,11 @@
       
     
       
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
     
       
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
     
       
         
-      
-    
-      
-    
       
     
       
@@ -456,7 +290,7 @@
     
       
         
-          <a class="sidebar-nav-item" href="/tags/">标签</a>
+          <a class="sidebar-nav-item" href="http://ly95.me/tags/">标签</a>
         
       
     
@@ -464,7 +298,7 @@
 
   <div class="sidebar-item">
     <p>
-      &copy; 2020. All rights reserved.
+      &copy; 2021. All rights reserved.
     </p>
   </div>
 </div>
@@ -485,12 +319,145 @@
   
   <div class="post">
     <h1 class="post-title">
-      <a href="/2019-02-21/analyse-javascript.html">
-        Bet365数据抓取分析完成
+      <a href="http://ly95.me/2014-06-23/paramiko-not-work.html">
+        Paramiko命令执行失败
       </a>
     </h1>
-    <span class="post-date">2019年02月21日</span>
-    <p>这段时间花费了大力气解决Bet365数据抓取问题，在分析了接近3万行javascript代码后终于拨开云雾见月明。噢耶！</p>
+    <span class="post-date">2014年06月23日</span>
+    <p>一个测试站，使用git管理代码。每次同步需要ssh连接更新代码。用python写小程序来完成重复的工作。</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">paramiko</span>
+
+<span class="n">client</span> <span class="o">=</span> <span class="n">paramiko</span><span class="p">.</span><span class="n">SSHClient</span><span class="p">()</span>
+<span class="n">client</span><span class="p">.</span><span class="n">set_missing_host_key_policy</span><span class="p">(</span><span class="n">paramiko</span><span class="p">.</span><span class="n">AutoAddPolicy</span><span class="p">())</span>
+<span class="n">client</span><span class="p">.</span><span class="n">connect</span><span class="p">(</span><span class="s">'xxxx'</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="n">username</span><span class="o">=</span><span class="s">'nobody'</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="s">''</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">stdin</span><span class="p">,</span> <span class="n">stdout</span><span class="p">,</span> <span class="n">stderr</span> <span class="o">=</span> <span class="n">client</span><span class="p">.</span><span class="n">exec_command</span><span class="p">(</span><span class="s">"git pull /var/www/sites"</span><span class="p">)</span>
+<span class="k">print</span> <span class="n">stdout</span><span class="p">.</span><span class="n">read</span><span class="p">()</span>
+<span class="k">print</span> <span class="n">stderr</span><span class="p">.</span><span class="n">read</span><span class="p">()</span>
+<span class="n">client</span><span class="p">.</span><span class="n">close</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>结果输出</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>fatal: Not a git repository <span class="o">(</span>or any of the parent directories<span class="o">)</span>: .git
+</code></pre></div></div>
+
+<p>最后修改后，执行成功。</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">stdin</span><span class="p">,</span> <span class="n">stdout</span><span class="p">,</span> <span class="n">stderr</span> <span class="o">=</span> <span class="n">client</span><span class="p">.</span><span class="n">exec_command</span><span class="p">(</span><span class="s">"cd /var/www/sites;git pull"</span><span class="p">)</span>
+</code></pre></div></div>
+
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="http://ly95.me/2014-04-01/sesson-memcache-warning.html">
+        Session+memcache问题
+      </a>
+    </h1>
+    <span class="post-date">2014年04月01日</span>
+    <p>配置php.ini</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>session.save_handler <span class="o">=</span> memcache
+session.save_path <span class="o">=</span> <span class="s2">"localhost:11211"</span>
+</code></pre></div></div>
+
+<p>日志提示</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Warning: session_start<span class="o">()</span> <span class="o">[</span><span class="k">function</span>.session-start]: Keycannot be empty
+</code></pre></div></div>
+
+<p>原因未知，先记录一下。</p>
+
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="http://ly95.me/2013-11-19/macports-install-libunwind-failed.html">
+        MacPort安装libunwind失败
+      </a>
+    </h1>
+    <span class="post-date">2013年11月19日</span>
+    <p>通过macport重新安装golang的时候得到下面提示</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Extracting libunwind-headers
+Error: org.macports.extract <span class="k">for </span>port libunwind-headers returned: <span class="nb">command </span>execution failed
+Please see the log file <span class="k">for </span>port libunwind-headers <span class="k">for </span>details:
+/opt/local/var/macports/logs/_opt_local_var_macports_sources_rsync.macports.org_release_tarballs_ports_devel_libunwind-headers/libunwind-headers/main.log
+Error: Problem <span class="k">while </span>installing libunwind-headers
+Error: Unable to execute port: upgrade llvm-gcc42 failed
+</code></pre></div></div>
+
+<p>通过搜索得到是xcode5升级造成的，先接受新许可。</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>xcodebuild <span class="nt">-license</span> agree
+</code></pre></div></div>
+
+<p>打开错误日志 main.log 看到</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">-xf</span> - 
+:info:extract sh: /usr/bin/gnutar: No such file or directory
+:info:extract <span class="nb">gzip</span>: error writing to output: Broken pipe
+:info:extract <span class="nb">gzip</span>: /opt/local/var/macports/distfiles/libunwind-headers/libunwind-35.1.tar.gz: uncompress failed
+:info:extract Command failed:  <span class="nb">cd</span>
+<span class="s2">"/opt/local/var/macports/build/_opt_local_var_macports_sources_rsync.macports.org_release_tarballs_ports_devel_libunwind-headers/libunwind-headers/work"</span> <span class="o">&amp;&amp;</span> /usr/bin/gzip <span class="nt">-dc</span> <span class="s1">'/opt/local/var/macports/distfiles/libunwind-headers/libunwind-35.1.tar.gz'</span> | /usr/bin/gnutar <span class="nt">--no-same-owner</span>
+<span class="nt">-xf</span> -
+</code></pre></div></div>
+
+<p>原来是gnutar不存在，回想起来，macos是10.7时安装的macport ，现在已经升级到10.9了。</p>
+
+<blockquote>
+  <p>The problem is that your version of MacPorts was not built on Mavericks and assumes the tools that were there when it was installed are still available. Since this is no longer the case, you should re-install MacPorts, which will automatically fix this issue.</p>
+</blockquote>
+
+<p>所以只能重新安装macport</p>
+
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="http://ly95.me/2013-08-22/mysql-error-thread-stack-overrun.html">
+        [MACOS] MYSQL Error : Thread stack overrun
+      </a>
+    </h1>
+    <span class="post-date">2013年08月22日</span>
+    <p>locahost执行一简单update语句的时候，遇见Mysql线程堆栈溢出。</p>
+
+<p>完整错误提示：</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Error : Thread stack overrun: 14616 bytes used of a 131072 byte stack, and 128000 bytes needed. Use <span class="s1">'mysqld --thread_stack=#'</span> to specify a bigger stack.
+</code></pre></div></div>
+
+<p>本机环境：
+max os 10.8.4
+mysql-server55</p>
+
+<p>修改my.conf设置</p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>thread_stack <span class="o">=</span> 132K
+</code></pre></div></div>
+
+<p>重启mysql-server服务</p>
+
+<p>还是不行，提示</p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Error: Thread stack overrun: 14616 bytes used of a 135168 byte stack, and 128000 bytes needed. Use <span class="s1">'mysqld --thread_stack=#'</span> to specify a bigger stack.
+</code></pre></div></div>
+
+<p>真是得寸进尺，索性改到160k，这次没问题了。</p>
+
+<p>原因未知，主观觉得跟使用的客户端工具Navicat Premium有关。</p>
+
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="http://ly95.me/2013-08-19/sou-jiu-dian.html">
+        搜酒店App
+      </a>
+    </h1>
+    <span class="post-date">2013年08月19日</span>
+    <p><img class="alignnone size-full wp-image-238" alt="logo@2x" src="http://ly95.me/wp-content/uploads/2013/08/logo@2x.png" width="114" height="114" /></p>
+
+<p>基于lbs寻找附近酒店</p>
 
   </div>
   
@@ -499,37 +466,20 @@
 
 <div class="pagination">
   
-    <a class="pagination-item older" href="/page/7">下一页</a>
+    <a class="pagination-item older" href="http://ly95.me/page/7">下一页</a>
   
   
     
-      <a class="pagination-item newer" href="/page/5">上一页</a>
+      <a class="pagination-item newer" href="http://ly95.me/page/5">上一页</a>
     
   
 </div>
-
 
       </div>
     </div>
 
     <label for="sidebar-checkbox" class="sidebar-toggle"></label>
 
-    <script>
-      (function(document) {
-        var toggle = document.querySelector('.sidebar-toggle');
-        var sidebar = document.querySelector('#sidebar');
-        var checkbox = document.querySelector('#sidebar-checkbox');
-
-        document.addEventListener('click', function(e) {
-          var target = e.target;
-
-          if(!checkbox.checked ||
-             sidebar.contains(target) ||
-             (target === checkbox || target === toggle)) return;
-
-          checkbox.checked = false;
-        }, false);
-      })(document);
-    </script>
+    <script src='//public/js/script.js'></script>
   </body>
 </html>

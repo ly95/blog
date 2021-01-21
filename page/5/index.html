@@ -3,10 +3,8 @@
 
   <head>
   <link href="http://gmpg.org/xfn/11" rel="profile">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
 
-  <!-- Enable responsiveness on mobile devices-->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 
   <title>
@@ -15,17 +13,21 @@
     
   </title>
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="/public/css/poole.css">
-  <link rel="stylesheet" href="/public/css/syntax.css">
-  <link rel="stylesheet" href="/public/css/lanyon.css">
+  
+  <link rel="canonical" href="http://ly95.me/page/5/">
+  
 
-  <!-- Icons -->
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
-  <link rel="shortcut icon" href="/public/favicon.ico">
+  <link rel="stylesheet" href="http://ly95.me/public/css/poole.css">
+  <link rel="stylesheet" href="http://ly95.me/public/css/syntax.css">
+  <link rel="stylesheet" href="http://ly95.me/public/css/lanyon.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
 
-  <!-- RSS -->
-  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://ly95.me/public/apple-touch-icon-precomposed.png">
+  <link rel="shortcut icon" href="http://ly95.me/public/favicon.ico">
+
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://ly95.me/atom.xml">
+
+  
 </head>
 
 
@@ -42,7 +44,7 @@
   </div>
 
   <nav class="sidebar-nav">
-    <a class="sidebar-nav-item" href="/">首页</a>
+    <a class="sidebar-nav-item active" href="http://ly95.me/">首页</a>
 
     
 
@@ -76,7 +78,7 @@
     
       
         
-          <a class="sidebar-nav-item" href="/about/">关于我</a>
+          <a class="sidebar-nav-item" href="http://ly95.me/about/">关于我</a>
         
       
     
@@ -127,179 +129,11 @@
       
     
       
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
     
       
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
     
       
         
-      
-    
-      
-    
       
     
       
@@ -456,7 +290,7 @@
     
       
         
-          <a class="sidebar-nav-item" href="/tags/">标签</a>
+          <a class="sidebar-nav-item" href="http://ly95.me/tags/">标签</a>
         
       
     
@@ -464,7 +298,7 @@
 
   <div class="sidebar-item">
     <p>
-      &copy; 2020. All rights reserved.
+      &copy; 2021. All rights reserved.
     </p>
   </div>
 </div>
@@ -485,109 +319,171 @@
   
   <div class="post">
     <h1 class="post-title">
-      <a href="/2019-02-21/tencent-cloud-api-with-postman.html">
-        腾讯云容器服务Api实例
+      <a href="http://ly95.me/2015-02-17/discuz-api-case.html">
+        Discuz! 接口开发
       </a>
     </h1>
-    <span class="post-date">2019年02月21日</span>
-    <p>为了测试方便，在postman上用javascript实现了签名。</p>
+    <span class="post-date">2015年02月17日</span>
+    <p>为Discuz!论坛提供App使用的接口，支持3x以上版本。</p>
 
-<p>Pre script代码</p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function ksort(jsonData) {
-    try {
-        let tempJsonObj = {};
-        let sdic = Object.keys(jsonData).sort();
-        sdic.map((item, index) =&gt; {
-            tempJsonObj[item] = jsonData[sdic[index]]
-        })
-        return tempJsonObj;
-    } catch (e) {
-        return jsonData;
-    }
-}
+<p>登陆，注册接口(含上传头像)，修改头像，修改密码，忘记密码，我收藏的帖子，我发的帖子，获取分类下的帖子，获取帖子详情(含楼层和只看楼主功能)，发帖（图片上传），收藏(取消)帖子。</p>
 
-pm.sendRequest("https://caligatio.github.io/jsSHA/sha.js", (err, res) =&gt; {
-    var e = eval;
-    e(res.text());
+<p>接口有以下特点：</p>
 
-    var ts = Math.round((new Date()).getTime() / 1000);
-    pm.environment.set("Timestamp", ts);
-    pm.environment.set("Nonce", Math.random().toString().slice(-6));
+<ul>
+  <li>Resful风格使用方便</li>
+  <li>Http auth 权限验证</li>
+  <li>结合论坛配置</li>
+  <li>安装方便</li>
+</ul>
 
-    var list = [
-        'Action',
-        'Nonce',
-        'Region',
-        'SecretId',
-        'Timestamp',
-        'clusterId',
-        'allnamespace',
-    ];
+<p>有需要请与本人联系。linyang95#aol.com</p>
 
-    var params = [];
-    for (var i in list) {
-        var k = list[i];
-        params[k] = pm.environment.get(k);
-    }
-    console.log(params);
-    var params2 = ksort(params);
-    var temp = [];
-    for (var k2 in params2) {
-        temp.push(k2 + "=" + params[k2]);
-    }
-    var reqStr = temp.join("&amp;");
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="http://ly95.me/2015-02-03/python-bug-certificate-verify-failed.html">
+        Python Bug CERTIFICATE_VERIFY_FAILED
+      </a>
+    </h1>
+    <span class="post-date">2015年02月03日</span>
+    <p>urllib2请求ssh网址的时候抛出异常</p>
 
-    var sign = "GET" + pm.globals.get("uri") + "?" + reqStr;
-
-    var hmacObj = new jsSHA("SHA-1", "TEXT");
-    hmacObj.setHMACKey(pm.environment.get("TXAPI_SECRETKEY"), "TEXT");
-    hmacObj.update(sign);
-    
-    var signed = hmacObj.getHMAC("B64");
-
-    pm.environment.set("Signature", signed);
-
-});
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>File <span class="s2">"/opt/local/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py"</span>, line 1197, <span class="k">in </span>do_open
+raise URLError<span class="o">(</span>err<span class="o">)</span>
+urllib2.URLError: &lt;urlopen error <span class="o">[</span>SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed <span class="o">(</span>_ssl.c:581<span class="o">)&gt;</span>
 </code></pre></div></div>
 
-<h3 id="部分变量设置">部分变量设置</h3>
+<p>该问题是python一个bug，影响版本：3.5, 3.4, 2.7。临时解决办法程序中加入下面代码</p>
 
-<table>
-  <thead>
-    <tr>
-      <th>name</th>
-      <th>Value</th>
-      <th> </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>uri</td>
-      <td>ccs.api.qcloud.com/v2/index.php</td>
-      <td>-</td>
-    </tr>
-    <tr>
-      <td>Action</td>
-      <td>DescribeClusterService</td>
-      <td>具体操作的指令接口名称，例如想要调用查询伸缩组列表 接口，则 Action 参数即为 DescribeInstances。</td>
-    </tr>
-    <tr>
-      <td>Region</td>
-      <td>bj</td>
-      <td>区域参数，用来标识希望操作哪个区域的实例。各区域的参数值为: 北京:bj，广州:gz，上海:sh，香港:hk，北美:ca。</td>
-    </tr>
-    <tr>
-      <td>allnamespace</td>
-      <td>1</td>
-      <td>是否展示所有命名空间下的服务。1：是，0 或不传：否</td>
-    </tr>
-  </tbody>
-</table>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">ssl</span>
+    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">ssl</span><span class="p">,</span> <span class="s">'_create_unverified_context'</span><span class="p">):</span>
+        <span class="n">ssl</span><span class="p">.</span><span class="n">_create_default_https_context</span> <span class="o">=</span> <span class="n">ssl</span><span class="p">.</span><span class="n">_create_unverified_context</span>
+</code></pre></div></div>
 
-<h3 id="postman模版分享">postman模版分享</h3>
+<p>相关链接</p>
 
-<p><a href="https://documenter.getpostman.com/view/4561089/S17qR8Q3#7da4f05d-810d-48a1-b317-85daa2e0249b">https://documenter.getpostman.com/view/4561089/S17qR8Q3#7da4f05d-810d-48a1-b317-85daa2e0249b</a></p>
+<p><a href="https://bugs.python.org/issue22417">https://bugs.python.org/issue22417</a></p>
 
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="http://ly95.me/2014-08-21/git-svn-rebase-exception.html">
+        Git svn rebase异常
+      </a>
+    </h1>
+    <span class="post-date">2014年08月21日</span>
+    <p>环境MacOS，git版本1.9.3(Apple Git-50)，同步版本信息时遭遇此错误提示</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git svn rebase
+
+Incomplete data: Delta <span class="nb">source </span>ended unexpectedly at /Applications/Xcode.app/Contents/Developer/usr/share/git-core/perl/Git/SVN/Ra.pm line 290.
+</code></pre></div></div>
+
+<p>处理办法指定同步版本</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git svn reset —r 版本号
+</code></pre></div></div>
+
+<p>然后再试</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git svn rebase
+</code></pre></div></div>
+
+<p>如果还报错，重试指定较低的版本。</p>
+
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="http://ly95.me/2014-08-15/macos-git-svn.html">
+        MacOS Git-svn 使用笔记
+      </a>
+    </h1>
+    <span class="post-date">2014年08月15日</span>
+    <p>公司服务器使用版本控制工具为svn-1.6，项目较大，开发任务量大，再一次意外将svn升级到1.8并且更新了svn本地资源，造成无法再提交新文件。</p>
+
+<p>一咬牙决心使用git-svn代替svn-client。</p>
+
+<p>Xcode 安装命令行工具</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>xcode-select —install
+</code></pre></div></div>
+
+<p>克隆远程资源</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git svn clone svn://res-url/something
+</code></pre></div></div>
+
+<p>会从第一个版本下载一直到最新版本，如果版本很高那可能花上几天的时间</p>
+
+<p>增加参数节约时间，-r1 是开始版本号</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git svn clone svn://res-url/something <span class="nt">-r1</span>:2
+</code></pre></div></div>
+
+<p>建好以后再使用rebase同步版本信息</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git svn rebase
+</code></pre></div></div>
+
+<p>完成后，最好创建开发分支，和master分开，提交代码前，将开发分支合并到master上再提交到svn服务器，避免冲突。</p>
+
+<p>原svn项目资源大小为3G，git svn下载完毕后大小为3.14G.</p>
+
+<p>常用命令</p>
+
+<p>更新本地资源 git svn rebase</p>
+
+<p>提交本地修改到svn服务端 git svn dcommit</p>
+
+<p>最后推荐免费git客户端：SourceTree</p>
+
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="http://ly95.me/2014-06-24/macports-create-local-portfile.html">
+        MacPorts创建本地Portfile
+      </a>
+    </h1>
+    <span class="post-date">2014年06月24日</span>
+    <p>使用macport安装编译的时候希望能自定义configure。</p>
+
+<p>直接修改macports官方Portfile不方便管理，创建自定义的本地Portfile是最好选择。编辑文件/opt/local/etc/macports/sources.conf找到这行</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rsync://rsync.macports.org/release/tarballs/ports.tar <span class="o">[</span>default]
+</code></pre></div></div>
+
+<p>上面增加一行</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>file:///opt/local/portfiles
+</code></pre></div></div>
+
+<p>创建资源</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo mkdir</span> <span class="nt">-p</span> /opt/local/portfiles/ports/www/my_nginx
+<span class="nb">cd</span> /opt/local/portfiles/ports/www/my_nginx
+<span class="nb">sudo cp</span> /opt/local/var/macports/sources/rsync.macports.org/release/tarballs/ports/www/nginx/Portfile Portfile
+</code></pre></div></div>
+
+<p>编辑Portfile</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vi Portfile
+</code></pre></div></div>
+
+<p>找到configure.args-append就可以修改configure，最后加入macport索引</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> /opt/local/portfiles
+portindex
+</code></pre></div></div>
+
+<p>运行命令进行测试</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>port search my_nginx
+</code></pre></div></div>
 
   </div>
   
@@ -596,37 +492,20 @@ pm.sendRequest("https://caligatio.github.io/jsSHA/sha.js", (err, res) =&gt; {
 
 <div class="pagination">
   
-    <a class="pagination-item older" href="/page/6">下一页</a>
+    <a class="pagination-item older" href="http://ly95.me/page/6">下一页</a>
   
   
     
-      <a class="pagination-item newer" href="/page/4">上一页</a>
+      <a class="pagination-item newer" href="http://ly95.me/page/4">上一页</a>
     
   
 </div>
-
 
       </div>
     </div>
 
     <label for="sidebar-checkbox" class="sidebar-toggle"></label>
 
-    <script>
-      (function(document) {
-        var toggle = document.querySelector('.sidebar-toggle');
-        var sidebar = document.querySelector('#sidebar');
-        var checkbox = document.querySelector('#sidebar-checkbox');
-
-        document.addEventListener('click', function(e) {
-          var target = e.target;
-
-          if(!checkbox.checked ||
-             sidebar.contains(target) ||
-             (target === checkbox || target === toggle)) return;
-
-          checkbox.checked = false;
-        }, false);
-      })(document);
-    </script>
+    <script src='//public/js/script.js'></script>
   </body>
 </html>

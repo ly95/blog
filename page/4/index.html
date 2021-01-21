@@ -3,10 +3,8 @@
 
   <head>
   <link href="http://gmpg.org/xfn/11" rel="profile">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
 
-  <!-- Enable responsiveness on mobile devices-->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 
   <title>
@@ -15,17 +13,21 @@
     
   </title>
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="/public/css/poole.css">
-  <link rel="stylesheet" href="/public/css/syntax.css">
-  <link rel="stylesheet" href="/public/css/lanyon.css">
+  
+  <link rel="canonical" href="http://ly95.me/page/4/">
+  
 
-  <!-- Icons -->
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
-  <link rel="shortcut icon" href="/public/favicon.ico">
+  <link rel="stylesheet" href="http://ly95.me/public/css/poole.css">
+  <link rel="stylesheet" href="http://ly95.me/public/css/syntax.css">
+  <link rel="stylesheet" href="http://ly95.me/public/css/lanyon.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
 
-  <!-- RSS -->
-  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://ly95.me/public/apple-touch-icon-precomposed.png">
+  <link rel="shortcut icon" href="http://ly95.me/public/favicon.ico">
+
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://ly95.me/atom.xml">
+
+  
 </head>
 
 
@@ -42,7 +44,7 @@
   </div>
 
   <nav class="sidebar-nav">
-    <a class="sidebar-nav-item" href="/">首页</a>
+    <a class="sidebar-nav-item active" href="http://ly95.me/">首页</a>
 
     
 
@@ -76,7 +78,7 @@
     
       
         
-          <a class="sidebar-nav-item" href="/about/">关于我</a>
+          <a class="sidebar-nav-item" href="http://ly95.me/about/">关于我</a>
         
       
     
@@ -127,179 +129,11 @@
       
     
       
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
     
       
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
     
       
         
-      
-    
-      
-    
       
     
       
@@ -456,7 +290,7 @@
     
       
         
-          <a class="sidebar-nav-item" href="/tags/">标签</a>
+          <a class="sidebar-nav-item" href="http://ly95.me/tags/">标签</a>
         
       
     
@@ -464,7 +298,7 @@
 
   <div class="sidebar-item">
     <p>
-      &copy; 2020. All rights reserved.
+      &copy; 2021. All rights reserved.
     </p>
   </div>
 </div>
@@ -485,12 +319,171 @@
   
   <div class="post">
     <h1 class="post-title">
-      <a href="/2019-07-30/new-life.html">
-        新开始
+      <a href="http://ly95.me/2016-04-15/nodejs-php-symbols.html">
+        学习词汇解析
       </a>
     </h1>
-    <span class="post-date">2019年07月30日</span>
-    <p>开启新的工作和生活状态，半年后再看！加油！！</p>
+    <span class="post-date">2016年04月15日</span>
+    <p>起因在使用Visual Studio Code无法查看到PHP代码结构，突然打算动手解决此事。</p>
+
+<p>能力有限，起初想到的解决办法：通过PHP脚本来解析PHP文档。
+可利用相关函数</p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">token_get_all</span><span class="p">();</span>
+<span class="c1">// get_defined_*</span>
+</code></pre></div></div>
+
+<p>缺点就是存在环境依赖、版本兼容、被编辑的文件语法错误的时候无法解析。</p>
+
+<p>不依赖开发环境，只有使用nodejs扫描PHP源码并生成symbols信息，于是决定就这样做。
+中间过程略，学习路线是这样的：了解词汇解析，阅读PHP Zend部分源码，学习re2c，动手写代码。</p>
+
+<p><strong>好有的想法一定要努力实现不管结果怎样。</strong></p>
+
+<p>昨晚该插件已发布，名为 php symbols 
+<a href="https://marketplace.visualstudio.com/items?itemName=linyang95.php-symbols">地址</a>。</p>
+
+<p>参考资料：</p>
+
+<ul>
+  <li><a href="https://zh.wikipedia.org/wiki/词法分析">Wiki 词法分析</a></li>
+  <li><a href="http://www.cs.berkeley.edu/%7Ebodik/cs164sp13">CS164</a></li>
+  <li><a href="http://tldp.org/HOWTO/Lex-YACC-HOWTO.html">Lex and YACC primer/HOWTO</a></li>
+  <li><a href="https://www.ibm.com/developerworks/cn/linux/sdk/lex/">Yacc 与 Lex 快速入门</a></li>
+  <li>《领域专用语言实战》(亚马逊购买的kindle版)</li>
+</ul>
+
+
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="http://ly95.me/2015-12-12/mysql-lian-jie-guo-duo.html">
+        Mysql连接数过多
+      </a>
+    </h1>
+    <span class="post-date">2015年12月12日</span>
+    <p>最近mysql数据库连接数突然增多，经过模拟测试和阅读php源码确认是由于php超时有关，这种连接状态多为sleep。</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp"># file: php-src/sapi/fpm/fpm/fpm_main.c
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">argv</span><span class="p">[])</span>
+<span class="p">{</span>
+    <span class="c1">// 代码略...</span>
+    <span class="n">zend_first_try</span> <span class="p">{</span>
+        <span class="k">while</span> <span class="p">(</span><span class="n">EXPECTED</span><span class="p">(</span><span class="n">fcgi_accept_request</span><span class="p">(</span><span class="n">request</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">))</span> <span class="p">{</span>
+            <span class="c1">// 代码略...</span>
+            <span class="n">php_execute_script</span><span class="p">(</span><span class="o">&amp;</span><span class="n">file_handle</span><span class="p">);</span>
+            <span class="c1">// 代码略...</span>
+            <span class="n">php_request_shutdown</span><span class="p">((</span><span class="kt">void</span> <span class="o">*</span><span class="p">)</span> <span class="mi">0</span><span class="p">);</span>
+            <span class="c1">// 代码略...</span>
+        <span class="p">}</span>
+        <span class="c1">// 代码略...</span>
+    <span class="p">}</span> <span class="n">zend_catch</span> <span class="p">{</span>
+        <span class="n">exit_status</span> <span class="o">=</span> <span class="n">FPM_EXIT_SOFTWARE</span><span class="p">;</span>
+    <span class="p">}</span> <span class="n">zend_end_try</span><span class="p">();</span>
+
+    <span class="c1">// 代码略...</span>
+    <span class="k">return</span> <span class="n">exit_status</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>宏zend_first_try和zend_catch看作长跳转(setjump)，
+当发生超时，函数php_execute_script将抛出E_ERROR类型错误。</p>
+
+<ul>
+  <li>E_ERROR</li>
+  <li>E_CORE_ERROR</li>
+  <li>E_COMPILE_ERROR</li>
+  <li>E_USER_ERROR</li>
+  <li>E_PARSE</li>
+</ul>
+
+<p>以上错误类型不能捕获，源码中这样描述fatal errors:</p>
+
+<blockquote>
+  <p>fatal errors are real errors and cannot be made exceptions</p>
+</blockquote>
+
+<p>函数php_request_shutdown会跳过执行，最终析构方法不会被执行。</p>
+
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="http://ly95.me/2015-11-24/vscode-phpmd-plugin.html">
+        VSCode的PhpMD插件
+      </a>
+    </h1>
+    <span class="post-date">2015年11月24日</span>
+    <p>VSCode(Visual Studio Code) 早有关注。前不久发布了v0.10.1，支持插件开发，兴奋不已。</p>
+
+<p>所以为php开发了phpmd插件，已经可以在插件库里搜索和下载。vscode插件开发文档不多，后期再慢慢改善这个插件。</p>
+
+<p>地址：<a href="https://github.com/ly95/vsc.phpmd">github</a></p>
+
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="http://ly95.me/2015-08-30/php-tool-phpdcd.html">
+        PHP开发工具PHPDCD
+      </a>
+    </h1>
+    <span class="post-date">2015年08月30日</span>
+    <p>PHP开发工具PHPMD和PHPCS都不在做介绍了，今天在Github上发现的一款工具也很不错。</p>
+
+<p><strong>PHP Dead Code Detector (PHPDCD)</strong></p>
+
+<p>phpdcd 可以扫描php项目中的没有在使用的函数或方法（死代码）</p>
+
+<p>使用方法也简单，下载https://phar.phpunit.de/phpdcd.phar后即可使用。</p>
+
+<p>以Mac OS为例</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget https://phar.phpunit.de/phpdcd.phar
+<span class="nb">chmod</span> +x phpdcd.phar
+<span class="nb">mv </span>phpdcd.phar /usr/local/bin/phpdcd
+</code></pre></div></div>
+
+<p>进入项目目录</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> /var/www/site
+phpdcd <span class="nb">.</span>
+</code></pre></div></div>
+
+<p>即可立即返回扫描报告。</p>
+
+<p><strong>可选参数</strong></p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Usage:
+ phpdcd <span class="o">[</span><span class="nt">--names</span><span class="o">=</span><span class="s2">"..."</span><span class="o">]</span> <span class="o">[</span><span class="nt">--names-exclude</span><span class="o">=</span><span class="s2">"..."</span><span class="o">]</span> <span class="o">[</span><span class="nt">--exclude</span><span class="o">=</span><span class="s2">"..."</span><span class="o">]</span> <span class="o">[</span><span class="nt">--recursive</span><span class="o">]</span> <span class="o">[</span>values1] ... <span class="o">[</span>valuesN]
+Arguments:
+ values
+Options:
+ <span class="nt">--names</span>               需要检查的文件名列表，数组形势 <span class="o">(</span>如: <span class="o">[</span><span class="s2">"*.php"</span>, <span class="s2">"*.ini"</span><span class="o">])</span>
+ <span class="nt">--names-exclude</span>       不需要检查的文件名列表，值也是数组形式
+ <span class="nt">--exclude</span>             按目录排除不需要检查的文件
+</code></pre></div></div>
+
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="http://ly95.me/2015-07-18/python-cross-domain-proxy.html">
+        跨域代理
+      </a>
+    </h1>
+    <span class="post-date">2015年07月18日</span>
+    <p>Javascript 跨域</p>
+
+<p>在做基于ionicframework的App的时候，顺便写了一个简单代理服务。</p>
+
+<p>目的是为了使服务器的接口增加接入控制，以支持Javascript跨域。</p>
+
+<p>代码：</p>
+
+<p><a href="https://github.com/ly95/py-crossdomain-proxy">https://github.com/ly95/py-crossdomain-proxy</a></p>
 
   </div>
   
@@ -499,37 +492,20 @@
 
 <div class="pagination">
   
-    <a class="pagination-item older" href="/page/5">下一页</a>
+    <a class="pagination-item older" href="http://ly95.me/page/5">下一页</a>
   
   
     
-      <a class="pagination-item newer" href="/page/3">上一页</a>
+      <a class="pagination-item newer" href="http://ly95.me/page/3">上一页</a>
     
   
 </div>
-
 
       </div>
     </div>
 
     <label for="sidebar-checkbox" class="sidebar-toggle"></label>
 
-    <script>
-      (function(document) {
-        var toggle = document.querySelector('.sidebar-toggle');
-        var sidebar = document.querySelector('#sidebar');
-        var checkbox = document.querySelector('#sidebar-checkbox');
-
-        document.addEventListener('click', function(e) {
-          var target = e.target;
-
-          if(!checkbox.checked ||
-             sidebar.contains(target) ||
-             (target === checkbox || target === toggle)) return;
-
-          checkbox.checked = false;
-        }, false);
-      })(document);
-    </script>
+    <script src='//public/js/script.js'></script>
   </body>
 </html>

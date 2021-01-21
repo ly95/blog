@@ -3,10 +3,8 @@
 
   <head>
   <link href="http://gmpg.org/xfn/11" rel="profile">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
 
-  <!-- Enable responsiveness on mobile devices-->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 
   <title>
@@ -15,17 +13,21 @@
     
   </title>
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="/public/css/poole.css">
-  <link rel="stylesheet" href="/public/css/syntax.css">
-  <link rel="stylesheet" href="/public/css/lanyon.css">
+  
+  <link rel="canonical" href="http://ly95.me/page/7/">
+  
 
-  <!-- Icons -->
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
-  <link rel="shortcut icon" href="/public/favicon.ico">
+  <link rel="stylesheet" href="http://ly95.me/public/css/poole.css">
+  <link rel="stylesheet" href="http://ly95.me/public/css/syntax.css">
+  <link rel="stylesheet" href="http://ly95.me/public/css/lanyon.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
 
-  <!-- RSS -->
-  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://ly95.me/public/apple-touch-icon-precomposed.png">
+  <link rel="shortcut icon" href="http://ly95.me/public/favicon.ico">
+
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://ly95.me/atom.xml">
+
+  
 </head>
 
 
@@ -42,7 +44,7 @@
   </div>
 
   <nav class="sidebar-nav">
-    <a class="sidebar-nav-item" href="/">首页</a>
+    <a class="sidebar-nav-item active" href="http://ly95.me/">首页</a>
 
     
 
@@ -76,7 +78,7 @@
     
       
         
-          <a class="sidebar-nav-item" href="/about/">关于我</a>
+          <a class="sidebar-nav-item" href="http://ly95.me/about/">关于我</a>
         
       
     
@@ -127,179 +129,11 @@
       
     
       
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
     
       
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
     
       
         
-      
-    
-      
-    
       
     
       
@@ -456,7 +290,7 @@
     
       
         
-          <a class="sidebar-nav-item" href="/tags/">标签</a>
+          <a class="sidebar-nav-item" href="http://ly95.me/tags/">标签</a>
         
       
     
@@ -464,7 +298,7 @@
 
   <div class="sidebar-item">
     <p>
-      &copy; 2020. All rights reserved.
+      &copy; 2021. All rights reserved.
     </p>
   </div>
 </div>
@@ -485,34 +319,104 @@
   
   <div class="post">
     <h1 class="post-title">
-      <a href="/2018-11-15/about-oxs-defaults.html">
-        关于MacOS配置defaults
+      <a href="http://ly95.me/2013-05-28/yong-php-ji-suan-wav-bo-fang-shi-jian.html">
+        用php计算wav文件播放时间
       </a>
     </h1>
-    <span class="post-date">2018年11月15日</span>
-    <p>前提（一定是闲的蛋疼）有怪癖，爱保持整洁。原因每次修改了MacbookPro外接显示器桌面背景图，下次连接电脑时背景图不会与内建显示器的背景图同步。</p>
+    <span class="post-date">2013年05月28日</span>
+    <p>开发需要，试写了一个php版的</p>
 
-<p>于是想到删除相关配置。</p>
+<p>代码如下：</p>
 
-<p>从熟悉的命令入手，重新给Launchpad的应用程序排序：</p>
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>defaults write com.apple.dock ResetLaunchPad <span class="nt">-bool</span> TRUE
-killall Dock
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cd">/**
+ * get length of wav audio in minutes/seconds
+ *
+ * @package default
+ * @author linyang95#aol.com
+ **/</span>
+<span class="nv">$filename</span> <span class="o">=</span> <span class="s1">'voice_0.wav'</span><span class="p">;</span>
+<span class="nv">$fp</span> <span class="o">=</span> <span class="nb">fopen</span><span class="p">(</span><span class="nv">$filename</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">);</span>
+<span class="nb">fseek</span><span class="p">(</span><span class="nv">$fp</span><span class="p">,</span> <span class="mi">20</span><span class="p">);</span>
+<span class="nv">$rawheader</span> <span class="o">=</span> <span class="nb">fread</span><span class="p">(</span><span class="nv">$fp</span><span class="p">,</span> <span class="mi">16</span><span class="p">);</span>
+<span class="c1">// v short string</span>
+<span class="c1">// V long string</span>
+<span class="nv">$header</span> <span class="o">=</span> <span class="nb">unpack</span><span class="p">(</span><span class="s1">'vwFormatTag/vnChannels/VnSamplesPerSec/VnAvgBytesPerSec/vnBlockAlign/vwBitsPerSample'</span><span class="p">,</span> <span class="nv">$rawheader</span><span class="p">);</span>
+<span class="nb">extract</span><span class="p">(</span><span class="nv">$header</span><span class="p">);</span>
+<span class="nv">$rawbody</span> <span class="o">=</span> <span class="nb">fread</span><span class="p">(</span><span class="nv">$fp</span><span class="p">,</span> <span class="nb">filesize</span><span class="p">(</span><span class="nv">$filename</span><span class="p">)</span><span class="o">-</span><span class="mi">36</span><span class="p">);</span>
+<span class="nv">$second</span> <span class="o">=</span> <span class="nb">strlen</span><span class="p">(</span><span class="nv">$rawbody</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span> <span class="p">(</span><span class="nv">$nChannels</span> <span class="o">*</span> <span class="nv">$nSamplesPerSec</span> <span class="o">*</span> <span class="nv">$wBitsPerSample</span><span class="p">)</span> <span class="o">/</span> <span class="mi">8</span> <span class="p">);</span>
+<span class="k">print</span> <span class="nb">ceil</span><span class="p">(</span><span class="nv">$second</span><span class="p">);</span>
 </code></pre></div></div>
-<p>问题来了，不知道显示相关配置的domain值如何重置配置。网上找资料就算了，有怪癖的人不多。思路是先保存一份当前配置到文件，然后修改外接显示器的背景图片比较配置的差异部分。</p>
 
-<p>保存当前配置内容</p>
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>defaults <span class="nb">read</span> <span class="o">&gt;</span> current_default.txt
+<p>参考</p>
+
+<p><a href="https://ccrma.stanford.edu/courses/422/projects/WaveFormat">https://ccrma.stanford.edu/courses/422/projects/WaveFormat</a>
+<a href="http://blog.csdn.net/qingdaoxuelei/article/details/2815516">http://blog.csdn.net/qingdaoxuelei/article/details/2815516</a></p>
+
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="http://ly95.me/2013-05-23/mysql-config-not-found-on-osx.html">
+        mysql_config not found on osx10.8
+      </a>
+    </h1>
+    <span class="post-date">2013年05月23日</span>
+    <p>系统：osx 10.8.3</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip <span class="nb">install </span>mysql-python
 </code></pre></div></div>
 
-<p>比对差异</p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vimdiff current_default.txt changed.txt
+<p>抛出异常</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>EnvironmentError: mysql_config not found
 </code></pre></div></div>
 
-<p><img src="https://raw.githubusercontent.com/ly95/blog/master/illustration/2018-11-15/screenshot.png" alt="screenshot" /></p>
+<p>由于mysql是macport安装，版本55，所以问题就简单了</p>
 
-<p>发现有修改的domain是com.apple.spaces，测试有效，问题解决了。</p>
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>defaults delete com.apple.spaces
-<span class="nb">sudo </span>shutdown <span class="nt">-r</span> 0
+<p>只需运行命令</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo ln</span> <span class="nt">-s</span> /opt/local/bin/mysql_config5 /opt/local/bin/mysql_config
+</code></pre></div></div>
+
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="http://ly95.me/2013-05-04/window-xp-key.html">
+        无限可用xp激活码
+      </a>
+    </h1>
+    <span class="post-date">2013年05月04日</span>
+    <p>DG8FV-B9TKY-FRT9J-6CRCC-XPQ4G</p>
+
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="http://ly95.me/2013-04-19/pch-file-error.html">
+        Pch file error
+      </a>
+    </h1>
+    <span class="post-date">2013年04月19日</span>
+    <p>更新Xcode到4.6.2后，运行项目得到错误</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>error: PCH file built from a different branch <span class="o">((</span>clang-425.0.27<span class="o">))</span> than the compiler <span class="o">((</span>clang-425.0.28<span class="o">))</span>
+</code></pre></div></div>
+
+<p>需要clean以后重新编译</p>
+
+<p>PCH介绍：http://msdn.microsoft.com/zh-cn/library/hd8sctab(v=vs.80).aspx</p>
+
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="http://ly95.me/2013-02-26/macport-remove-inactive-packages.html">
+        macport清理更新后的旧版本package办法
+      </a>
+    </h1>
+    <span class="post-date">2013年02月26日</span>
+    <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>port uninstall inactive
 </code></pre></div></div>
 
   </div>
@@ -522,37 +426,20 @@ killall Dock
 
 <div class="pagination">
   
-    <a class="pagination-item older" href="/page/8">下一页</a>
+    <a class="pagination-item older" href="http://ly95.me/page/8">下一页</a>
   
   
     
-      <a class="pagination-item newer" href="/page/6">上一页</a>
+      <a class="pagination-item newer" href="http://ly95.me/page/6">上一页</a>
     
   
 </div>
-
 
       </div>
     </div>
 
     <label for="sidebar-checkbox" class="sidebar-toggle"></label>
 
-    <script>
-      (function(document) {
-        var toggle = document.querySelector('.sidebar-toggle');
-        var sidebar = document.querySelector('#sidebar');
-        var checkbox = document.querySelector('#sidebar-checkbox');
-
-        document.addEventListener('click', function(e) {
-          var target = e.target;
-
-          if(!checkbox.checked ||
-             sidebar.contains(target) ||
-             (target === checkbox || target === toggle)) return;
-
-          checkbox.checked = false;
-        }, false);
-      })(document);
-    </script>
+    <script src='//public/js/script.js'></script>
   </body>
 </html>
