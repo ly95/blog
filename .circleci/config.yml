@@ -7,11 +7,12 @@ jobs:
     steps:
       - checkout
       - run: |
-          curl -L https://github.com/ly95/lanyon/archive/1.1.0.tar.gz | tar zx
-          rm -rf lanyon-1.1.0/_posts
-          cp -r _posts lanyon-1.1.0
-          cp -r _my_tags lanyon-1.1.0
-          cd lanyon-1.1.0
+          curl -L https://codeload.github.com/ly95/lanyon/zip/master -o lanyon-master.zip
+          unzip lanyon-master.zip
+          rm -rf lanyon-master/_posts
+          cp -r _posts lanyon-master
+          cp -r _my_tags lanyon-master
+          cd lanyon-master
           bundle install
           bundle exec jekyll build
       - run: bash .circleci/deploy-ghpages.sh
