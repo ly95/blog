@@ -1,1 +1,1 @@
-Sitemap: http://ly95.me/sitemap.xml
+Sitemap: https://ly95.me/sitemap.xml

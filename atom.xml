@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
  <title>凡人牧白's Blog</title>
- <link href="http://ly95.me/atom.xml" rel="self"/>
- <link href="http://ly95.me/"/>
- <updated>2021-01-21T17:49:34+00:00</updated>
- <id>http://ly95.me</id>
+ <link href="https://ly95.me/atom.xml" rel="self"/>
+ <link href="https://ly95.me/"/>
+ <updated>2021-01-21T17:55:52+00:00</updated>
+ <id>https://ly95.me</id>
  <author>
    <name>Yang Lin</name>
    <email>linyang95@aol.com</email>
@@ -14,9 +14,9 @@
  
  <entry>
    <title>反...抓取</title>
-   <link href="http://ly95.me/2020-12-17/splash.html"/>
+   <link href="https://ly95.me/2020-12-17/splash.html"/>
    <updated>2020-12-17T00:00:00+00:00</updated>
-   <id>http://ly95.me//2020-12-17/splash</id>
+   <id>https://ly95.me//2020-12-17/splash</id>
    <content type="html">&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/ly95/blog/master/illustration/2021-01-22/1.jpg&quot; alt=&quot;screenshot&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;最近发现国内某知名足球网站的比赛数据是加密的，看过代码后发现，通过javascript解密后的结果会赋值到window全局变量上了。&lt;/p&gt;
@@ -29,9 +29,9 @@
  
  <entry>
    <title>ScollView保持滑动到底部</title>
-   <link href="http://ly95.me/2020-12-17/swiftui-scrollview-keep-bottom.html"/>
+   <link href="https://ly95.me/2020-12-17/swiftui-scrollview-keep-bottom.html"/>
    <updated>2020-12-17T00:00:00+00:00</updated>
-   <id>http://ly95.me//2020-12-17/swiftui-scrollview-keep-bottom</id>
+   <id>https://ly95.me//2020-12-17/swiftui-scrollview-keep-bottom</id>
    <content type="html">&lt;p&gt;没有什么好说的，直接看代码片段。&lt;/p&gt;
 
 &lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;SwiftUI&lt;/span&gt;
@@ -68,9 +68,9 @@
  
  <entry>
    <title>IOS应用扩展的内存限制</title>
-   <link href="http://ly95.me/2020-04-09/ios-message-filter-extension-memory-limited.html"/>
+   <link href="https://ly95.me/2020-04-09/ios-message-filter-extension-memory-limited.html"/>
    <updated>2020-04-09T00:00:00+00:00</updated>
-   <id>http://ly95.me//2020-04-09/ios-message-filter-extension-memory-limited</id>
+   <id>https://ly95.me//2020-04-09/ios-message-filter-extension-memory-limited</id>
    <content type="html">&lt;center&gt;
 &lt;img src=&quot;https://raw.githubusercontent.com/ly95/blog/master/illustration/2020-04-09/1.jpg&quot; width=&quot;400&quot; /&gt;
 &lt;/center&gt;
@@ -90,9 +90,9 @@
  
  <entry>
    <title>输入辅助工具Espanso</title>
-   <link href="http://ly95.me/2019-12-07/espanso.html"/>
+   <link href="https://ly95.me/2019-12-07/espanso.html"/>
    <updated>2019-12-07T00:00:00+00:00</updated>
-   <id>http://ly95.me//2019-12-07/espanso</id>
+   <id>https://ly95.me//2019-12-07/espanso</id>
    <content type="html">&lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://espanso.org&quot;&gt;https://espanso.org&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
@@ -107,18 +107,18 @@
  
  <entry>
    <title>新开始</title>
-   <link href="http://ly95.me/2019-07-30/new-life.html"/>
+   <link href="https://ly95.me/2019-07-30/new-life.html"/>
    <updated>2019-07-30T00:00:00+00:00</updated>
-   <id>http://ly95.me//2019-07-30/new-life</id>
+   <id>https://ly95.me//2019-07-30/new-life</id>
    <content type="html">&lt;p&gt;开启新的工作和生活状态，半年后再看！加油！！&lt;/p&gt;
 </content>
  </entry>
  
  <entry>
    <title>腾讯云容器服务Api实例</title>
-   <link href="http://ly95.me/2019-02-21/tencent-cloud-api-with-postman.html"/>
+   <link href="https://ly95.me/2019-02-21/tencent-cloud-api-with-postman.html"/>
    <updated>2019-02-21T00:00:00+00:00</updated>
-   <id>http://ly95.me//2019-02-21/tencent-cloud-api-with-postman</id>
+   <id>https://ly95.me//2019-02-21/tencent-cloud-api-with-postman</id>
    <content type="html">&lt;p&gt;为了测试方便，在postman上用javascript实现了签名。&lt;/p&gt;
 
 &lt;p&gt;Pre script代码&lt;/p&gt;
@@ -222,18 +222,18 @@ pm.sendRequest(&quot;https://caligatio.github.io/jsSHA/sha.js&quot;, (err, res) 
  
  <entry>
    <title>Bet365数据抓取分析完成</title>
-   <link href="http://ly95.me/2019-02-21/analyse-javascript.html"/>
+   <link href="https://ly95.me/2019-02-21/analyse-javascript.html"/>
    <updated>2019-02-21T00:00:00+00:00</updated>
-   <id>http://ly95.me//2019-02-21/analyse-javascript</id>
+   <id>https://ly95.me//2019-02-21/analyse-javascript</id>
    <content type="html">&lt;p&gt;这段时间花费了大力气解决Bet365数据抓取问题，在分析了接近3万行javascript代码后终于拨开云雾见月明。噢耶！&lt;/p&gt;
 </content>
  </entry>
  
  <entry>
    <title>关于MacOS配置defaults</title>
-   <link href="http://ly95.me/2018-11-15/about-oxs-defaults.html"/>
+   <link href="https://ly95.me/2018-11-15/about-oxs-defaults.html"/>
    <updated>2018-11-15T00:00:00+00:00</updated>
-   <id>http://ly95.me//2018-11-15/about-oxs-defaults</id>
+   <id>https://ly95.me//2018-11-15/about-oxs-defaults</id>
    <content type="html">&lt;p&gt;前提（一定是闲的蛋疼）有怪癖，爱保持整洁。原因每次修改了MacbookPro外接显示器桌面背景图，下次连接电脑时背景图不会与内建显示器的背景图同步。&lt;/p&gt;
 
 &lt;p&gt;于是想到删除相关配置。&lt;/p&gt;
@@ -263,9 +263,9 @@ killall Dock
  
  <entry>
    <title>以太坊私链搭建</title>
-   <link href="http://ly95.me/2018-05-10/ethereum-private-network.html"/>
+   <link href="https://ly95.me/2018-05-10/ethereum-private-network.html"/>
    <updated>2018-05-10T00:00:00+00:00</updated>
-   <id>http://ly95.me//2018-05-10/ethereum-private-network</id>
+   <id>https://ly95.me//2018-05-10/ethereum-private-network</id>
    <content type="html">&lt;h1 id=&quot;1-私链搭建&quot;&gt;1. 私链搭建&lt;/h1&gt;
 
 &lt;p&gt;由于节点之间的连接只有在对等节点具有相同的协议版本和网络ID的情况下才有效，因此可以通过将这些节点设置为非默认值来有效地隔离网络。建议使用——networkid命令行选项。它的参数是一个整数，主网络有id 1(默认)。&lt;/p&gt;
@@ -551,9 +551,9 @@ INFO &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;05-10|11:36:11] Commit new mi
  
  <entry>
    <title>Python Openssl issue</title>
-   <link href="http://ly95.me/2017-04-19/python-openssl-issue.html"/>
+   <link href="https://ly95.me/2017-04-19/python-openssl-issue.html"/>
    <updated>2017-04-19T10:03:00+00:00</updated>
-   <id>http://ly95.me//2017-04-19/python_openssl_issue</id>
+   <id>https://ly95.me//2017-04-19/python_openssl_issue</id>
    <content type="html">&lt;p&gt;在debian8环境中scrapy爬取https网站时报错&lt;/p&gt;
 
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Traceback &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;most recent call last&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;:
@@ -589,9 +589,9 @@ pip &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;n
  
  <entry>
    <title>《孩子你慢慢来》</title>
-   <link href="http://ly95.me/2017-03-21/%E5%AD%A9%E5%AD%90%E4%BD%A0%E6%85%A2%E6%85%A2%E6%9D%A5.html"/>
+   <link href="https://ly95.me/2017-03-21/%E5%AD%A9%E5%AD%90%E4%BD%A0%E6%85%A2%E6%85%A2%E6%9D%A5.html"/>
    <updated>2017-03-21T17:24:43+00:00</updated>
-   <id>http://ly95.me//2017-03-21/孩子你慢慢来</id>
+   <id>https://ly95.me//2017-03-21/孩子你慢慢来</id>
    <content type="html">&lt;center&gt;
 &lt;img src=&quot;https://raw.githubusercontent.com/ly95/blog/master/illustration/2017-03-21/book.jpg&quot; width=&quot;200&quot; /&gt;
 &lt;/center&gt;
@@ -621,9 +621,9 @@ pip &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;n
  
  <entry>
    <title>小说《幻夜》</title>
-   <link href="http://ly95.me/2016-10-08/huanye.html"/>
+   <link href="https://ly95.me/2016-10-08/huanye.html"/>
    <updated>2016-10-08T09:50:49+00:00</updated>
-   <id>http://ly95.me//2016-10-08/huanye</id>
+   <id>https://ly95.me//2016-10-08/huanye</id>
    <content type="html">&lt;p&gt;国庆期间一直住在医院里，空闲时间读完了《幻夜》。&lt;/p&gt;
 
 &lt;p&gt;结局很突然，细想后也比较合理、又可怕。合理是因为我想不出其他更合理的结局，可怕在于新海冬美是不是早知道了水原雅也会来杀她，所以警察加藤告知她这个消息的时候她依然保存冷静；水原雅也金属技艺超群按图纸制造的手枪不会有什么问题，最后手枪自爆，问题只能出在图纸上，这福田工厂早就在新海冬美眼里，会不会也是新海冬美设计陷害的呢？仅仅是我的猜想，这样的女人没有弱点反而很不真实。&lt;/p&gt;
@@ -634,18 +634,18 @@ pip &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;n
  
  <entry>
    <title>《嫌疑人x的献身》</title>
-   <link href="http://ly95.me/2016-09-08/book-xianyirenxdexianshen.html"/>
+   <link href="https://ly95.me/2016-09-08/book-xianyirenxdexianshen.html"/>
    <updated>2016-09-08T04:01:39+00:00</updated>
-   <id>http://ly95.me//2016-09-08/book-xianyirenxdexianshen</id>
+   <id>https://ly95.me//2016-09-08/book-xianyirenxdexianshen</id>
    <content type="html">&lt;p&gt;花了2天晚上把书看完了，结局相当精彩。书中最喜欢的角色是“岸谷”。&lt;/p&gt;
 </content>
  </entry>
  
  <entry>
    <title>Elasticsearch 浅谈</title>
-   <link href="http://ly95.me/2016-08-31/elasticsearch.html"/>
+   <link href="https://ly95.me/2016-08-31/elasticsearch.html"/>
    <updated>2016-08-31T14:56:00+00:00</updated>
-   <id>http://ly95.me//2016-08-31/Elasticsearch</id>
+   <id>https://ly95.me//2016-08-31/Elasticsearch</id>
    <content type="html">&lt;h2 id=&quot;elasticsearch是什么&quot;&gt;Elasticsearch是什么？&lt;/h2&gt;
 
 &lt;p&gt;简单说明，&lt;strong&gt;Elasticsearch是一个基于Lucene的开源搜索引擎&lt;/strong&gt;。拥有一下特点:&lt;/p&gt;
@@ -1024,9 +1024,9 @@ Elasticsearch -&amp;gt; Indices   -&amp;gt; Types  -&amp;gt; Documents -&amp;gt;
  
  <entry>
    <title>学习笔记DNS协议</title>
-   <link href="http://ly95.me/2016-07-01/domain-name-sytem-protocol.html"/>
+   <link href="https://ly95.me/2016-07-01/domain-name-sytem-protocol.html"/>
    <updated>2016-07-01T08:39:00+00:00</updated>
-   <id>http://ly95.me//2016-07-01/domain-name-sytem-protocol</id>
+   <id>https://ly95.me//2016-07-01/domain-name-sytem-protocol</id>
    <content type="html">&lt;p&gt;本着学习和理解DNS协议的想法，决定简单实现DNS.&lt;/p&gt;
 
 &lt;p&gt;参考 RFC1024, RFC1035&lt;/p&gt;
@@ -1038,9 +1038,9 @@ Elasticsearch -&amp;gt; Indices   -&amp;gt; Types  -&amp;gt; Documents -&amp;gt;
  
  <entry>
    <title>学习词汇解析</title>
-   <link href="http://ly95.me/2016-04-15/nodejs-php-symbols.html"/>
+   <link href="https://ly95.me/2016-04-15/nodejs-php-symbols.html"/>
    <updated>2016-04-15T02:35:00+00:00</updated>
-   <id>http://ly95.me//2016-04-15/nodejs-php-symbols</id>
+   <id>https://ly95.me//2016-04-15/nodejs-php-symbols</id>
    <content type="html">&lt;p&gt;起因在使用Visual Studio Code无法查看到PHP代码结构，突然打算动手解决此事。&lt;/p&gt;
 
 &lt;p&gt;能力有限，起初想到的解决办法：通过PHP脚本来解析PHP文档。
@@ -1075,9 +1075,9 @@ Elasticsearch -&amp;gt; Indices   -&amp;gt; Types  -&amp;gt; Documents -&amp;gt;
  
  <entry>
    <title>Mysql连接数过多</title>
-   <link href="http://ly95.me/2015-12-12/mysql-lian-jie-guo-duo.html"/>
+   <link href="https://ly95.me/2015-12-12/mysql-lian-jie-guo-duo.html"/>
    <updated>2015-12-12T00:31:26+00:00</updated>
-   <id>http://ly95.me//2015-12-12/mysql-lian-jie-guo-duo</id>
+   <id>https://ly95.me//2015-12-12/mysql-lian-jie-guo-duo</id>
    <content type="html">&lt;p&gt;最近mysql数据库连接数突然增多，经过模拟测试和阅读php源码确认是由于php超时有关，这种连接状态多为sleep。&lt;/p&gt;
 
 &lt;div class=&quot;language-c highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;# file: php-src/sapi/fpm/fpm/fpm_main.c
@@ -1126,9 +1126,9 @@ Elasticsearch -&amp;gt; Indices   -&amp;gt; Types  -&amp;gt; Documents -&amp;gt;
  
  <entry>
    <title>VSCode的PhpMD插件</title>
-   <link href="http://ly95.me/2015-11-24/vscode-phpmd-plugin.html"/>
+   <link href="https://ly95.me/2015-11-24/vscode-phpmd-plugin.html"/>
    <updated>2015-11-24T15:51:00+00:00</updated>
-   <id>http://ly95.me//2015-11-24/vscode-phpmd-plugin</id>
+   <id>https://ly95.me//2015-11-24/vscode-phpmd-plugin</id>
    <content type="html">&lt;p&gt;VSCode(Visual Studio Code) 早有关注。前不久发布了v0.10.1，支持插件开发，兴奋不已。&lt;/p&gt;
 
 &lt;p&gt;所以为php开发了phpmd插件，已经可以在插件库里搜索和下载。vscode插件开发文档不多，后期再慢慢改善这个插件。&lt;/p&gt;
@@ -1139,9 +1139,9 @@ Elasticsearch -&amp;gt; Indices   -&amp;gt; Types  -&amp;gt; Documents -&amp;gt;
  
  <entry>
    <title>PHP开发工具PHPDCD</title>
-   <link href="http://ly95.me/2015-08-30/php-tool-phpdcd.html"/>
+   <link href="https://ly95.me/2015-08-30/php-tool-phpdcd.html"/>
    <updated>2015-08-30T20:23:44+00:00</updated>
-   <id>http://ly95.me//2015-08-30/php-tool-phpdcd</id>
+   <id>https://ly95.me//2015-08-30/php-tool-phpdcd</id>
    <content type="html">&lt;p&gt;PHP开发工具PHPMD和PHPCS都不在做介绍了，今天在Github上发现的一款工具也很不错。&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;PHP Dead Code Detector (PHPDCD)&lt;/strong&gt;&lt;/p&gt;
@@ -1181,9 +1181,9 @@ Options:
  
  <entry>
    <title>跨域代理</title>
-   <link href="http://ly95.me/2015-07-18/python-cross-domain-proxy.html"/>
+   <link href="https://ly95.me/2015-07-18/python-cross-domain-proxy.html"/>
    <updated>2015-07-18T16:07:52+00:00</updated>
-   <id>http://ly95.me//2015-07-18/python-cross-domain-proxy</id>
+   <id>https://ly95.me//2015-07-18/python-cross-domain-proxy</id>
    <content type="html">&lt;p&gt;Javascript 跨域&lt;/p&gt;
 
 &lt;p&gt;在做基于ionicframework的App的时候，顺便写了一个简单代理服务。&lt;/p&gt;
@@ -1198,9 +1198,9 @@ Options:
  
  <entry>
    <title>Discuz! 接口开发</title>
-   <link href="http://ly95.me/2015-02-17/discuz-api-case.html"/>
+   <link href="https://ly95.me/2015-02-17/discuz-api-case.html"/>
    <updated>2015-02-17T14:16:01+00:00</updated>
-   <id>http://ly95.me//2015-02-17/discuz-api-case</id>
+   <id>https://ly95.me//2015-02-17/discuz-api-case</id>
    <content type="html">&lt;p&gt;为Discuz!论坛提供App使用的接口，支持3x以上版本。&lt;/p&gt;
 
 &lt;p&gt;登陆，注册接口(含上传头像)，修改头像，修改密码，忘记密码，我收藏的帖子，我发的帖子，获取分类下的帖子，获取帖子详情(含楼层和只看楼主功能)，发帖（图片上传），收藏(取消)帖子。&lt;/p&gt;
@@ -1220,9 +1220,9 @@ Options:
  
  <entry>
    <title>Python Bug CERTIFICATE_VERIFY_FAILED</title>
-   <link href="http://ly95.me/2015-02-03/python-bug-certificate-verify-failed.html"/>
+   <link href="https://ly95.me/2015-02-03/python-bug-certificate-verify-failed.html"/>
    <updated>2015-02-03T23:04:23+00:00</updated>
-   <id>http://ly95.me//2015-02-03/python-bug-certificate-verify-failed</id>
+   <id>https://ly95.me//2015-02-03/python-bug-certificate-verify-failed</id>
    <content type="html">&lt;p&gt;urllib2请求ssh网址的时候抛出异常&lt;/p&gt;
 
 &lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;File &lt;span class=&quot;s2&quot;&gt;&quot;/opt/local/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py&quot;&lt;/span&gt;, line 1197, &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;do_open
@@ -1245,9 +1245,9 @@ urllib2.URLError: &amp;lt;urlopen error &lt;span class=&quot;o&quot;&gt;[&lt;/sp
  
  <entry>
    <title>Git svn rebase异常</title>
-   <link href="http://ly95.me/2014-08-21/git-svn-rebase-exception.html"/>
+   <link href="https://ly95.me/2014-08-21/git-svn-rebase-exception.html"/>
    <updated>2014-08-21T18:06:16+00:00</updated>
-   <id>http://ly95.me//2014-08-21/git-svn-rebase-exception</id>
+   <id>https://ly95.me//2014-08-21/git-svn-rebase-exception</id>
    <content type="html">&lt;p&gt;环境MacOS，git版本1.9.3(Apple Git-50)，同步版本信息时遭遇此错误提示&lt;/p&gt;
 
 &lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git svn rebase
@@ -1271,9 +1271,9 @@ Incomplete data: Delta &lt;span class=&quot;nb&quot;&gt;source &lt;/span&gt;ende
  
  <entry>
    <title>MacOS Git-svn 使用笔记</title>
-   <link href="http://ly95.me/2014-08-15/macos-git-svn.html"/>
+   <link href="https://ly95.me/2014-08-15/macos-git-svn.html"/>
    <updated>2014-08-15T13:33:00+00:00</updated>
-   <id>http://ly95.me//2014-08-15/macos-git-svn</id>
+   <id>https://ly95.me//2014-08-15/macos-git-svn</id>
    <content type="html">&lt;p&gt;公司服务器使用版本控制工具为svn-1.6，项目较大，开发任务量大，再一次意外将svn升级到1.8并且更新了svn本地资源，造成无法再提交新文件。&lt;/p&gt;
 
 &lt;p&gt;一咬牙决心使用git-svn代替svn-client。&lt;/p&gt;
@@ -1316,9 +1316,9 @@ Incomplete data: Delta &lt;span class=&quot;nb&quot;&gt;source &lt;/span&gt;ende
  
  <entry>
    <title>MacPorts创建本地Portfile</title>
-   <link href="http://ly95.me/2014-06-24/macports-create-local-portfile.html"/>
+   <link href="https://ly95.me/2014-06-24/macports-create-local-portfile.html"/>
    <updated>2014-06-24T14:06:14+00:00</updated>
-   <id>http://ly95.me//2014-06-24/macports-create-local-portfile</id>
+   <id>https://ly95.me//2014-06-24/macports-create-local-portfile</id>
    <content type="html">&lt;p&gt;使用macport安装编译的时候希望能自定义configure。&lt;/p&gt;
 
 &lt;p&gt;直接修改macports官方Portfile不方便管理，创建自定义的本地Portfile是最好选择。编辑文件/opt/local/etc/macports/sources.conf找到这行&lt;/p&gt;
@@ -1358,9 +1358,9 @@ portindex
  
  <entry>
    <title>Paramiko命令执行失败</title>
-   <link href="http://ly95.me/2014-06-23/paramiko-not-work.html"/>
+   <link href="https://ly95.me/2014-06-23/paramiko-not-work.html"/>
    <updated>2014-06-23T14:59:56+00:00</updated>
-   <id>http://ly95.me//2014-06-23/paramiko-not-work</id>
+   <id>https://ly95.me//2014-06-23/paramiko-not-work</id>
    <content type="html">&lt;p&gt;一个测试站，使用git管理代码。每次同步需要ssh连接更新代码。用python写小程序来完成重复的工作。&lt;/p&gt;
 
 &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;paramiko&lt;/span&gt;
@@ -1388,9 +1388,9 @@ portindex
  
  <entry>
    <title>Session+memcache问题</title>
-   <link href="http://ly95.me/2014-04-01/sesson-memcache-warning.html"/>
+   <link href="https://ly95.me/2014-04-01/sesson-memcache-warning.html"/>
    <updated>2014-04-01T18:42:56+00:00</updated>
-   <id>http://ly95.me//2014-04-01/sesson-memcache-warning</id>
+   <id>https://ly95.me//2014-04-01/sesson-memcache-warning</id>
    <content type="html">&lt;p&gt;配置php.ini&lt;/p&gt;
 
 &lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;session.save_handler &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; memcache
@@ -1408,9 +1408,9 @@ session.save_path &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=
  
  <entry>
    <title>MacPort安装libunwind失败</title>
-   <link href="http://ly95.me/2013-11-19/macports-install-libunwind-failed.html"/>
+   <link href="https://ly95.me/2013-11-19/macports-install-libunwind-failed.html"/>
    <updated>2013-11-19T10:33:30+00:00</updated>
-   <id>http://ly95.me//2013-11-19/macports-install-libunwind-failed</id>
+   <id>https://ly95.me//2013-11-19/macports-install-libunwind-failed</id>
    <content type="html">&lt;p&gt;通过macport重新安装golang的时候得到下面提示&lt;/p&gt;
 
 &lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Extracting libunwind-headers
@@ -1449,9 +1449,9 @@ Error: Unable to execute port: upgrade llvm-gcc42 failed
  
  <entry>
    <title>[MACOS] MYSQL Error : Thread stack overrun</title>
-   <link href="http://ly95.me/2013-08-22/mysql-error-thread-stack-overrun.html"/>
+   <link href="https://ly95.me/2013-08-22/mysql-error-thread-stack-overrun.html"/>
    <updated>2013-08-22T11:20:41+00:00</updated>
-   <id>http://ly95.me//2013-08-22/mysql-error-thread-stack-overrun</id>
+   <id>https://ly95.me//2013-08-22/mysql-error-thread-stack-overrun</id>
    <content type="html">&lt;p&gt;locahost执行一简单update语句的时候，遇见Mysql线程堆栈溢出。&lt;/p&gt;
 
 &lt;p&gt;完整错误提示：&lt;/p&gt;
@@ -1481,9 +1481,9 @@ mysql-server55&lt;/p&gt;
  
  <entry>
    <title>搜酒店App</title>
-   <link href="http://ly95.me/2013-08-19/sou-jiu-dian.html"/>
+   <link href="https://ly95.me/2013-08-19/sou-jiu-dian.html"/>
    <updated>2013-08-19T11:13:57+00:00</updated>
-   <id>http://ly95.me//2013-08-19/sou-jiu-dian</id>
+   <id>https://ly95.me//2013-08-19/sou-jiu-dian</id>
    <content type="html">&lt;p&gt;&lt;img class=&quot;alignnone size-full wp-image-238&quot; alt=&quot;logo@2x&quot; src=&quot;http://ly95.me/wp-content/uploads/2013/08/logo@2x.png&quot; width=&quot;114&quot; height=&quot;114&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;基于lbs寻找附近酒店&lt;/p&gt;
@@ -1492,9 +1492,9 @@ mysql-server55&lt;/p&gt;
  
  <entry>
    <title>用php计算wav文件播放时间</title>
-   <link href="http://ly95.me/2013-05-28/yong-php-ji-suan-wav-bo-fang-shi-jian.html"/>
+   <link href="https://ly95.me/2013-05-28/yong-php-ji-suan-wav-bo-fang-shi-jian.html"/>
    <updated>2013-05-28T16:21:14+00:00</updated>
-   <id>http://ly95.me//2013-05-28/yong-php-ji-suan-wav-bo-fang-shi-jian</id>
+   <id>https://ly95.me//2013-05-28/yong-php-ji-suan-wav-bo-fang-shi-jian</id>
    <content type="html">&lt;p&gt;开发需要，试写了一个php版的&lt;/p&gt;
 
 &lt;p&gt;代码如下：&lt;/p&gt;
@@ -1527,9 +1527,9 @@ mysql-server55&lt;/p&gt;
  
  <entry>
    <title>mysql_config not found on osx10.8</title>
-   <link href="http://ly95.me/2013-05-23/mysql-config-not-found-on-osx.html"/>
+   <link href="https://ly95.me/2013-05-23/mysql-config-not-found-on-osx.html"/>
    <updated>2013-05-23T15:30:17+00:00</updated>
-   <id>http://ly95.me//2013-05-23/mysql_config-not-found-on-osx</id>
+   <id>https://ly95.me//2013-05-23/mysql_config-not-found-on-osx</id>
    <content type="html">&lt;p&gt;系统：osx 10.8.3&lt;/p&gt;
 
 &lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;pip &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;mysql-python
@@ -1551,18 +1551,18 @@ mysql-server55&lt;/p&gt;
  
  <entry>
    <title>无限可用xp激活码</title>
-   <link href="http://ly95.me/2013-05-04/window-xp-key.html"/>
+   <link href="https://ly95.me/2013-05-04/window-xp-key.html"/>
    <updated>2013-05-04T14:04:05+00:00</updated>
-   <id>http://ly95.me//2013-05-04/window-xp-key</id>
+   <id>https://ly95.me//2013-05-04/window-xp-key</id>
    <content type="html">&lt;p&gt;DG8FV-B9TKY-FRT9J-6CRCC-XPQ4G&lt;/p&gt;
 </content>
  </entry>
  
  <entry>
    <title>Pch file error</title>
-   <link href="http://ly95.me/2013-04-19/pch-file-error.html"/>
+   <link href="https://ly95.me/2013-04-19/pch-file-error.html"/>
    <updated>2013-04-19T00:48:47+00:00</updated>
-   <id>http://ly95.me//2013-04-19/pch-file-error</id>
+   <id>https://ly95.me//2013-04-19/pch-file-error</id>
    <content type="html">&lt;p&gt;更新Xcode到4.6.2后，运行项目得到错误&lt;/p&gt;
 
 &lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;error: PCH file built from a different branch &lt;span class=&quot;o&quot;&gt;((&lt;/span&gt;clang-425.0.27&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt; than the compiler &lt;span class=&quot;o&quot;&gt;((&lt;/span&gt;clang-425.0.28&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;
@@ -1576,9 +1576,9 @@ mysql-server55&lt;/p&gt;
  
  <entry>
    <title>macport清理更新后的旧版本package办法</title>
-   <link href="http://ly95.me/2013-02-26/macport-remove-inactive-packages.html"/>
+   <link href="https://ly95.me/2013-02-26/macport-remove-inactive-packages.html"/>
    <updated>2013-02-26T00:46:48+00:00</updated>
-   <id>http://ly95.me//2013-02-26/macport-remove-inactive-packages</id>
+   <id>https://ly95.me//2013-02-26/macport-remove-inactive-packages</id>
    <content type="html">&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;port uninstall inactive
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 </content>
@@ -1586,9 +1586,9 @@ mysql-server55&lt;/p&gt;
  
  <entry>
    <title>Couldn't find default.styleproto in framework</title>
-   <link href="http://ly95.me/2013-02-20/could-not-find-default-styleproto-in-framework.html"/>
+   <link href="https://ly95.me/2013-02-20/could-not-find-default-styleproto-in-framework.html"/>
    <updated>2013-02-20T23:55:03+00:00</updated>
-   <id>http://ly95.me//2013-02-20/could-not-find-default-styleproto-in-framework</id>
+   <id>https://ly95.me//2013-02-20/could-not-find-default-styleproto-in-framework</id>
    <content type="html">&lt;p&gt;在使用MapKit.framework的时候&lt;/p&gt;
 
 &lt;p&gt;控制台提示&lt;/p&gt;
@@ -1609,9 +1609,9 @@ mysql-server55&lt;/p&gt;
  
  <entry>
    <title>Ubuntu12.10 安装 pptpd 实录</title>
-   <link href="http://ly95.me/2013-01-30/ubuntu12-install-pptpd.html"/>
+   <link href="https://ly95.me/2013-01-30/ubuntu12-install-pptpd.html"/>
    <updated>2013-01-30T15:58:15+00:00</updated>
-   <id>http://ly95.me//2013-01-30/ubuntu12-install-pptpd</id>
+   <id>https://ly95.me//2013-01-30/ubuntu12-install-pptpd</id>
    <content type="html">&lt;p&gt;切换至root帐号下&lt;/p&gt;
 
 &lt;p&gt;安装pptd&lt;/p&gt;
@@ -1684,9 +1684,9 @@ netstat &lt;span class=&quot;nt&quot;&gt;-anp&lt;/span&gt; | &lt;span class=&quo
  
  <entry>
    <title>Ubuntu记录所有用户操作日志</title>
-   <link href="http://ly95.me/2013-01-26/ubuntu-ji-lu-suo-you-yong-hu-cao-zuo-ri-zhi.html"/>
+   <link href="https://ly95.me/2013-01-26/ubuntu-ji-lu-suo-you-yong-hu-cao-zuo-ri-zhi.html"/>
    <updated>2013-01-26T20:29:16+00:00</updated>
-   <id>http://ly95.me//2013-01-26/ubuntu-ji-lu-suo-you-yong-hu-cao-zuo-ri-zhi</id>
+   <id>https://ly95.me//2013-01-26/ubuntu-ji-lu-suo-you-yong-hu-cao-zuo-ri-zhi</id>
    <content type="html">&lt;p&gt;在/etc/profile.d/目录创建userlog.sh文件&lt;/p&gt;
 
 &lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;vi /etc/profile.d/userlog.sh
@@ -1721,9 +1721,9 @@ if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&q
  
  <entry>
    <title>PHP Class 'HttpRequest' not found on Ubuntu</title>
-   <link href="http://ly95.me/2013-01-09/php-class-httprequest-not-found-on-ubuntu.html"/>
+   <link href="https://ly95.me/2013-01-09/php-class-httprequest-not-found-on-ubuntu.html"/>
    <updated>2013-01-09T18:42:30+00:00</updated>
-   <id>http://ly95.me//2013-01-09/php-class-httprequest-not-found-on-ubuntu</id>
+   <id>https://ly95.me//2013-01-09/php-class-httprequest-not-found-on-ubuntu</id>
    <content type="html">&lt;p&gt;安装 pecl_http&lt;/p&gt;
 
 &lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-get &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;php-pear
@@ -1742,9 +1742,9 @@ if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&q
  
  <entry>
    <title>ReflectionMethod getDocComment返回false</title>
-   <link href="http://ly95.me/2012-12-19/reflectionmethod-getdoccomment-return-false.html"/>
+   <link href="https://ly95.me/2012-12-19/reflectionmethod-getdoccomment-return-false.html"/>
    <updated>2012-12-19T14:25:32+00:00</updated>
-   <id>http://ly95.me//2012-12-19/ReflectionMethod-getDocComment-return-false</id>
+   <id>https://ly95.me//2012-12-19/ReflectionMethod-getDocComment-return-false</id>
    <content type="html">&lt;p&gt;开发soap接口的时候，使用Reflector自动生成wsdl文件。&lt;/p&gt;
 
 &lt;p&gt;getDocComment服务端则始终为false。&lt;/p&gt;
@@ -1755,9 +1755,9 @@ if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&q
  
  <entry>
    <title>Ubuntu12.10安装日志分析工具AWStats</title>
-   <link href="http://ly95.me/2012-12-08/ubuntu12-install-awstats.html"/>
+   <link href="https://ly95.me/2012-12-08/ubuntu12-install-awstats.html"/>
    <updated>2012-12-08T18:18:39+00:00</updated>
-   <id>http://ly95.me//2012-12-08/ubuntu12-install-awstats</id>
+   <id>https://ly95.me//2012-12-08/ubuntu12-install-awstats</id>
    <content type="html">&lt;p&gt;安装&lt;/p&gt;
 
 &lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;apt-get &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;awstats
@@ -1800,9 +1800,9 @@ if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&q
  
  <entry>
    <title>文字转语音并保存文件(PHP)</title>
-   <link href="http://ly95.me/2012-10-27/php-tts.html"/>
+   <link href="https://ly95.me/2012-10-27/php-tts.html"/>
    <updated>2012-10-27T00:56:41+00:00</updated>
-   <id>http://ly95.me//2012-10-27/php-tts</id>
+   <id>https://ly95.me//2012-10-27/php-tts</id>
    <content type="html">&lt;p&gt;利用win32api实现&lt;/p&gt;
 
 &lt;p&gt;代码：&lt;/p&gt;
@@ -1843,9 +1843,9 @@ if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&q
  
  <entry>
    <title>php垃圾回收机制</title>
-   <link href="http://ly95.me/2012-10-23/php-gc.html"/>
+   <link href="https://ly95.me/2012-10-23/php-gc.html"/>
    <updated>2012-10-23T02:09:30+00:00</updated>
-   <id>http://ly95.me//2012-10-23/php-gc</id>
+   <id>https://ly95.me//2012-10-23/php-gc</id>
    <content type="html">&lt;p&gt;使用XMPPPHP试写gtalk机器人的脚本程序，目的是协助我监控服务器运行状态。&lt;/p&gt;
 
 &lt;p&gt;在这个过程中，发现php的内存不断上升，记得5.3＋版本采用新的gc机制，问题依旧。&lt;/p&gt;
@@ -1854,9 +1854,9 @@ if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&q
  
  <entry>
    <title>再遇error: failed to attach to process ID 0</title>
-   <link href="http://ly95.me/2012-10-20/failed-to-attach-to-process-id.html"/>
+   <link href="https://ly95.me/2012-10-20/failed-to-attach-to-process-id.html"/>
    <updated>2012-10-20T21:45:19+00:00</updated>
-   <id>http://ly95.me//2012-10-20/failed-to-attach-to-process-id</id>
+   <id>https://ly95.me//2012-10-20/failed-to-attach-to-process-id</id>
    <content type="html">&lt;p&gt;我确定程序是正确无误的，昨晚都能模拟器上正常运行，所以我不再从xcode上找问题了。&lt;/p&gt;
 
 &lt;p&gt;然后连接iphone测试，运行正常。&lt;/p&gt;
@@ -1867,9 +1867,9 @@ if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&q
  
  <entry>
    <title>国家电网App</title>
-   <link href="http://ly95.me/2012-10-16/guo-jia-dian-wang-app.html"/>
+   <link href="https://ly95.me/2012-10-16/guo-jia-dian-wang-app.html"/>
    <updated>2012-10-16T10:36:42+00:00</updated>
-   <id>http://ly95.me//2012-10-16/guo-jia-dian-wang-app</id>
+   <id>https://ly95.me//2012-10-16/guo-jia-dian-wang-app</id>
    <content type="html">&lt;p&gt;&lt;img class=&quot;alignnone&quot; title=&quot;app&quot; src=&quot;http://a1626.phobos.apple.com/us/r30/Purple/v4/b8/2c/ea/b82cea63-62a8-b9b6-89c3-cac663c8581d/mzl.asmxndzg.170x170-75.png&quot; alt=&quot;&quot; width=&quot;170&quot; height=&quot;170&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;提交时间：Sep 10, 2012，今天终于审核过了。&lt;/p&gt;
@@ -1878,9 +1878,9 @@ if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&q
  
  <entry>
    <title>TextMate开源</title>
-   <link href="http://ly95.me/2012-10-14/textmate.html"/>
+   <link href="https://ly95.me/2012-10-14/textmate.html"/>
    <updated>2012-10-14T23:30:16+00:00</updated>
-   <id>http://ly95.me//2012-10-14/textmate</id>
+   <id>https://ly95.me//2012-10-14/textmate</id>
    <content type="html">&lt;p&gt;&lt;img src=&quot;https://raw.github.com/textmate/textmate/gh-pages/images/screenshot.png&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;TextMate 采用GPL协议，已在9月25日在github.com公开源码。&lt;/p&gt;
@@ -1891,9 +1891,9 @@ if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&q
  
  <entry>
    <title>[Xcode4.5]MuPDF编译问题stdio.h not found</title>
-   <link href="http://ly95.me/2012-09-29/mupdf-stdio-not-found.html"/>
+   <link href="https://ly95.me/2012-09-29/mupdf-stdio-not-found.html"/>
    <updated>2012-09-29T10:58:44+00:00</updated>
-   <id>http://ly95.me//2012-09-29/mupdf-stdio-not-found</id>
+   <id>https://ly95.me//2012-09-29/mupdf-stdio-not-found</id>
    <content type="html">&lt;p&gt;App因为ios data storage拒绝后，使用更新后的Xcode编译App失败&lt;/p&gt;
 
 &lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;stdio.h not found
@@ -1905,9 +1905,9 @@ if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&q
  
  <entry>
    <title>取消对某个文件的ARC支持</title>
-   <link href="http://ly95.me/2012-09-01/disable-file-arc-support.html"/>
+   <link href="https://ly95.me/2012-09-01/disable-file-arc-support.html"/>
    <updated>2012-09-01T23:14:59+00:00</updated>
-   <id>http://ly95.me//2012-09-01/disable-file-ARC-support</id>
+   <id>https://ly95.me//2012-09-01/disable-file-ARC-support</id>
    <content type="html">&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;-fno-objc-arc&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
@@ -1917,9 +1917,9 @@ if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&q
  
  <entry>
    <title>Duplicate protocol definition of 'SoapDelegate'</title>
-   <link href="http://ly95.me/2012-08-11/duplicate-protocol-definition-of-soapdelegate-ignored.html"/>
+   <link href="https://ly95.me/2012-08-11/duplicate-protocol-definition-of-soapdelegate-ignored.html"/>
    <updated>2012-08-11T14:03:04+00:00</updated>
-   <id>http://ly95.me//2012-08-11/duplicate-protocol-definition-of-soapDelegate-ignored</id>
+   <id>https://ly95.me//2012-08-11/duplicate-protocol-definition-of-soapDelegate-ignored</id>
    <content type="html">&lt;blockquote&gt;
   &lt;p&gt;Check to make sure you don’t have the header file added in your project twice, or two different files that both implement the protocol.&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -1930,18 +1930,18 @@ if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&q
  
  <entry>
    <title>Windows8 最新预览版密钥</title>
-   <link href="http://ly95.me/2012-08-10/window8-key.html"/>
+   <link href="https://ly95.me/2012-08-10/window8-key.html"/>
    <updated>2012-08-10T12:21:25+00:00</updated>
-   <id>http://ly95.me//2012-08-10/window8-key</id>
+   <id>https://ly95.me//2012-08-10/window8-key</id>
    <content type="html">&lt;p&gt;TK8TP-9JN6P-7X7WW-RFFTV-B7QPF&lt;/p&gt;
 </content>
  </entry>
  
  <entry>
    <title>隐藏apache/php信息</title>
-   <link href="http://ly95.me/2012-08-01/hide-apache-php-version.html"/>
+   <link href="https://ly95.me/2012-08-01/hide-apache-php-version.html"/>
    <updated>2012-08-01T11:13:36+00:00</updated>
-   <id>http://ly95.me//2012-08-01/hide-apache-php-version</id>
+   <id>https://ly95.me//2012-08-01/hide-apache-php-version</id>
    <content type="html">&lt;p&gt;编辑文件/etc/php5/apache2/php.ini&lt;/p&gt;
 
 &lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vi /etc/php5/apache2/php.ini
@@ -1969,9 +1969,9 @@ ServerSignature Off
  
  <entry>
    <title>［MacOS］卸载PhoneGap1.9</title>
-   <link href="http://ly95.me/2012-07-29/uninstall-phonegap1-9.html"/>
+   <link href="https://ly95.me/2012-07-29/uninstall-phonegap1-9.html"/>
    <updated>2012-07-29T16:33:18+00:00</updated>
-   <id>http://ly95.me//2012-07-29/uninstall-phonegap1.9</id>
+   <id>https://ly95.me//2012-07-29/uninstall-phonegap1.9</id>
    <content type="html">&lt;p&gt;打开AppleScript编辑器&lt;/p&gt;
 
 &lt;p&gt;复制粘贴以下内容，然后运行。&lt;/p&gt;
@@ -2043,9 +2043,9 @@ end &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;
  
  <entry>
    <title>MuPDF For IOS</title>
-   <link href="http://ly95.me/2012-07-26/mupdf-for-ios.html"/>
+   <link href="https://ly95.me/2012-07-26/mupdf-for-ios.html"/>
    <updated>2012-07-26T23:20:09+00:00</updated>
-   <id>http://ly95.me//2012-07-26/mupdf-for-ios</id>
+   <id>https://ly95.me//2012-07-26/mupdf-for-ios</id>
    <content type="html">&lt;p&gt;最近在寻求ios上pdf中文字符搜索并高亮的解决方案。&lt;/p&gt;
 
 &lt;p&gt;在github.com，搜索到一些pdf阅读器相关的项目，还跟PSPDFKit的作者交流过几次，但是都没有一个能完美的解决该问题。&lt;/p&gt;
@@ -2068,9 +2068,9 @@ end &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;
  
  <entry>
    <title>[Xcode4.5 DP3] Error: failed to attach to process ID 0</title>
-   <link href="http://ly95.me/2012-07-23/xcode4-5-error-failed-to-attach-to-process-id-0.html"/>
+   <link href="https://ly95.me/2012-07-23/xcode4-5-error-failed-to-attach-to-process-id-0.html"/>
    <updated>2012-07-23T23:41:51+00:00</updated>
-   <id>http://ly95.me//2012-07-23/xcode4.5-error-failed-to-attach-to-process-id-0</id>
+   <id>https://ly95.me//2012-07-23/xcode4.5-error-failed-to-attach-to-process-id-0</id>
    <content type="html">&lt;p&gt;编译app时输出&lt;/p&gt;
 
 &lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;error: failed to attach to process ID 0
@@ -2082,9 +2082,9 @@ end &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;
  
  <entry>
    <title>Install PPTP server on Ubuntu 12.04</title>
-   <link href="http://ly95.me/2012-07-21/install-pptp-on-ubuntu.html"/>
+   <link href="https://ly95.me/2012-07-21/install-pptp-on-ubuntu.html"/>
    <updated>2012-07-21T22:28:57+00:00</updated>
-   <id>http://ly95.me//2012-07-21/install-pptp-on-ubuntu</id>
+   <id>https://ly95.me//2012-07-21/install-pptp-on-ubuntu</id>
    <content type="html">&lt;p&gt;参考&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&quot;http://www.larmeir.com/2010/03/setting-up-a-pptp-vpn-server-on-debian-and-ubuntu/&quot;&gt;http://www.larmeir.com/2010/03/setting-up-a-pptp-vpn-server-on-debian-and-ubuntu/&lt;/a&gt;&lt;/p&gt;
@@ -2111,9 +2111,9 @@ iptables-restore &amp;lt; /etc/iptables.pptp
  
  <entry>
    <title>支招儿App</title>
-   <link href="http://ly95.me/2012-07-21/zhi-zhao-er.html"/>
+   <link href="https://ly95.me/2012-07-21/zhi-zhao-er.html"/>
    <updated>2012-07-21T18:48:42+00:00</updated>
-   <id>http://ly95.me//2012-07-21/zhi-zhao-er</id>
+   <id>https://ly95.me//2012-07-21/zhi-zhao-er</id>
    <content type="html">&lt;p&gt;&lt;img src=&quot;http://a2.mzstatic.com/us/r1000/110/Purple/v4/53/47/14/534714c8-bc75-ee6b-7ea2-2f73bcd1231c/wDeJ7AVm2bgGdkjqRZikBw-temp-upload.ihrklyak.175x175-75.jpg&quot; alt=&quot;8694a4c27d1ed21bf356cd74ad6eddc450da3f80&quot; style=&quot;width: 175px;&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;社交类App&lt;/p&gt;
